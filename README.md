@@ -2,11 +2,52 @@
 
 ---
 
-###  Intern Management System (IMS)
+### Intern Management System (IMS)
 
 A system that automates the internship process essentially doing away with the
 need for a logbook for keeping track of progress enabling a supervisor and
 coordinator to monitor student progress easily.
+
+### TODO/Features
+
++ Should support login for three types of users:
+  - Coordinators
+    - The teacher/lecturer in who does supervision of all the interns from a certain
+      class and does an on site assessment of the student interns in their
+      placements
+  - Supervisors
+    - The person who monitors student progress in his/her place of work
+  - Intern
+    - The student doing the industrial attachment
++ Coordinator:
+  + Has to key in list of students on internship
+  + Support import from csv file, created by the class rep maybe
+  + Should be able to see the progress of all the students in the class doing the
+    internship
+  + System has an option for sending mass emails to all the students with links that
+    enable them to signup to the system and changing their loggin details
++ Supervisor
+  + Has access to progress data of all the interns under his/her supervision
+  + Should allow option for defining whether the intern does work on weekends
+  + Decides the number of weeks the intern is supposed to be on internship. The
+    minimum should be at least 8 weeks required by all institutions
+  + Fills details on the industry/office/firm the intern works in including:
+    - The physical location of the firm
+    - The department
+    - The room name/number each of the interns under his supervision will work in
+    - General description of the workplace and what they do
+    - Working hours(start and departure date)
+    - Give's weekly report on the progress of the intern
++ Intern
+  + Fills logbook daily
+  + Should show the intern his/her progess including:
+    - The number of days he's done
+    - The number of hours completed in general taking into account the working hours
+      defined by the supervisor
+    - The number of days left to complete the 8/12 weeks set
+  + Signs up in the system only on invite from the email sent by the coordinator to
+    the school email address.
+  + System should support reset of lost passwords
 
 ### Installation Steps
 
