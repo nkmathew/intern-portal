@@ -38,6 +38,8 @@ coordinator to monitor student progress easily.
     - General description of the workplace and what they do
     - Working hours(start and departure date)
     - Give's weekly report on the progress of the intern
+  + Should have a form that enables the supervisor to note down the students
+    progress during the internship
 + Intern
   + Fills logbook daily
   + Should show the intern his/her progess including:
@@ -48,6 +50,7 @@ coordinator to monitor student progress easily.
   + Signs up in the system only on invite from the email sent by the coordinator to
     the school email address.
   + System should support reset of lost passwords
+  + Show a calendar showing the number of days completed and days left
 
 ### Installation Steps
 
