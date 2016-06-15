@@ -23,13 +23,21 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
         <link rel="icon" href="favicon.ico?"/>
+        <style type="text/css" media="all">
+            .navbar-brand {
+                padding: 0px;
+            }
+            .navbar-brand img {
+                height: 50px;
+            }
+        </style>
     </head>
     <body>
         <?php $this->beginBody() ?>
         <div class="wrap">
             <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => Html::img('favicon.png'),
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
