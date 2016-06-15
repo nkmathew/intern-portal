@@ -10,6 +10,7 @@ coordinator to monitor student progress easily.
 
 ### TODO/Features
 
++ Design simple logo
 + Should support login for three types of users:
   - Coordinators
     - The teacher/lecturer in who does supervision of all the interns from a certain
