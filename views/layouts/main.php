@@ -22,6 +22,7 @@ AppAsset::register($this);
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <link rel="icon" href="favicon.ico?"/>
     </head>
     <body>
         <?php $this->beginBody() ?>
@@ -68,8 +69,7 @@ AppAsset::register($this);
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-                <p class="pull-right"><?= Yii::powered() ?></p>
+                <p class="pull-left">&copy; Jomo Kenyatta University of Agriculture and Technology <?= date('Y') ?></p>
             </div>
         </footer>
         <?php $this->endBody() ?>

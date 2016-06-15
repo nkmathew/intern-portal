@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Intern Management System';
+$this->title = 'JKUAT Intern Portal';
 ?>
 
 <div class="site-index">
