@@ -22,7 +22,7 @@ AppAsset::register($this);
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
-        <link rel="icon" href="favicon.ico?"/>
+        <link rel="icon" href="/favicon.ico?"/>
         <style type="text/css" media="all">
             .navbar-brand {
                 padding: 0px;
@@ -37,7 +37,7 @@ AppAsset::register($this);
         <div class="wrap">
             <?php
             NavBar::begin([
-                'brandLabel' => Html::img('favicon.png'),
+                'brandLabel' => Html::img('/favicon.png'),
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
