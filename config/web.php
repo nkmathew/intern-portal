@@ -44,6 +44,9 @@ $config = [
             'rules' => [
             ],
         ],
+        'assetManager' => [
+            'forceCopy' => YII_DEBUG,
+        ],
     ],
     'params' => $params,
 ];
