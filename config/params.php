@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'admin@example.com',
+    'adminEmail' => 'kipkoechmathew@gmail.com',
+    'supportEmail' => 'kipkoechmathew@gmail.com',
     'user.passwordResetTokenExpire' => 3600
 ];
