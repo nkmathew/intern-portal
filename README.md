@@ -56,6 +56,8 @@ coordinator to monitor student progress easily.
 ### Enhancements
 + Long emails should be ellipsified/truncated with the full address being displayed
   on hover
++ Personalized greeting when pass reset is requested i.e refer to them by name
+  instead of by their email
 
 ### Installation Steps
 
