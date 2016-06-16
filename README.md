@@ -53,6 +53,10 @@ coordinator to monitor student progress easily.
   + System should support reset of lost passwords
   + Show a calendar showing the number of days completed and days left
 
+### Enhancements
++ Long emails should be ellipsified/truncated with the full address being displayed
+  on hover
+
 ### Installation Steps
 
 + Ensure you have a web server with `php >=5.4.0` installed
