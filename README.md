@@ -27,6 +27,8 @@ coordinator to monitor student progress easily.
     internship
   + System has an option for sending mass emails to all the students with links that
     enable them to signup to the system and changing their loggin details
+  + Gets notified when an intern under his supervision updates his/her profile e.g
+    changes his name
 + Supervisor
   + Has access to progress data of all the interns under his/her supervision
   + Should allow option for defining whether the intern does work on weekends
@@ -41,6 +43,8 @@ coordinator to monitor student progress easily.
     - Give's weekly report on the progress of the intern
   + Should have a form that enables the supervisor to note down the students
     progress during the internship
+  + Gets notified when an intern under his supervision updates his/her profile e.g
+    changes his name
 + Intern
   + Fills logbook daily
   + Should show the intern his/her progess including:
