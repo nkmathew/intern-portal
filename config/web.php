@@ -41,12 +41,12 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            // 'rules' => [
+            'rules' => [
             ],
         ],
-       // 'assetManager' => [
-       //     'forceCopy' => YII_DEBUG,
-       // ],
+        // 'assetManager' => [
+        //     'forceCopy' => YII_DEBUG,
+        // ],
     ],
     'params' => $params,
 ];
