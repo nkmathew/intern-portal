@@ -59,6 +59,7 @@ coordinator to monitor student progress easily.
 + Personalized greeting when pass reset is requested i.e refer to them by name
   instead of by their email
 + Login with google accounts since student emails are managed by gmail
++ Records login attempts
 
 ### Installation Steps
 
