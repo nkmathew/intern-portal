@@ -60,6 +60,7 @@ coordinator to monitor student progress easily.
   instead of by their email
 + Login with google accounts since student emails are managed by gmail
 + Records login attempts
++ Ability to search within your log
 
 ### Installation Steps
 
