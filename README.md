@@ -2,7 +2,7 @@
 
 ---
 
-### Intern Management System (IMS)
+### Intern Portal
 
 A system that automates the internship process essentially doing away with the
 need for a logbook for keeping track of progress enabling a supervisor and
@@ -29,6 +29,8 @@ coordinator to monitor student progress easily.
     enable them to signup to the system and changing their loggin details
   + Gets notified when an intern under his supervision updates his/her profile e.g
     changes his name
+  + Should show the coordinator list of students whose student email adresses never
+    received the signup invite links
 + Supervisor
   + Has access to progress data of all the interns under his/her supervision
   + Should allow option for defining whether the intern does work on weekends
