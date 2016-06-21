@@ -8,6 +8,7 @@ $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<title>About</title>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
     <p>JKUAT Intern Management System</p>

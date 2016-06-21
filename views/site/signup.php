@@ -11,6 +11,7 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<title>Signup</title> <!-- For Pjax's sake -->
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
     <p>Please fill out the following fields to signup if you are either a supervisor or coordinator</p>
