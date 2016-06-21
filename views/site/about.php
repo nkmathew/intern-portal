@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
         track of progress enabling a supervisor and coordinator to monitor student progress easily.</p>
     <hr/>
     <h3 id="todofeatures">TODO/Features</h3>
-    <h3><a id="TODOFeatures_0"></a>TODO/Features</h3>
     <ul>
         <li>Design simple logo</li>
         <li>Should support login for three types of users:
