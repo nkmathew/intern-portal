@@ -51,8 +51,8 @@ AppAsset::register($this);
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] =
-                '<li>' . Html::a('Home', '/site/signup', ['id' => 'link-signup']) . '</li>' .
-                '<li>' . Html::a('Home', '/site/login', ['id' => 'link-login']) . '</li>';
+                '<li>' . Html::a('Signup', '/site/signup', ['id' => 'link-signup']) . '</li>' .
+                '<li>' . Html::a('Login', '/site/login', ['id' => 'link-login']) . '</li>';
             } else {
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
@@ -73,6 +73,8 @@ AppAsset::register($this);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-index"]);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-about"]);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-contact"]);
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-signup"]);
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-login"]);
             ?>
             <div class="container">
                 <?= Breadcrumbs::widget([

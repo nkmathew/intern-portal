@@ -73,7 +73,7 @@ class SiteController extends Controller
     public function actionNotifications()
     {
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('notifications');
+            return $this->renderPartial('notifications');
         } else {
             return $this->render('notifications');
         }
@@ -87,7 +87,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('index');
+            return $this->renderPartial('index');
         } else {
             return $this->render('index');
         }
@@ -108,9 +108,15 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+            if (Yii::$app->request->isAjax) {
+                return $this->renderPartial('login', [
+                    'model' => $model,
+                ]);
+            } else {
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
+            }
         }
     }
 
@@ -144,7 +150,7 @@ class SiteController extends Controller
             return $this->refresh();
         } else {
             if (Yii::$app->request->isAjax) {
-                return $this->renderAjax('contact', [
+                return $this->renderPartial('contact', [
                     'model' => $model,
                 ]);
             } else {
@@ -163,7 +169,7 @@ class SiteController extends Controller
     public function actionAbout()
     {
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('about');
+            return $this->renderPartial('about');
         } else {
             return $this->render('about');
         }
@@ -185,9 +191,15 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
+        if (Yii::$app->request->isAjax) {
+            return $this->renderPartial('signup', [
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('signup', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
