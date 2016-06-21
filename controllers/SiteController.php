@@ -66,13 +66,31 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays notifications.
+     *
+     * @return mixed
+     */
+    public function actionNotifications()
+    {
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('notifications');
+        } else {
+            return $this->render('notifications');
+        }
+    }
+
+    /**
      * Displays homepage.
      *
      * @return mixed
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('index');
+        } else {
+            return $this->render('index');
+        }
     }
 
     /**
@@ -125,9 +143,15 @@ class SiteController extends Controller
 
             return $this->refresh();
         } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
+            if (Yii::$app->request->isAjax) {
+                return $this->renderAjax('contact', [
+                    'model' => $model,
+                ]);
+            } else {
+                return $this->render('contact', [
+                    'model' => $model,
+                ]);
+            }
         }
     }
 
@@ -138,7 +162,11 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('about');
+        } else {
+            return $this->render('about');
+        }
     }
 
     /**

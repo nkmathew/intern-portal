@@ -6,6 +6,7 @@
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap\Nav;
+use yii\widgets\Pjax;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
@@ -44,13 +45,14 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
+                '<li>' . Html::a('Home', '/site/index', ['id' => 'link-index']) . '</li>',
+                '<li>' . Html::a('About', '/site/about', ['id' => 'link-about']) . '</li>',
+                '<li>' . Html::a('Contact', '/site/contact', ['id' => 'link-contact']) . '</li>',
             ];
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                $menuItems[] =
+                '<li>' . Html::a('Home', '/site/signup', ['id' => 'link-signup']) . '</li>' .
+                '<li>' . Html::a('Home', '/site/login', ['id' => 'link-login']) . '</li>';
             } else {
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
@@ -66,13 +68,20 @@ AppAsset::register($this);
                 'items' => $menuItems,
             ]);
             NavBar::end();
+
+            // Make content load silently with Pjax
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-index"]);
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-about"]);
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-contact"]);
             ?>
             <div class="container">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
                 <?= Alert::widget() ?>
-                <?= $content ?>
+                <div id="main-content-area">
+                    <?= $content ?>
+                </div>
             </div>
         </div>
         <footer class="footer">

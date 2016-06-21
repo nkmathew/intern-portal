@@ -15,7 +15,6 @@ $this->title = 'First profile tab';
 ?>
 
 <div>
-
     <?= Html::a('Pjax Link tester', ['update', 'id' => '#s'], ['data-pjax'=> '#formsection']) ?>
     <p>This is some cool stuff
     </p>
