@@ -220,9 +220,15 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
+        if (Yii::$app->request->isAjax) {
+            return $this->renderPartial('requestPasswordResetToken', [
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('requestPasswordResetToken', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

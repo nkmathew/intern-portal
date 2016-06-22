@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Student interns can only sign up on invite from their coordinators and supervisors</p>
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <?php $form = ActiveForm::begin(['id' => 'form-signup', 'enableAjaxValidation' => true,]); ?>
                 <?= $form->field($model, 'email') ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
                 <div class="form-group">

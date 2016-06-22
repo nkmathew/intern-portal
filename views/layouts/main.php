@@ -75,6 +75,7 @@ AppAsset::register($this);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-contact"]);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-signup"]);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-login"]);
+            Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-pwd-reset"]);
             ?>
             <div class="container">
                 <?= Alert::widget() ?>
