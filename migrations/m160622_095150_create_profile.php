@@ -22,8 +22,10 @@ class m160622_095150_create_profile extends Migration
         $this->createTable('profile', [
             'id' => $this->primaryKey(),
             'sex' => $this->string(),
-        ]);
-        $this->addForeignKey('FK_profile_user', 'profile', 'id', 'user', 'id');;
+            'email' => $this->string()->notNull()->unique(),
+        ], $tableOptions);
+
+        $this->addForeignKey('FK_profile_user', 'profile', 'email', 'user', 'email');
     }
 
     /**
