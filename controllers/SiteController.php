@@ -12,6 +12,7 @@ use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use app\models\ContactForm;
+use app\models\ProfileForm;
 
 /**
  * Site controller
@@ -132,6 +133,19 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    /**
+     * Displays profile page
+     *
+     * @return mixed
+     */
+    public function actionProfile()
+    {
+        $model = new ProfileForm();
+        return $this->renderPjax('profile', [
+            'model' => $model,
+        ]);
     }
 
     /**
