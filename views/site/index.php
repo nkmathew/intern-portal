@@ -3,13 +3,28 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\bootstrap\Tabs;
 
 $this->title = 'Home';
 ?>
 
 <title>Home</title> <!-- For Pjax's sake -->
 <div class="site-index">
-    <div class="jumbotron">
-        <h2>Under Construction</h2>
-    </div>
+<?=
+Tabs::widget([
+    'items' => [
+        [
+            'label' => 'Profile',
+            'content' => $this->render('profile'),
+            'active' => true
+        ],
+        [
+            'label' => 'Notifications',
+            'content' => $this->render('notifications'),
+            'headerOptions' => [],
+            'options' => ['id' => 'tab-notifications'],
+        ],
+    ],
+]);
+?>
 </div>
