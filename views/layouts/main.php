@@ -77,9 +77,6 @@ AppAsset::register($this);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-login"]);
             ?>
             <div class="container">
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]) ?>
                 <?= Alert::widget() ?>
                 <div id="main-content-area">
                     <?= $content ?>
