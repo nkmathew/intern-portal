@@ -66,17 +66,29 @@ class SiteController extends Controller
     }
 
     /**
+     * Renders a view depending on whether it was requested with pjax or via a
+     * normal link visit
+     *
+     * @inheritdoc
+     */
+    public function renderPjax($view, $params = [])
+    {
+        if (Yii::$app->request->isAjax) {
+            return parent::renderPartial($view, $params);
+        } else {
+            return parent::render($view, $params);
+        }
+    }
+
+
+    /**
      * Displays notifications.
      *
      * @return mixed
      */
     public function actionNotifications()
     {
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('notifications');
-        } else {
-            return $this->render('notifications');
-        }
+        return $this->renderPjax('notifications');
     }
 
     /**
@@ -86,11 +98,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('index');
-        } else {
-            return $this->render('index');
-        }
+        return $this->renderPjax('index');
     }
 
     /**
@@ -108,15 +116,9 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            if (Yii::$app->request->isAjax) {
-                return $this->renderPartial('login', [
-                    'model' => $model,
-                ]);
-            } else {
-                return $this->render('login', [
-                    'model' => $model,
-                ]);
-            }
+            return $this->renderPjax('login', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -149,15 +151,9 @@ class SiteController extends Controller
 
             return $this->refresh();
         } else {
-            if (Yii::$app->request->isAjax) {
-                return $this->renderPartial('contact', [
-                    'model' => $model,
-                ]);
-            } else {
-                return $this->render('contact', [
-                    'model' => $model,
-                ]);
-            }
+            return $this->renderPjax('contact', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -168,11 +164,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('about');
-        } else {
-            return $this->render('about');
-        }
+        return $this->renderPjax('about');
     }
 
     /**
@@ -191,15 +183,9 @@ class SiteController extends Controller
             }
         }
 
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('signup', [
-                'model' => $model,
-            ]);
-        } else {
-            return $this->render('signup', [
-                'model' => $model,
-            ]);
-        }
+        return $this->renderPjax('signup', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -220,15 +206,9 @@ class SiteController extends Controller
             }
         }
 
-        if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('requestPasswordResetToken', [
-                'model' => $model,
-            ]);
-        } else {
-            return $this->render('requestPasswordResetToken', [
-                'model' => $model,
-            ]);
-        }
+        return $this->renderPjax('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
     }
 
     /**
