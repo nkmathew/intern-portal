@@ -109,3 +109,7 @@ a.desc:after {
 .nav > li > form > button:hover {
     text-decoration: none;
 }
+
+.tab-content {
+    padding-top: 10px;
+}
