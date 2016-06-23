@@ -34,8 +34,8 @@ $this->title = 'Home';
         $tabItems[] = [
             'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
             'content' => $this->render('coordinatorConsole'),
-            'headerOptions' => ['id' => 'logbook-tab'],
-            'options' => ['id' => 'tab-logbook'],
+            'headerOptions' => ['id' => 'coordinator-console-tab'],
+            'options' => ['id' => 'tab-coordinator-console'],
             'active' => true
         ];
     }
