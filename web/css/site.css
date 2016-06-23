@@ -155,7 +155,7 @@ a.desc:after {
     /*padding: 3px;*/
 }
 
-.btn:focus,.btn:active {
+.email-delete-btn:active, .email-delete-btn:focus {
     outline: none !important;
     background: transparent !important;
 }
