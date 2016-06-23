@@ -16,7 +16,6 @@ $this->title = 'Home';
             'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
             'content' => $this->render('profile', ['model' => new ProfileForm()]),
             'headerOptions' => ['id' => 'profile-tab'],
-            'active' => true
         ],
         [
             'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
@@ -34,9 +33,10 @@ $this->title = 'Home';
     if (!Yii::$app->user->isGuest) {
         $tabItems[] = [
             'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
-            'content' => $this->render('logbook'),
+            'content' => $this->render('coordinatorConsole'),
             'headerOptions' => ['id' => 'logbook-tab'],
             'options' => ['id' => 'tab-logbook'],
+            'active' => true
         ];
     }
     echo Tabs::widget(['encodeLabels' => false, 'items' => $tabItems]);
