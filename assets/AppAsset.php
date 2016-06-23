@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/handlebars.min-v4.0.2.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
