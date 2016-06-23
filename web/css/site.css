@@ -139,6 +139,7 @@ a.desc:after {
     color: black;
     font-weight: bold;
     padding-right: 0px;
+    font-size: 13px;
 }
 
 .site-coordinator-console .email-line button {
