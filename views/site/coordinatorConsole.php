@@ -21,7 +21,7 @@
             <script id="email-list-template" type="text/x-handlebars-template">
                 <div class="email-line">
                     <div class="email-address btn-xs btn-primary">{{email}}</div>
-                    <button type="button" class="btn btn-danger btn-xs">
+                    <button type="button" class="email-delete-btn btn btn-danger btn-xs">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                     </button>
                 </div>
