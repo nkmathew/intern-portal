@@ -99,7 +99,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        // We don't have any other content to show a guest visiting the homepage
+        // so redirect to login form
         return $this->renderPjax('index');
+        // return $this->actionLogin();
     }
 
     /**
@@ -143,7 +146,13 @@ class SiteController extends Controller
     public function actionProfile()
     {
         $model = new ProfileForm();
-        return $this->renderPjax('profile', [
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->updateProfile()) {
+                return $this->goHome();
+            }
+        }
+
+        return $this->renderAjax('profile', [
             'model' => $model,
         ]);
     }

@@ -10,12 +10,25 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
-$this->title = 'First profile tab';
 ?>
 
-<div>
-    <?= Html::a('Pjax Link tester', ['update', 'id' => '#s'], ['data-pjax'=> '#formsection']) ?>
-    <p>This is some cool stuff
+<div class="site-profile">
+    <p>
+        Update your profile below
     </p>
+    <div class="row">
+        <div class="col-lg-5">
+            <?php $form = ActiveForm::begin(['action' => '/site/profile', 'id' => 'profile-form']); ?>
+            <?= $form->field($model, 'firstName')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'surname') ?>
+            <?= $form->field($model, 'email') ?>
+            <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
+            <div class="form-group">
+                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 </div>
