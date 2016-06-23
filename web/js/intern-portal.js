@@ -14,10 +14,11 @@ $(document).ready(function () {
             var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
             var html = template({email: email});
             $('#email-list-section').append(html);
+
+            $('.email-delete-btn').click(function () {
+                $(this).closest('.email-line').remove();
+            })
         }
     });
 
-    $('.email-delete-btn').click(function () {
-        $(this).closest('.email-line').remove();
-    })
 });
