@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/handlebars.min-v4.0.2.js'
+        'js/handlebars.min-v4.0.2.js',
+        'js/intern-portal.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
