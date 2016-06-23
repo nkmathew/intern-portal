@@ -113,3 +113,43 @@ a.desc:after {
 .tab-content {
     padding-top: 10px;
 }
+
+.input-group-addon {
+    padding: 4px;
+}
+
+#email-invite-list {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 50px;
+}
+
+.site-coordinator-console #invite-button {
+    margin-left: 30%;
+}
+
+.site-coordinator-console .well {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.site-coordinator-console .email-address {
+    float: left;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    padding-right: 0px;
+}
+
+.site-coordinator-console .email-line button {
+    background: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+    padding-left: 2px;
+}
+
+.glyphicon-remove-circle {
+    font-size: 17px;
+    /*padding: 3px;*/
+}
