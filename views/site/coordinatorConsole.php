@@ -14,7 +14,7 @@
 <div class="site-coordinator-console">
     <div class="col-md-5">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="First part of student email">
+            <input type="text" id="email-input-box" class="form-control" placeholder="First part of student email">
             <span class="input-group-addon" id="basic-addon2">@students.jkuat.ac.ke</span>
         </div>
         <div class="well well-sm" id="email-list-section">
