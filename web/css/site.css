@@ -154,3 +154,8 @@ a.desc:after {
     font-size: 17px;
     /*padding: 3px;*/
 }
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    background: transparent !important;
+}
