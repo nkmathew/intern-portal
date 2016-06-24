@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\SignupLinks;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -258,5 +259,31 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+
+    /**
+     * Emails the interns with the supplied email addresses with signup invite links
+     *
+     */
+    public function actionSendSignupLinks()
+    {
+        $emailList = json_decode(Yii::$app->request->post('email-list'));
+        $signupLink = new SignupLinks();
+        for ($i = 0; $i < count($emailList); $i++) {
+            $email = $emailList[$i];
+            // Yii::$app->mailer->compose()
+            $signupLink->email = $email;
+            $signupLink->generateSignupToken();
+            $signupLink->save();
+            Yii::$app->mailer->compose(
+                ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
+                ['signupLink' => $signupLink]
+            )
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setTo($email)
+            ->setSubject('Signup link for ' . Yii::$app->name)
+            ->send();
+        }
     }
 }
