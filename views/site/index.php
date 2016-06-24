@@ -16,6 +16,7 @@ $this->title = 'Home';
             'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
             'content' => $this->render('profile', ['model' => new ProfileForm()]),
             'headerOptions' => ['id' => 'profile-tab'],
+            'active' => true
         ],
         [
             'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
@@ -36,7 +37,6 @@ $this->title = 'Home';
             'content' => $this->render('coordinatorConsole'),
             'headerOptions' => ['id' => 'coordinator-console-tab'],
             'options' => ['id' => 'tab-coordinator-console'],
-            'active' => true
         ];
     }
     echo Tabs::widget(['encodeLabels' => false, 'items' => $tabItems]);
