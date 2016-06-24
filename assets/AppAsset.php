@@ -22,7 +22,9 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/handlebars.min-v4.0.2.js',
-        'js/intern-portal.js'
+        'js/intern-portal.js',
+        'js/spin.min.js',
+        'js/jquery.spin.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
