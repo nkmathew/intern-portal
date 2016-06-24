@@ -37,8 +37,6 @@ AppAsset::register($this);
         <?php $this->beginBody() ?>
         <div class="wrap">
             <?php
-            $email = Yii::$app->user->identity->email;
-            $username = explode('@', $email)[0];
             NavBar::begin([
                 'brandLabel' => Html::img('/favicon.png'),
                 'brandUrl' => Yii::$app->homeUrl,
@@ -56,6 +54,8 @@ AppAsset::register($this);
                 '<li>' . Html::a('Signup', '/site/signup', ['id' => 'link-signup']) . '</li>' .
                 '<li>' . Html::a('Login', '/site/login', ['id' => 'link-login']) . '</li>';
             } else {
+                $email = Yii::$app->user->identity->email;
+                $username = explode('@', $email)[0];
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
