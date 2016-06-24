@@ -22,7 +22,13 @@ $(document).ready(function () {
         }
     });
 
+    var spinnerOptions = {
+        color: '#000'
+        //etc etc
+    };
+
     $("#invite-button").click(function () {
+        $("#invite-button").spin(spinnerOptions);
         var emailList = [];
         $('.email-address').each(function () {
             emailList.push($(this).html());
@@ -38,15 +44,19 @@ $(document).ready(function () {
                 $('.alert-box').addClass('alert-success fade in');
                 $('.alert-box').css('display', 'block');
 
+                $("#invite-button").spin(false);
+
                 // Clear list
                 console.log('Emails sent!!!')
                 $('.email-line').remove();
             },
             error: function (xhr, status, error) {
+                $("#invite-button").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
                 $('.alert-box').addClass('alert-danger fade in');
                 $('.alert-box').css('display', 'block');
             },
         });
     });
+
 });
