@@ -159,3 +159,7 @@ a.desc:after {
     outline: none !important;
     background: transparent !important;
 }
+
+.alert-box {
+    display: none;
+}
