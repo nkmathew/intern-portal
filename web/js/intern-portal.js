@@ -33,8 +33,19 @@ $(document).ready(function () {
             data: {
                 'email-list': JSON.stringify(emailList),
             },
-            error: function (msg) {
-                alert('Problem occurred while trying to send email...');
+            success: function () {
+                $('.alert-box .msg').html('Signup links sent successfully');
+                $('.alert-box').addClass('alert-success fade in');
+                $('.alert-box').css('display', 'block');
+
+                // Clear list
+                console.log('Emails sent!!!')
+                $('.email-line').remove();
+            },
+            error: function (xhr, status, error) {
+                $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
+                $('.alert-box').addClass('alert-danger fade in');
+                $('.alert-box').css('display', 'block');
             },
         });
     });
