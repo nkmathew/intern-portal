@@ -12,13 +12,30 @@ $(document).ready(function () {
     $("#email-input-box").keyup(function (e) {
         if (e.keyCode == 13) {
             var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
-            var html = template({email: email});
+            var html  = template({email: email});
             $('#email-list-section').append(html);
 
             $('.email-delete-btn').click(function () {
                 $(this).closest('.email-line').remove();
-            })
+            });
+            $(this).val('');
         }
     });
 
+    $("#invite-button").click(function () {
+        var emailList = [];
+        $('.email-address').each(function () {
+            emailList.push($(this).html());
+        });
+        $.ajax({
+            type: 'POST',
+            url: '/site/send-signup-links',
+            data: {
+                'email-list': JSON.stringify(emailList),
+            },
+            error: function (msg) {
+                alert('Problem occurred while trying to send email...');
+            },
+        });
+    });
 });
