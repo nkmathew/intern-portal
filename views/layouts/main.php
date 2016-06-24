@@ -57,7 +57,9 @@ AppAsset::register($this);
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->email . ')',
+                        'Logout (<span style="color:#87C540;font-weight: bold">'
+                        . explode('@', Yii::$app->user->identity->email)[0]
+                        . '</span>)',
                         ['class' => 'btn btn-link']
                     )
                     . Html::endForm()
