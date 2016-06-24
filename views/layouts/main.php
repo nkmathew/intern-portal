@@ -37,6 +37,8 @@ AppAsset::register($this);
         <?php $this->beginBody() ?>
         <div class="wrap">
             <?php
+            $email = Yii::$app->user->identity->email;
+            $username = explode('@', $email)[0];
             NavBar::begin([
                 'brandLabel' => Html::img('/favicon.png'),
                 'brandUrl' => Yii::$app->homeUrl,
@@ -57,8 +59,9 @@ AppAsset::register($this);
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (<span style="color:#87C540;font-weight: bold">'
-                        . explode('@', Yii::$app->user->identity->email)[0]
+                        'Logout (<span style="color:#87C540;font-weight: bold" title="'
+                        . $email . '">'
+                        . $username
                         . '</span>)',
                         ['class' => 'btn btn-link']
                     )
