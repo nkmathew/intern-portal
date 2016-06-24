@@ -29,7 +29,7 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'firstname', 'surname'], 'required'],
+            // [['email', 'firstname', 'surname'], 'required'],
             [['sex', 'email', 'firstname', 'surname'], 'string', 'max' => 255],
             [['email'], 'unique'],
         ];
@@ -47,5 +47,16 @@ class Profile extends \yii\db\ActiveRecord
             'firstname' => 'Firstname',
             'surname' => 'Surname',
         ];
+    }
+    
+    /**
+     * Finds profile by email
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email]);
     }
 }

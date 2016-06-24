@@ -50,12 +50,12 @@ class ProfileForm extends Model
             return null;
         }
 
-        $profile = new Profile();
-        $profile->email = $this->email;
+        $profile = Profile::findByEmail($this->email);
+        $profile->email = $this->email ? $this->email : '';
         $profile->sex = $this->sex;
         $profile->surname = $this->surname;
         $profile->firstname = $this->firstName;
 
-        return $profile->save() ? $profile : null;
+        return $profile->update() ? $profile : null;
     }
 }
