@@ -8,6 +8,7 @@
  */
  
 /* @var $this yii\web\View */
+/* @var $model app\models\Profile */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -20,10 +21,11 @@ use yii\widgets\ActiveForm;
     </p>
     <div class="row">
         <div class="col-lg-5">
+            <?= var_dump($profile); ?>
             <?php $form = ActiveForm::begin(['action' => '/site/profile', 'id' => 'profile-form']); ?>
-            <?= $form->field($model, 'firstName')->textInput(['autofocus' => true]) ?>
-            <?= $form->field($model, 'surname') ?>
-            <?= $form->field($model, 'email') ?>
+            <?= $form->field($model, 'firstName')->textInput(['autofocus' => true, 'value' => $model->firstName]) ?>
+            <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
+            <?= $form->field($model, 'email')->textInput(['readonly' => true, 'value' => $model->email])  ?>
             <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
             <div class="form-group">
                 <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
