@@ -163,3 +163,8 @@ a.desc:after {
 .alert-box {
     display: none;
 }
+
+.password-reset {
+    font-family: Verdana;
+    font-size: 14px;
+}
