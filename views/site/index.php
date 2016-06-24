@@ -4,6 +4,7 @@
 
 use app\models\ProfileForm;
 use yii\bootstrap\Tabs;
+use app\controllers\SiteController;
 
 $this->title = 'Home';
 ?>
@@ -14,7 +15,7 @@ $this->title = 'Home';
     $tabItems = [
         [
             'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
-            'content' => $this->render('profile', ['model' => new ProfileForm()]),
+            'content' => $this->context->actionProfile(),
             'headerOptions' => ['id' => 'profile-tab'],
             'active' => true
         ],
