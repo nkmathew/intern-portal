@@ -269,6 +269,9 @@ class SiteController extends Controller
     public function actionSendSignupLinks()
     {
         $emailList = json_decode(Yii::$app->request->post('email-list'));
+        if (!count($emailList)) {
+            return;
+        }
         $signupLink = new SignupLinks();
         for ($i = 0; $i < count($emailList); $i++) {
             $email = $emailList[$i];
