@@ -4,7 +4,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $signupLink app\models\SignupLinks */
 
-$signupUrl = Yii::$app->urlManager->createAbsoluteUrl(['site/signup-thru-link', 'signup_token' => $signupLink->signup_token]);
+$signupUrl = Yii::$app->urlManager->createAbsoluteUrl(['site/link-signup', 'signup_token' => $signupLink->signup_token]);
 ?>
 
 <div class="password-reset">
