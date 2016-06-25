@@ -3,10 +3,10 @@
  */
 
 $(document).ready(function () {
-    var source   = $("#email-list-template").html();
-    var template = Handlebars.compile(source);
+    var source = $("#email-list-template").html();
 
     $("#email-input-box").keyup(function (e) {
+        var template = Handlebars.compile(source);
         if (e.keyCode == 13) {
             var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
             var html  = template({email: email});
