@@ -105,10 +105,7 @@ class SiteController extends Controller
         // We don't have any other content to show a guest visiting the homepage
         // so redirect to login form
         if (Yii::$app->user->isGuest) {
-            $model = new LoginForm();
-            return $this->renderPjax('login', [
-                'model' => $model,
-            ]);
+            $this->redirect('/site/login');
         } else {
             return $this->renderPjax('index');
         }
