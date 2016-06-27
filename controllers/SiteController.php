@@ -324,10 +324,24 @@ class SiteController extends Controller
         $signupLink = new SignupLinks();
         $email = $signupLink::findOne(['signup_token' => $token]);
 
-        $model = new SignupForm();
-        return $this->renderPjax('linkSignup', [
-            'model' => $model,
-            'email' => $email->email
-        ]);
+        if (!Yii::$app->user->isGuest) {
+            return $this->render('error', ['name' => 'Link signup error',
+                'message' => "Can't signup while there's an active session. " . Yii::$app->user->identity->email .
+                    " is still logged in"
+            ]);
+        }
+
+        if ($email) {
+            $model = new SignupForm();
+            return $this->renderPjax('linkSignup', [
+                'model' => $model,
+                'email' => $email->email
+            ]);
+        } else {
+           return $this->render('error', [
+               'name' => 'Link signup error',
+               'message' => "You're already a registered intern. Proceed to your profile page"
+           ]);
+        }
     }
 }
