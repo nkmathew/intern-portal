@@ -152,7 +152,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionProfile()
+    public function actionProfile($renderPartial=null)
     {
         $model = new ProfileForm();
         if ($model->load(Yii::$app->request->post())) {
@@ -167,10 +167,17 @@ class SiteController extends Controller
         $model->email = $profile->email;
         $model->surname = $profile->surname;
         $model->sex = $profile->sex;
-        return $this->render('profile', [
-            'model' => $model,
-            'profile' => $profile,
-        ]);
+        if ($renderPartial) {
+            return $this->renderPartial('profile', [
+                'model' => $model,
+                'profile' => $profile,
+            ]);
+        } else {
+            return $this->render('profile', [
+                'model' => $model,
+                'profile' => $profile,
+            ]);
+        }
     }
 
     /**

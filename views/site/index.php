@@ -15,7 +15,7 @@ $this->title = 'Home';
     $tabItems = [
         [
             'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
-            'content' => $this->context->actionProfile(),
+            'content' => $this->context->actionProfile(true),
             'headerOptions' => ['id' => 'profile-tab'],
             'active' => true
         ],
