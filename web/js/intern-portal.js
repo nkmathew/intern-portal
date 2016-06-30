@@ -38,20 +38,23 @@ $(document).ready(function () {
             },
             success: function () {
                 $('.alert-box .msg').html('Signup links sent successfully');
-                $('.alert-box').addClass('alert-success fade in');
-                $('.alert-box').css('display', 'block');
+                $('.alert-box').addClass('alert-success');
+                $('.alert-box').show();
+                $("#alert-box").fadeTo(3000, 500).slideUp(500, function () {
+                    $("#alert-box").hide();
+                });
 
+                // Remove spinner
                 $("#invite-button").spin(false);
 
                 // Clear list
-                console.log('Emails sent!!!')
                 $('.email-line').remove();
             },
             error: function (xhr, status, error) {
                 $("#invite-button").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
-                $('.alert-box').addClass('alert-danger fade in');
-                $('.alert-box').css('display', 'block');
+                $('.alert-box').addClass('alert-danger');
+                $('.alert-box').show();
             },
         });
     });
