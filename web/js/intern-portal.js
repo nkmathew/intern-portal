@@ -23,6 +23,9 @@ function addEmailToList() {
 
 $(document).ready(function () {
 
+    // Initialize bootstrap tooltip plugin
+    $('[data-toggle="tooltip"]').tooltip();
+
     $("#email-input-box").keyup(function (e) {
         var template = Handlebars.compile(source);
         if (e.keyCode == 13) {
