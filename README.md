@@ -78,6 +78,7 @@ coordinator to monitor student progress easily.
 + Track user logins, record their ips and times maybe show in an account activity
   tab
 + Stackoverflow style notifications??
++ Remember the tab you were on when the page is reloaded(cookies?)
 
 ### Installation Steps
 
