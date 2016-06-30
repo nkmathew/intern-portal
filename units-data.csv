@@ -1,152 +1,152 @@
-Course,Course Code,Course Name,Duration,Dept,Stage Caption
-,,,,,
-1,CT,BSc. Computer Technology,4,3,Year
-2,CS,BSc. Computer Science,4,1,Year
-7,BIT,Bachelor of Science Information Technology,4,7,YEAR
-8,DIT,Diploma in Information Technology,2,7,Year
-9,CIT,Certificate in Information Technology,3,7,Months
-10,cs381,MSc. Software Engineering 381,2,1,year
-11,cs382,MSc. Computer Systems,2,1,year
-12,cs481,PhD. Information Technology,3,1,year
-13,cs482,PhD. Computer Science,3,1,year
-14,Msc,Msc. Masters in Information Technology,2,7,YEAR
-15,cs385,Msc. Information Technology,2,7,Year
-16,HD317,MSc. in Project Management,2,19,year
-17,EN273,Telecommunications Information Engineering,6,21,Year
-19,HDE,BSC. ECONOMICS,4,26,YEAR
-20,HDE221,Bachelor of Science in Human Resource Management,4,22,Year
-21,HD312,MSC HUMAN RESOURCE MANAGEMENT,2,22,YEAR
-22,HDE224,BSc. Project Management,4,22,YEAR
-23,SC224,BSc. Biotechnology,4,11,YEAR
-24,HDC114,Diploma in Public Relations,2,27,years
-25,HD215,Bachelor  in Project Management,4,20,Year
-26,hde211,Bachelor of procurement & contract management,4,19,1
-27,cs281,Bachelor of Science in Computer Science,4,1,Year
-28,SCT22,Bachelor of Science in Information Technology,4,7,Year
-29,sct221,sct221 Bachelor of Science in Information Technology,4,7,Year
-30,hdb112,Diploma in Business Information Technology hdb112,2,13,year
-31,HDB113,Diploma in Business Administration,2,13,year
-33,Hd211,Bachelor of Procurement and Contract Management,4,19,Year
-34,hdb212,bachelor of business information technology,4,37,year
-35,HDE225,BSc Strategic Management,4,20,Year
-36,HDB211,Bachelor of Commerce New,4,44,year
-40,HDC212,Bachelor of Journalism,4,22,Year
-42,HDB221,Bachelor of Science in Economics,3,42,year
-43,HD212,Bachelor of Supply Chain Management,4,19,Year
-44,sct121,Diploma in Information Technology New,2,7,year
-46,HD232,Bachelor of Business Information Technology,4,7,Year
-47,HD433,PhD Business Administration,3,44,Year
-49,HD417,PhD Project Management,3,22,Year
-50,hbd212,bachelor of business information technology,4,38,year
-51,HDC221,Bachelor of Development Studies,4,22,Year
-52,SC242,BSc Control and Instrumentation,4,46,Year
-53,HDE226,Bsc Innovation and Technology Management,4,20,year
-54,SC222,BSc Microbiology,4,48,Year
-55,SCM215,Bsc Statistics,4,49,Year
-56,hde212,Bachelor of Supply Chain Management,4,19,Year
-57,SCM214,Bsc Financial Engineering,4,49,Year
-58,HD214,Bachelor of  Entrepreneurship,4,22,Year
-59,SCT212,BSc Computer Technology,4,7,Year
-60,HD132,Diploma in Business Information Technology,4,44,Stages
-61,HD231,Bachelor of Commerce,4,36,Year
-62,hd314,MSc ICT Policy Regulation,2,20,year
-63,HDE223,Bachelor of Entrepreneurship,4,20,year
-65,EN251,Bsc Civil Engineering,5,53,Year
-66,SC232,Bsc. Analytical Chemistry,4,54,Year
-67,HD421,PhD Mass Communication,3,27,Year
-68,ABA 2507,Bachelor in Architecture,5,55,Year
-69,EN271,BSc Electrical & Electronics Engineering,5,12,Year
-70,HD111,Diploma in Purchasing and Supplies Management,4,19,Stages
-71,EN283,BSc Geospatial Information Science,4,56,Year
-72,SCT222,Business Computing,4,7,Year
-73,EN272,Bsc Electronic and Computer Engineering,5,21,Year
-74,EN264,Agricultural and Biosystems Engineering,5,57,Year
-75,TM210,Bsc Public Health,4,58,Year
-76,HDC213,B.Sc. Corporate Communication and Management,4,59,Years
-77,HD318,Msc. Strategic Management,3,60,year
-78,hdb318,Post-Graduate Diploma in Strategic Management,1,20,Year
-79,hd333,Masters of Business Administration,2,37,Year
-80,ag222,BSc Food Science and Nutrition,4,9,year
-81,ag221,BSc Food Science and Technology,4,9,year
-82,ab244,Bachelor of Quantity Surveying,4,62,year
-83,tm213,KONYANGO MILDRED ADHIAMBO,4,63,year
-86,tm227,B.Sc. in Applied Bioengineering,4,52,year
-87,hd213,Bachelor of Human Resource Management,4,20,year
-88,SC200,Bachelor of Science General,4,64,Year
-89,HDE121,Diploma in Human Resource Management,2,20,year
-91,ag253,BSc Agribusiness Economics,4,65,year
-92,hde111,Diploma in Purchasing and Supplies management,2,41,year
-94,scb231,Bachelor of Science in Biotechnology,4,11,Year
-95,HDE 111,Diploma in Purchasing and Supplies management,2,20,year
-96,SCM213,BSc Biostatistics,4,67,year
-97,TM318,Msc. Molecular Biology And Bioinformatics,2,52,year
-98,TM201,BSc in Clinical Medicine,5,48,Year
-99,HD418,PhD in Strategic Management,3,20,Year
-100,AG242,Bsc.Animal Health Production and Processing,4,68,year
-101,AG223,BSc Human Nutrition and Dietetics,4,9,year
-102,scb236,B.Sc. Applied Biology,4,69,year
-104,hd311,MSc Procurement and Logistics,2,20,year
-105,SCG200,Bachelor of Science,4,64,year
-106,sc281,acturial science,4,71,year
-107,sct211,BSc. Computer Science   SCT211,4,1,year
-110,HD435,PhD FINANCE,3,47,year
-111,ab243,construction management,4,62,year
-112,TM310,MSc. Public Health,2,58,year
-113,TM200,Bachelor of Science in Medical Laboratory Science,4,48,Year
-114,HD112,Diploma in Human Resource Management HD112,2,28,year
-115,SCB232,Genomic Sciences,4,64,year
-116,tm226,Bachelor of Medicine and Bachelor of Surgery,4,63,2015/2016
-117,EET32,Msc. Energy Technology,2,63,year
-118,AG231,BSc. Horticulture,4,72,year
-119,AB241,Bachelors of Architectural Technology,6,55,year
-120,SCT311,MSc. Software Engineering,2,1,year
-121,SCP223,BSc Industrial Chemistry,4,64,2015/2016
-122,hdc111,Diploma in Mass Communication,2,59,2015/2016
-124,EN292,BSc. Mechatronics Engineering,5,73,year
-125,AG224,BSc. Food Service and Hospitality management,4,9,year
-126,SCM216,BSc. Industrial Mathematics,4,64,year
-127,SCM212,BSc. Acturial Science,4,64,year
-128,TM323,MSc. Agricultural and Environmental Biotechnology,2,63,year
-129,SCP224,BSc Control and Instrumentation,4,46,2015/2016
-130,HDC211,Bachelor of Mass Communication,4,59,year
-131,TM214,BSc. Nursing,4,63,year
-132,EN295,BSc. Marine Engineering,5,73,year
-133,TM225,BSc. Biochemistry and Molecular Biology,4,63,year
-134,sct421,Ph.D. Information Technology,2,7,Year
-135,HDC222,BSc. Public Management and Development Studies,4,59,year
-136,SCM211,BSc. Maths and Computer Science,4,67,year
-137,AB242,BSc Landscape Architecture,4,55,year
-138,SCT411,PhD Computer Science,3,1,year
-139,TM216,Bsc Medical Microbiology,4,63,year
-140,SCT001,Certificate in Information Technology,1,1,year
-141,AG238,BSc. Agriculture,4,65,year
-142,TM211,BSc. Pharmacy,5,63,year
-143,HDC223,BSc. Community Development and Environment,4,39,year
-144,AG252,BSc. Agribusiness Management & Enterprise Development,4,65,year
-145,hd241,Bachelor of Economics,4,47,2015/2016
-146,EN291,BSc Mechanical Engineering,5,73,year
-147,SCT312,MSc. Computer Systems,2,1,year
-148,TM224,BSc.Industrial Biotechnology,4,52,year
-149,SCP222,BSc. Analytical Chemistry,4,54,year
-150,AG251,BSc. Agricultural Economics and Rural Development,4,72,year
-151,SCT021,Certificate in Information Technology SCT021,1,1,year
-152,TM215,BSc. Radiography,4,63,year
-153,hd321,MSc in Mass Communication,2,59,2015/2016
-154,AG237,BSc. Agribusiness Economics and Food Industrial Management,4,72,year
-155,AG241,BSc. Land Resource Planning and Management,4,68,year
-156,HD343,MSc. Business Information Technology,2,42,year
-157,hd411,PHD Supply Chain Management,4,20,2015/2016
-158,HD221,Bachelor of Mass Communication,4,59,year
-159,TM101,Diploma in Clinical Medicine,3,48,year
-161,HD313,Msc.Entreprenuership,2,66,Year
-162,CS282,Bsc.Computer Technology,4,7,Year
-163,HD412,PhD Human Resource Management,4,74,Year
-164,HPS211,BSc Procurement and Contract Management,4,28,Year
-165,HD339,Master of Finance and Accounting,2,42,year
-166,EN293,BSc Mining and Mineral Processing Engineering,5,73,Year
-167,EN392,MSc Mechatronic Engineering,2,73,Year
-168,HD413,PHD Entrepreneurship,3,50,year
-169,SCT322,Msc IT Integration in Education and Instructional Design,2,7,Year
-170,EET31,Msc Energy Technology,2,75,Year
-171,hd224,Bachelor of Development Studies,4,59,year
-172,ab343,Msc Construction Project Management,2,62,year
+Course Code,Course Name,Duration,Dept,Stage Caption
+,,,,
+ab241,Bachelors of Architectural Technology,6,55,year
+ab242,BSc Landscape Architecture,4,55,year
+ab243,construction management,4,62,year
+ab244,Bachelor of Quantity Surveying,4,62,year
+ab343,Msc Construction Project Management,2,62,year
+aba 2507,Bachelor in Architecture,5,55,Year
+ag221,BSc Food Science and Technology,4,9,year
+ag222,BSc Food Science and Nutrition,4,9,year
+ag223,BSc Human Nutrition and Dietetics,4,9,year
+ag224,BSc. Food Service and Hospitality management,4,9,year
+ag231,BSc. Horticulture,4,72,year
+ag237,BSc. Agribusiness Economics and Food Industrial Management,4,72,year
+ag238,BSc. Agriculture,4,65,year
+ag241,BSc. Land Resource Planning and Management,4,68,year
+ag242,Bsc.Animal Health Production and Processing,4,68,year
+ag251,BSc. Agricultural Economics and Rural Development,4,72,year
+ag252,BSc. Agribusiness Management & Enterprise Development,4,65,year
+ag253,BSc Agribusiness Economics,4,65,year
+bit,Bachelor of Science Information Technology,4,7,YEAR
+cit,Certificate in Information Technology,3,7,Months
+cs,BSc. Computer Science,4,1,Year
+cs281,Bachelor of Science in Computer Science,4,1,Year
+cs282,Bsc.Computer Technology,4,7,Year
+cs381,MSc. Software Engineering 381,2,1,year
+cs382,MSc. Computer Systems,2,1,year
+cs385,Msc. Information Technology,2,7,Year
+cs481,PhD. Information Technology,3,1,year
+cs482,PhD. Computer Science,3,1,year
+ct,BSc. Computer Technology,4,3,Year
+dit,Diploma in Information Technology,2,7,Year
+eet31,Msc Energy Technology,2,75,Year
+eet32,Msc. Energy Technology,2,63,year
+en251,Bsc Civil Engineering,5,53,Year
+en264,Agricultural and Biosystems Engineering,5,57,Year
+en271,BSc Electrical & Electronics Engineering,5,12,Year
+en272,Bsc Electronic and Computer Engineering,5,21,Year
+en273,Telecommunications Information Engineering,6,21,Year
+en283,BSc Geospatial Information Science,4,56,Year
+en291,BSc Mechanical Engineering,5,73,year
+en292,BSc. Mechatronics Engineering,5,73,year
+en293,BSc Mining and Mineral Processing Engineering,5,73,Year
+en295,BSc. Marine Engineering,5,73,year
+en392,MSc Mechatronic Engineering,2,73,Year
+hbd212,bachelor of business information technology,4,38,year
+hd111,Diploma in Purchasing and Supplies Management,4,19,Stages
+hd112,Diploma in Human Resource Management HD112,2,28,year
+hd132,Diploma in Business Information Technology,4,44,Stages
+hd211,Bachelor of Procurement and Contract Management,4,19,Year
+hd212,Bachelor of Supply Chain Management,4,19,Year
+hd213,Bachelor of Human Resource Management,4,20,year
+hd214,Bachelor of  Entrepreneurship,4,22,Year
+hd215,Bachelor  in Project Management,4,20,Year
+hd221,Bachelor of Mass Communication,4,59,year
+hd224,Bachelor of Development Studies,4,59,year
+hd231,Bachelor of Commerce,4,36,Year
+hd232,Bachelor of Business Information Technology,4,7,Year
+hd241,Bachelor of Economics,4,47,2015/2016
+hd311,MSc Procurement and Logistics,2,20,year
+hd312,MSC HUMAN RESOURCE MANAGEMENT,2,22,YEAR
+hd313,Msc.Entreprenuership,2,66,Year
+hd314,MSc ICT Policy Regulation,2,20,year
+hd317,MSc. in Project Management,2,19,year
+hd318,Msc. Strategic Management,3,60,year
+hd321,MSc in Mass Communication,2,59,2015/2016
+hd333,Masters of Business Administration,2,37,Year
+hd339,Master of Finance and Accounting,2,42,year
+hd343,MSc. Business Information Technology,2,42,year
+hd411,PHD Supply Chain Management,4,20,2015/2016
+hd412,PhD Human Resource Management,4,74,Year
+hd413,PHD Entrepreneurship,3,50,year
+hd417,PhD Project Management,3,22,Year
+hd418,PhD in Strategic Management,3,20,Year
+hd421,PhD Mass Communication,3,27,Year
+hd433,PhD Business Administration,3,44,Year
+hd435,PhD FINANCE,3,47,year
+hdb112,Diploma in Business Information Technology hdb112,2,13,year
+hdb113,Diploma in Business Administration,2,13,year
+hdb211,Bachelor of Commerce New,4,44,year
+hdb212,bachelor of business information technology,4,37,year
+hdb221,Bachelor of Science in Economics,3,42,year
+hdb318,Post-Graduate Diploma in Strategic Management,1,20,Year
+hdc111,Diploma in Mass Communication,2,59,2015/2016
+hdc114,Diploma in Public Relations,2,27,years
+hdc211,Bachelor of Mass Communication,4,59,year
+hdc212,Bachelor of Journalism,4,22,Year
+hdc213,B.Sc. Corporate Communication and Management,4,59,Years
+hdc221,Bachelor of Development Studies,4,22,Year
+hdc222,BSc. Public Management and Development Studies,4,59,year
+hdc223,BSc. Community Development and Environment,4,39,year
+hde,BSC. ECONOMICS,4,26,YEAR
+hde 111,Diploma in Purchasing and Supplies management,2,20,year
+hde111,Diploma in Purchasing and Supplies management,2,41,year
+hde121,Diploma in Human Resource Management,2,20,year
+hde211,Bachelor of procurement & contract management,4,19,1
+hde212,Bachelor of Supply Chain Management,4,19,Year
+hde221,Bachelor of Science in Human Resource Management,4,22,Year
+hde223,Bachelor of Entrepreneurship,4,20,year
+hde224,BSc. Project Management,4,22,YEAR
+hde225,BSc Strategic Management,4,20,Year
+hde226,Bsc Innovation and Technology Management,4,20,year
+hps211,BSc Procurement and Contract Management,4,28,Year
+msc,Msc. Masters in Information Technology,2,7,YEAR
+sc200,Bachelor of Science General,4,64,Year
+sc222,BSc Microbiology,4,48,Year
+sc224,BSc. Biotechnology,4,11,YEAR
+sc232,Bsc. Analytical Chemistry,4,54,Year
+sc242,BSc Control and Instrumentation,4,46,Year
+sc281,acturial science,4,71,year
+scb231,Bachelor of Science in Biotechnology,4,11,Year
+scb232,Genomic Sciences,4,64,year
+scb236,B.Sc. Applied Biology,4,69,year
+scg200,Bachelor of Science,4,64,year
+scm211,BSc. Maths and Computer Science,4,67,year
+scm212,BSc. Acturial Science,4,64,year
+scm213,BSc Biostatistics,4,67,year
+scm214,Bsc Financial Engineering,4,49,Year
+scm215,Bsc Statistics,4,49,Year
+scm216,BSc. Industrial Mathematics,4,64,year
+scp222,BSc. Analytical Chemistry,4,54,year
+scp223,BSc Industrial Chemistry,4,64,2015/2016
+scp224,BSc Control and Instrumentation,4,46,2015/2016
+sct001,Certificate in Information Technology,1,1,year
+sct021,Certificate in Information Technology SCT021,1,1,year
+sct121,Diploma in Information Technology New,2,7,year
+sct211,BSc. Computer Science   SCT211,4,1,year
+sct212,BSc Computer Technology,4,7,Year
+sct22,Bachelor of Science in Information Technology,4,7,Year
+sct221,sct221 Bachelor of Science in Information Technology,4,7,Year
+sct222,Business Computing,4,7,Year
+sct311,MSc. Software Engineering,2,1,year
+sct312,MSc. Computer Systems,2,1,year
+sct322,Msc IT Integration in Education and Instructional Design,2,7,Year
+sct411,PhD Computer Science,3,1,year
+sct421,Ph.D. Information Technology,2,7,Year
+tm101,Diploma in Clinical Medicine,3,48,year
+tm200,Bachelor of Science in Medical Laboratory Science,4,48,Year
+tm201,BSc in Clinical Medicine,5,48,Year
+tm210,Bsc Public Health,4,58,Year
+tm211,BSc. Pharmacy,5,63,year
+tm213,KONYANGO MILDRED ADHIAMBO,4,63,year
+tm214,BSc. Nursing,4,63,year
+tm215,BSc. Radiography,4,63,year
+tm216,Bsc Medical Microbiology,4,63,year
+tm224,BSc.Industrial Biotechnology,4,52,year
+tm225,BSc. Biochemistry and Molecular Biology,4,63,year
+tm226,Bachelor of Medicine and Bachelor of Surgery,4,63,2015/2016
+tm227,B.Sc. in Applied Bioengineering,4,52,year
+tm310,MSc. Public Health,2,58,year
+tm318,Msc. Molecular Biology And Bioinformatics,2,52,year
+tm323,MSc. Agricultural and Environmental Biotechnology,2,63,year
