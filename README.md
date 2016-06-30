@@ -67,6 +67,17 @@ coordinator to monitor student progress easily.
 + Login with google accounts since student emails are managed by gmail
 + Records login attempts
 + Ability to search within your log
++ A better looking error page with a different layout
++ Add gravatar support
++ Logout link should be in a dropdown with the dropbdown showing the truncated
+  email, the avatar
++ The profile page should be moved to a modal from a tab opened through the dropdown
+  in the logout link
++ Or the profile tab only becomes visible when opened from the dropdown in the
+  navbar
++ Track user logins, record their ips and times maybe show in an account activity
+  tab
++ Stackoverflow style notifications??
 
 ### Installation Steps
 
