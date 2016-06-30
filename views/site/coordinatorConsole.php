@@ -24,7 +24,9 @@
         <div class="well well-sm" id="email-list-section">
             <script id="email-list-template" type="text/x-handlebars-template">
                 <div class="email-line">
-                    <div class="email-address btn-xs btn-primary">{{email}}</div>
+                    <div class="email-address btn-xs btn-primary">
+                        <a href="mailto:{{email}}">{{email}}</a>
+                    </div>
                     <button type="button" class="email-delete-btn btn btn-danger btn-xs">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                     </button>

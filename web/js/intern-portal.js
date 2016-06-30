@@ -27,7 +27,7 @@ $(document).ready(function () {
     $("#invite-button").click(function () {
         $("#invite-button").spin(spinnerOptions);
         var emailList = [];
-        $('.email-address').each(function () {
+        $('.email-address a').each(function () {
             emailList.push($(this).html());
         });
         $.ajax({
