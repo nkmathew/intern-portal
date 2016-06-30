@@ -5,7 +5,12 @@
 var source = $("#email-list-template").html();
 
 function addEmailToList() {
-    var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
+    var inputboxVal = $('#email-input-box').val();
+    if (inputboxVal.trim() == '') {
+        $('#email-input-box').focus();
+        return;
+    }
+    var email = inputboxVal + '@students.jkuat.ac.ke';
     var template = Handlebars.compile(source);
     var html  = template({email: email});
     $('#email-list-section').append(html);

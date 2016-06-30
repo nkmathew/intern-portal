@@ -169,8 +169,8 @@ a.desc:after {
     font-size: 14px;
 }
 
-.btn-add-email {
-    display: inline-block;
+#btn-add-email:hover {
+    color: #337AB7;
 }
 
 /* Bootstrap's glyphicons tend to not align properly when the top property is defined */
