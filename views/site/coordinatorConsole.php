@@ -12,10 +12,6 @@
 ?>
 
 <div class="site-coordinator-console">
-    <div class="alert-box alert">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <span class="msg"></span>
-    </div>
     <div class="col-md-5">
         <div class="input-group">
             <input type="text" id="email-input-box" class="form-control" placeholder="First part of student email">

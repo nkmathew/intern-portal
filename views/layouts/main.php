@@ -85,6 +85,10 @@ AppAsset::register($this);
             <div class="container">
                 <?= Alert::widget() ?>
                 <div id="main-content-area">
+                    <div id="alert-box" class="alert-box alert">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="msg"></span>
+                    </div>
                     <?= $content ?>
                 </div>
             </div>
