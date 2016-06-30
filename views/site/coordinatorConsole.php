@@ -14,6 +14,7 @@
 <div class="site-coordinator-console">
     <div class="col-md-5">
         <div class="input-group">
+            <div id="btn-add-email" title="Add email to list" class="input-group-addon glyphicon glyphicon-plus"></div>
             <input type="text" id="email-input-box" class="form-control" placeholder="First part of student email">
             <span class="input-group-addon" id="basic-addon2">@students.jkuat.ac.ke</span>
         </div>

@@ -2,30 +2,33 @@
  * Created by nkmathew on 23/06/2016.
  */
 
+var source = $("#email-list-template").html();
+
+function addEmailToList() {
+    var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
+    var template = Handlebars.compile(source);
+    var html  = template({email: email});
+    $('#email-list-section').append(html);
+
+    $('.email-delete-btn').click(function () {
+        $(this).closest('.email-line').remove();
+    });
+    $(this).val('');
+}
+
 $(document).ready(function () {
-    var source = $("#email-list-template").html();
 
     $("#email-input-box").keyup(function (e) {
         var template = Handlebars.compile(source);
         if (e.keyCode == 13) {
-            var email = $('#email-input-box').val() + '@students.jkuat.ac.ke';
-            var html  = template({email: email});
-            $('#email-list-section').append(html);
-
-            $('.email-delete-btn').click(function () {
-                $(this).closest('.email-line').remove();
-            });
-            $(this).val('');
+            addEmailToList();
         }
     });
 
-    var spinnerOptions = {
-        color: '#000'
-        //etc etc
-    };
+    $('#btn-add-email').click(addEmailToList);
 
     $("#invite-button").click(function () {
-        $("#invite-button").spin(spinnerOptions);
+        $("#invite-button").spin({color: 'grey'});
         var emailList = [];
         $('.email-address a').each(function () {
             emailList.push($(this).html());

@@ -168,3 +168,12 @@ a.desc:after {
     font-family: Verdana;
     font-size: 14px;
 }
+
+.btn-add-email {
+    display: inline-block;
+}
+
+/* Bootstrap's glyphicons tend to not align properly when the top property is defined */
+.glyphicon {
+    top: auto;
+}
