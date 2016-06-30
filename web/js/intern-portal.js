@@ -75,13 +75,10 @@ $(document).ready(function () {
         Cookies.set('last_tab', $(e.target).attr('href'));
     });
 
-    // Activate latest tab, if it exists
+    // Opens the last tab before the page reload
     var lastTab = Cookies.get('last_tab');
     if (lastTab) {
-        $('ul.nav-tabs').children().removeClass('active');
-        $('a[href=' + lastTab + ']').parents('li:first').addClass('active');
-        $('div.tab-content').children().removeClass('active');
-        $(lastTab).addClass('active');
+        $('a[href=' + lastTab + ']').click();
     }
 
 });
