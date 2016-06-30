@@ -38,7 +38,7 @@ AppAsset::register($this);
         <div class="wrap">
             <?php
             NavBar::begin([
-                'brandLabel' => Html::img('/favicon.png'),
+                'brandLabel' => Html::img('/jkuat-logo.png', ['title' => 'JKUAT Intern Portal']),
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
