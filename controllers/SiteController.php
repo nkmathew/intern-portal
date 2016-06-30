@@ -312,7 +312,7 @@ class SiteController extends Controller
                 ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
                 ['signupLink' => $signupLink]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' admin'])
             ->setTo($email)
             ->setSubject('Signup link for ' . Yii::$app->name)
             ->send();
