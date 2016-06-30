@@ -10,9 +10,9 @@ function addEmailToList() {
         $('#email-input-box').focus();
         return;
     }
-    var email = inputboxVal + '@students.jkuat.ac.ke';
+    var email    = inputboxVal + '@students.jkuat.ac.ke';
     var template = Handlebars.compile(source);
-    var html  = template({email: email});
+    var html     = template({email: email});
     $('#email-list-section').append(html);
 
     $('.email-delete-btn').click(function () {
@@ -69,5 +69,19 @@ $(document).ready(function () {
             },
         });
     });
+
+    $('a[data-toggle="tab"]').click(function (e) {
+        // Save the latest tab using a cookie
+        Cookies.set('last_tab', $(e.target).attr('href'));
+    });
+
+    // Activate latest tab, if it exists
+    var lastTab = Cookies.get('last_tab');
+    if (lastTab) {
+        $('ul.nav-tabs').children().removeClass('active');
+        $('a[href=' + lastTab + ']').parents('li:first').addClass('active');
+        $('div.tab-content').children().removeClass('active');
+        $(lastTab).addClass('active');
+    }
 
 });

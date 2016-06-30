@@ -37,7 +37,6 @@ $this->title = 'Home';
             'content' => $this->render('coordinatorConsole'),
             'headerOptions' => ['id' => 'coordinator-console-tab'],
             'options' => ['id' => 'tab-coordinator-console'],
-            'active' => true
         ];
     }
     echo Tabs::widget(['encodeLabels' => false, 'items' => $tabItems]);
