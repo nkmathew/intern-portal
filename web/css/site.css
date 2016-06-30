@@ -160,6 +160,10 @@ a.desc:after {
     background: transparent !important;
 }
 
+.email-delete-btn {
+    font-size: 15px;
+}
+
 .alert-box {
     display: none;
 }

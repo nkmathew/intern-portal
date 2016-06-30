@@ -28,7 +28,7 @@
                         <a href="mailto:{{email}}">{{email}}</a>
                     </div>
                     <button type="button" class="email-delete-btn btn btn-danger btn-xs">
-                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
             </script>
