@@ -91,7 +91,6 @@ $(document).ready(function () {
             success: function(data) {
                 // Remove spinner
                 $("#btn-submit-profile").spin(false);
-                console.log(data);
             }
         });
         e.preventDefault();
