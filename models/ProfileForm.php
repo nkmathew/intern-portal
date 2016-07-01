@@ -61,8 +61,23 @@ class ProfileForm extends Model
     {
         if (!$this->hasErrors()) {
             $profile = $this->getProfile();
-            if (!$profile || !$profile->validateRegNumber($this->regNumber)) {
-                $this->addError($attribute, 'No course matching that registration number');
+            if ($profile) {
+                $matchesCourse = $profile->validateRegNumber($this->regNumber);
+                if (substr_count($this->regNumber, '/') != 1) {
+                    $this->addError($attribute, 'A valid reg number has only one forward slash');
+                } else {
+                    $year = (int)date('Y');
+                    $regYear = (int)explode('/', $this->regNumber)[1];
+                    $diff = ($regYear - $year);
+                    if (($diff > 0) || ($diff < -10)) {
+                        $this->addError($attribute, 'Invalid year in registration number');
+                    }
+                }
+                if (!$matchesCourse) {
+                    $this->addError($attribute, 'No course matching that registration number');
+                }
+            } else {
+                $this->addError($attribute, 'Could not find a profile associated with the email');
             }
         }
     }
