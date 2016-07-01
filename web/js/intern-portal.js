@@ -91,7 +91,13 @@ $(document).ready(function () {
             success: function(data) {
                 // Remove spinner
                 $("#btn-submit-profile").spin(false);
-            }
+            },
+            error: function (xhr, status, error) {
+                $("#invite-button").spin(false);
+                $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
+                $('.alert-box').addClass('alert-danger');
+                $('.alert-box').show();
+            },
         });
         e.preventDefault();
     });
