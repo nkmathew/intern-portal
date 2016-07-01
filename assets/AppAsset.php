@@ -25,7 +25,8 @@ class AppAsset extends AssetBundle
         'js/intern-portal.js',
         'js/spin.min.js',
         'js/jquery.spin.js',
-        'js/js.cookie.js'
+        'js/js.cookie.js',
+        'js/moment.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
