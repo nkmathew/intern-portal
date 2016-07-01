@@ -36,10 +36,15 @@ use yii\widgets\ActiveForm;
     </p>
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['action' => '/site/profile', 'id' => 'profile-form']); ?>
+            <?php $form = ActiveForm::begin([
+                'action' => '/site/profile',
+                'id' => 'profile-form',
+                'validateOnSubmit' => true,
+                'validateOnBlur' => true,
+            ]); ?>
             <?= $form->field($model, 'firstName')->textInput(['autofocus' => true, 'value' => $model->firstName]) ?>
             <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
-            <?= $form->field($model, 'regNumber')->textInput(['value' => $model->regNumber]) ?>
+            <?= $form->field($model, 'regNumber', ['enableAjaxValidation' => true])->textInput(['value' => $model->regNumber]) ?>
             <?= $form->field($model, 'email')->textInput(['readonly' => true, 'value' => $model->email])  ?>
             <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
             <div class="form-group">

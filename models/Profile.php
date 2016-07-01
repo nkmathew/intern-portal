@@ -62,4 +62,17 @@ class Profile extends \yii\db\ActiveRecord
     {
         return static::findOne(['email' => $email]);
     }
+
+
+    /**
+     * Validates regNumber
+     *
+     * @param string $regNumber Registration number to validate
+     * @return boolean if reg number provided is valid
+     */
+    public function validateRegNumber($regNumber)
+    {
+        $regNumber = explode('-', $regNumber)[0];
+        return Course::findBySql("SELECT * FROM courses WHERE course_code LIKE '$regNumber%' LIMIT 10")->one();
+    }
 }

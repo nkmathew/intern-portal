@@ -17,6 +17,8 @@ class ProfileForm extends Model
     public $sex;
     public $email;
 
+    private $_profile;
+    
     /**
      * @inheritdoc
      */
@@ -27,7 +29,40 @@ class ProfileForm extends Model
             [['firstName', 'surname', 'sex', 'email', 'regNumber'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
+            // Registration number is validated by validateRegNumber()
+            ['regNumber', 'validateRegNumber'],
         ];
+    }
+
+    /**
+     * Finds profile by [[email]]
+     *
+     * @return Profile|null
+     */
+    protected function getProfile()
+    {
+        if ($this->_profile === null) {
+            $this->_profile = Profile::findByEmail($this->email);
+        }
+
+        return $this->_profile;
+    }
+
+    /**
+     * Validates the registration number.
+     * This method serves as the inline validation for regNumber.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     */
+    public function validateRegNumber($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $profile = $this->getProfile();
+            if (!$profile || !$profile->validateRegNumber($this->regNumber)) {
+                $this->addError($attribute, 'No course matching that registration number');
+            }
+        }
     }
 
     /**

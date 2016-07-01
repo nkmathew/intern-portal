@@ -15,6 +15,8 @@ use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use app\models\ContactForm;
 use app\models\ProfileForm;
+use yii\widgets\ActiveForm;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -152,6 +154,14 @@ class SiteController extends Controller
     public function actionProfile($renderPartial=null)
     {
         $model = new ProfileForm();
+
+        // Ajax form validation is done here
+        if (Yii::$app->request->post('ajax')) {
+            $model->load(Yii::$app->request->post());
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->updateProfile()) {
                 return $this->goHome();
