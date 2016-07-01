@@ -13,6 +13,7 @@ use Yii;
  * @property string $firstname
  * @property string $surname
  * @property string $reg_number
+ * @property integer $last_updated
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -46,9 +47,10 @@ class Profile extends \yii\db\ActiveRecord
             'id' => 'ID',
             'sex' => 'Sex',
             'email' => 'Email',
-            'firstname' => 'Firstname',
+            'firstname' => 'First Name',
             'surname' => 'Surname',
             'reg_number' => 'Reg Number',
+            'last_update' => 'Last Updated',
         ];
     }
     

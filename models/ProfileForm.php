@@ -104,11 +104,16 @@ class ProfileForm extends Model
         }
 
         $profile = Profile::findByEmail($this->email);
+        $oldProfile = clone $profile;
         $profile->email = $this->email ? $this->email : '';
         $profile->sex = $this->sex;
         $profile->surname = $this->surname;
         $profile->firstname = $this->firstName;
         $profile->reg_number = $this->regNumber;
+
+        if ($oldProfile != $profile) {
+            $profile->last_updated = time();
+        }
 
         return $profile->update() ? $profile : null;
     }
