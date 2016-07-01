@@ -31,7 +31,8 @@ $this->title = 'Home';
             'options' => ['id' => 'tab-notifications'],
         ],
     ];
-    if (!Yii::$app->user->isGuest) {
+    $email = Yii::$app->user->identity->email;
+    if (!Yii::$app->user->isGuest && !strchr($email, 'student')) {
         $tabItems[] = [
             'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
             'content' => $this->render('coordinatorConsole'),
