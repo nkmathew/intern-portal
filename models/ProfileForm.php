@@ -18,7 +18,7 @@ class ProfileForm extends Model
     public $email;
 
     private $_profile;
-    
+
     /**
      * @inheritdoc
      */
@@ -31,6 +31,8 @@ class ProfileForm extends Model
             ['email', 'email'],
             // Registration number is validated by validateRegNumber()
             ['regNumber', 'validateRegNumber'],
+            // Trim spaces when submitting form
+            [['firstName', 'regNumber', 'surname', 'email'], 'trim'],
         ];
     }
 

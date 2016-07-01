@@ -156,15 +156,21 @@ class SiteController extends Controller
         $model = new ProfileForm();
 
         // Ajax form validation is done here
-        if (Yii::$app->request->post('ajax')) {
+        if (Yii::$app->request->post('ajax') == 'profile-form') {
             $model->load(Yii::$app->request->post());
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }
 
+        // Save the sent profile details
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->updateProfile()) {
-                return $this->goHome();
+                if (!Yii::$app->request->isAjax) {
+                    return $this->goHome();
+                } else {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return "{msg: 'success'}";
+                }
             }
         }
 

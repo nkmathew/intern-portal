@@ -80,5 +80,21 @@ $(document).ready(function () {
     if (lastTab) {
         $('a[href=' + lastTab + ']').click();
     }
+    
+    $("#profile-form").submit(function(e) {
+        $("#btn-submit-profile").spin({color: 'grey'});
+        var url = '/site/profile';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: $("#profile-form").serialize(),
+            success: function(data) {
+                // Remove spinner
+                $("#btn-submit-profile").spin(false);
+                console.log(data);
+            }
+        });
+        e.preventDefault();
+    });
 
 });
