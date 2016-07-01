@@ -246,6 +246,7 @@ class SiteController extends Controller
                     $profile->surname = '';
                     $profile->firstname = '';
                     $profile->sex = '';
+                    $profile->last_updated = time();
                     $ret = $profile->save();
                     return $this->goHome();
                 }
