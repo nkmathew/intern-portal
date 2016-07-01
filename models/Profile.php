@@ -12,6 +12,7 @@ use Yii;
  * @property string $email
  * @property string $firstname
  * @property string $surname
+ * @property string $reg_number
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -29,9 +30,10 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            // [['email', 'firstname', 'surname'], 'required'],
             [['sex', 'email', 'firstname', 'surname'], 'string', 'max' => 255],
+            [['reg_number'], 'string', 'max' => 20],
             [['email'], 'unique'],
+            [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
         ];
     }
 
@@ -46,6 +48,7 @@ class Profile extends \yii\db\ActiveRecord
             'email' => 'Email',
             'firstname' => 'Firstname',
             'surname' => 'Surname',
+            'reg_number' => 'Reg Number',
         ];
     }
     

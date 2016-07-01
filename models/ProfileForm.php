@@ -12,6 +12,7 @@ class ProfileForm extends Model
 {
     public $name;
     public $firstName;
+    public $regNumber;
     public $surname;
     public $sex;
     public $email;
@@ -23,7 +24,7 @@ class ProfileForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['firstName', 'surname', 'sex', 'email'], 'required'],
+            [['firstName', 'surname', 'sex', 'email', 'regNumber'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
         ];
@@ -55,6 +56,7 @@ class ProfileForm extends Model
         $profile->sex = $this->sex;
         $profile->surname = $this->surname;
         $profile->firstname = $this->firstName;
+        $profile->reg_number = $this->regNumber;
 
         return $profile->update() ? $profile : null;
     }

@@ -15,6 +15,21 @@ use yii\widgets\ActiveForm;
 
 ?>
 
+<script type="javascript">
+    $("#profile-for").submit(function(e) {
+        var url = '/site/profile';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: $("#profile-form").serialize(),
+            success: function(data) {
+                console.log(data);
+            }
+        });
+        e.preventDefault();
+    });
+</script>
+
 <div class="site-profile">
     <p>
         Update your profile below
@@ -24,6 +39,7 @@ use yii\widgets\ActiveForm;
             <?php $form = ActiveForm::begin(['action' => '/site/profile', 'id' => 'profile-form']); ?>
             <?= $form->field($model, 'firstName')->textInput(['autofocus' => true, 'value' => $model->firstName]) ?>
             <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
+            <?= $form->field($model, 'regNumber')->textInput(['value' => $model->regNumber]) ?>
             <?= $form->field($model, 'email')->textInput(['readonly' => true, 'value' => $model->email])  ?>
             <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
             <div class="form-group">
