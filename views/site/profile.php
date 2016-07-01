@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'email')->textInput(['readonly' => true, 'value' => $model->email]) ?>
             <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
             <div class="form-group">
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'id' => 'btn-submit-profile']) ?>
+                <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'id' => 'btn-submit-profile']) ?>
             </div>
             <?php ActiveForm::end(); ?>
         </div>
