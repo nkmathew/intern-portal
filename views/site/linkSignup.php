@@ -22,6 +22,7 @@ $this->title = 'Link Signup';
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'action' => '/site/signup']); ?>
             <?= $form->field($model, 'email')->textInput(['readonly' => true, 'value' => $email]) ?>
             <?= $form->field($model, 'password')->passwordInput() ?>
+            <input type="hidden" name="signup_token" value="<?= $signup_token ?>">
             <div class="form-group">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
             </div>

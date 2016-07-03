@@ -9,6 +9,7 @@ use yii\base\Model;
 class SignupForm extends Model
 {
     public $email;
+    public $signup_token;
     public $password;
 
 
@@ -18,12 +19,12 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            ['signup_token', 'trim'],
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'You are already an existing user. Proceed to login'],
-
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
