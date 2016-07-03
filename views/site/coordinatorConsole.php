@@ -19,7 +19,9 @@
             <div class="tab-pane active" id="tab-invite-student">
                 <?= $this->render('signupInvites'); ?>
             </div>
-            <div class="tab-pane" id="tab-sent-invites">List of sent invites</div>
+            <div class="tab-pane" id="tab-sent-invites">
+                <?= $this->render('sentInvites'); ?>
+            </div>
         </div>
     </div>
 </div>
