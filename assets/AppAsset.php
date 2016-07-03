@@ -22,12 +22,12 @@ class AppAsset extends AssetBundle
         'css/bootstrap.vertical-tabs.min.css'
     ];
     public $js = [
-        'js/handlebars.min-v4.0.2.js',
+        'js/vendor/handlebars.min-v4.0.2.js',
         'js/intern-portal.js',
-        'js/spin.min.js',
-        'js/jquery.spin.js',
-        'js/js.cookie.js',
-        'js/moment.min.js'
+        'js/vendor/spin.min.js',
+        'js/vendor/jquery.spin.js',
+        'js/vendor/js.cookie.js',
+        'js/vendor/moment.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
