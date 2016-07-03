@@ -79,6 +79,8 @@ coordinator to monitor student progress easily.
   tab
 + Stackoverflow style notifications??
 + Remember the tab you were on when the page is reloaded(cookies?)
++ Show the Course Name when you hover over the registration number
++ Email sender should keep track of the response from sending each email
 
 ### Installation Steps
 
