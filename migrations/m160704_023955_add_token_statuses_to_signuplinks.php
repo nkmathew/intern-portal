@@ -12,8 +12,6 @@ class m160704_023955_add_token_statuses_to_signuplinks extends Migration
      */
     public function up()
     {
-        // There can be only one used token in this table
-        $this->addColumn('signuplinks', 'token_used', $this->boolean()->defaultValue(false));
         // A token is disabled when the user signs up using some other token
         $this->addColumn('signuplinks', 'token_disabled', $this->boolean()->defaultValue(false));
     }
@@ -23,7 +21,6 @@ class m160704_023955_add_token_statuses_to_signuplinks extends Migration
      */
     public function down()
     {
-        $this->dropColumn('signuplinks', 'token_used');
         $this->dropColumn('signuplinks', 'token_disabled');
     }
 }
