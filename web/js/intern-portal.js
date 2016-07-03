@@ -36,7 +36,6 @@ $(document).ready(function () {
     $('#btn-add-email').click(addEmailToList);
 
     $("#btn-invite-sender").click(function () {
-        $("#btn-invite-sender").spin({color: 'black'});
         var emailList = [];
         $('.email-address a').each(function () {
             emailList.push($(this).html());
@@ -45,6 +44,7 @@ $(document).ready(function () {
             $('#email-input-box').focus();
             return;
         }
+        $("#btn-invite-sender").spin({color: 'black'});
         $.ajax({
             type: 'POST',
             url: '/site/send-signup-links',
