@@ -15,8 +15,10 @@ use yii\data\SqlDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$fullQuery = "select id,email,signup_token,date_sent,inviter, count(*) invite_count from signuplinks group by email";
-$countQuery = "select count(*) from signuplinks group by email";
+$loggedInEmail = Yii::$app->user->identity->email;
+$fullQuery = "select id,email,signup_token,date_sent,inviter, count(*) invite_count
+              from signuplinks where inviter = '$loggedInEmail' group by email";
+$countQuery = "select count(*) from signuplinks where inviter = '$loggedInEmail' group by email";
 
 $dataProvider = new SqlDataProvider([
     'sql' => $fullQuery,
