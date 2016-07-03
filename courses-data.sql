@@ -9,7 +9,7 @@
 /*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
--- Dumping data for table intern_portal.courses: ~11 rows (approximately)
+-- Dumping data for table intern_portal.courses: ~0 rows (approximately)
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 INSERT INTO `courses` (`id`, `course_code`, `course_name`, `duration`, `stage_caption`) VALUES
 	(1, 'ab241', 'Bachelors of Architectural Technology', 6, 'year'),
@@ -17,7 +17,7 @@ INSERT INTO `courses` (`id`, `course_code`, `course_name`, `duration`, `stage_ca
 	(3, 'ab243', 'construction management', 4, 'year'),
 	(4, 'ab244', 'Bachelor of Quantity Surveying', 4, 'year'),
 	(5, 'ab343', 'Msc Construction Project Management', 2, 'year'),
-	(6, 'aba 2507', 'Bachelor in Architecture', 5, 'Year'),
+	(6, 'aba2507', 'Bachelor in Architecture', 5, 'Year'),
 	(7, 'ag221', 'BSc Food Science and Technology', 4, 'year'),
 	(8, 'ag222', 'BSc Food Science and Nutrition', 4, 'year'),
 	(9, 'ag223', 'BSc Human Nutrition and Dietetics', 4, 'year'),
