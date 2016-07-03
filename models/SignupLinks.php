@@ -31,7 +31,6 @@ class SignupLinks extends \yii\db\ActiveRecord
         return [
             [['email'], 'required'],
             [['email', 'signup_token'], 'string', 'max' => 255],
-            [['email'], 'unique'],
             [['signup_token'], 'unique'],
         ];
     }
