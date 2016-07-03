@@ -36,7 +36,7 @@ $(document).ready(function () {
     $('#btn-add-email').click(addEmailToList);
 
     $("#btn-invite-sender").click(function () {
-        $("#invite-button").spin({color: 'grey'});
+        $("#btn-invite-sender").spin({color: 'black'});
         var emailList = [];
         $('.email-address a').each(function () {
             emailList.push($(this).html());
@@ -60,13 +60,13 @@ $(document).ready(function () {
                 });
 
                 // Remove spinner
-                $("#invite-button").spin(false);
+                $("#btn-invite-sender").spin(false);
 
                 // Clear list
                 $('.email-line').remove();
             },
             error: function (xhr, status, error) {
-                $("#invite-button").spin(false);
+                $("#btn-invite-sender").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
                 $('.alert-box').addClass('alert-danger');
                 $('.alert-box').show();
@@ -97,7 +97,7 @@ $(document).ready(function () {
                 $("#btn-submit-profile").spin(false);
             },
             error: function (xhr, status, error) {
-                $("#invite-button").spin(false);
+                $("#btn-invite-sender").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
                 $('.alert-box').addClass('alert-danger');
                 $('.alert-box').show();
