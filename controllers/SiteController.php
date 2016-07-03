@@ -228,6 +228,20 @@ class SiteController extends Controller
     }
 
     /**
+     * Lists all the signup invites generated for a specific student. The content
+     * will be displayed in a modal in the coordinator console
+     *
+     * @return mixed
+     */
+    public function actionListInvitesByUser()
+    {
+        $email = Yii::$app->request->get('email');
+        return $this->renderPartial('listInvitesByUser', [
+             'email' => $email
+        ]);
+    }
+
+    /**
      * Signs user up.
      *
      * @return mixed
@@ -326,7 +340,7 @@ class SiteController extends Controller
             $signupLink->date_sent = time();
             $signupLink->inviter = Yii::$app->user->identity->email;
             $signupLink->generateSignupToken();
-            $signupLink->save();
+            $signupLink->insert();
             Yii::$app->mailer->compose(
                 ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
                 ['signupLink' => $signupLink]

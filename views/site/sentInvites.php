@@ -9,17 +9,26 @@
 
 /* @var $this yii\web\View */
 
-use app\models\SignupLinks;
 use Carbon\Carbon;
-use yii\data\ActiveDataProvider;
+use yii\bootstrap\Modal;
+use yii\data\SqlDataProvider;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
-$dataProvider = new ActiveDataProvider([
-    'query' => SignupLinks::find()->where(['inviter' => Yii::$app->user->identity->email]),
+$fullQuery = "select id,email,signup_token,date_sent,inviter, count(*) invite_count from signuplinks group by email";
+$countQuery = "select count(*) from signuplinks group by email";
+
+$dataProvider = new SqlDataProvider([
+    'sql' => $fullQuery,
+    'totalCount' => Yii::$app->db->createCommand($countQuery)->queryScalar(),
+    'pagination' => false,
     'pagination' => [
         'pageSize' => 20,
     ],
 ]);
+
+// Connect to modal
+Modal::widget(['id' => "modal-token-list"]);
 
 echo GridView::widget([
     'dataProvider' => $dataProvider,
@@ -37,17 +46,43 @@ echo GridView::widget([
             'attribute' => 'signup_token'
         ],
         [
-            'label' => 'Inviter',
-            'attribute' => 'inviter'
-        ],
-        [
-            'label' => 'Date Sent',
+            'label' => 'Sent',
             'attribute' => 'date_sent',
             'value' => function ($model) {
-                $relativeTime = Carbon::createFromTimeStamp($model->date_sent)->diffForHumans();
+                $relativeTime = Carbon::createFromTimeStamp($model['date_sent'])->diffForHumans();
+
                 return $relativeTime;
             },
+        ],
+        [
+            'label' => 'Invite Count',
+            'format' => 'raw',
+            'contentOptions' => [
+                'align' => 'center',
+                'title' => 'Show all signup tokens generated for this student',
+                'data-toggle' => 'modal',
+                'data-target' => '#modal-token-list',
+            ],
+            'value' => function ($model) {
+                $invites = $model['invite_count'];
+                $email = $model['email'];
+                return Html::button("<span class='badge'>$invites</span>",
+                    [
+                        'class' => 'btn btn-primary btn-xs',
+                        'onClick' => "$('.modal-content').load('/site/list-invites-by-user?email=$email');",
+                    ]);
+            }
         ],
     ]
 ]);
 ?>
+
+<!-- Modal template -->
+<div id="modal-token-list" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
