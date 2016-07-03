@@ -322,8 +322,9 @@ class SiteController extends Controller
         $signupLink = new SignupLinks();
         for ($i = 0; $i < count($emailList); $i++) {
             $email = $emailList[$i];
-            // Yii::$app->mailer->compose()
             $signupLink->email = $email;
+            $signupLink->date_sent = time();
+            $signupLink->inviter = Yii::$app->user->identity->email;
             $signupLink->generateSignupToken();
             $signupLink->save();
             Yii::$app->mailer->compose(

@@ -9,6 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $email
+ * @property integer $date_sent
+ * @property string $inviter
  * @property string $signup_token
  */
 class SignupLinks extends \yii\db\ActiveRecord
