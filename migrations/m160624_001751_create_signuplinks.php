@@ -23,7 +23,7 @@ class m160624_001751_create_signuplinks extends Migration
             'id' => $this->primaryKey(),
             'email' => $this->string()->notNull(),
             'signup_token' => $this->string()->notNull()->unique(),
-        ]);
+        ], $tableOptions);
     }
 
     /**
