@@ -12,7 +12,7 @@
 ?>
 
 <div class="site-coordinator-console">
-    <div class="col-md-5">
+    <div class="col-md-7">
         <div class="input-group">
             <div id="btn-add-email"
                  title="Add email to list"
