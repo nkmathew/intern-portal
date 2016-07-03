@@ -35,12 +35,16 @@ $(document).ready(function () {
 
     $('#btn-add-email').click(addEmailToList);
 
-    $("#invite-button").click(function () {
+    $("#btn-invite-sender").click(function () {
         $("#invite-button").spin({color: 'grey'});
         var emailList = [];
         $('.email-address a').each(function () {
             emailList.push($(this).html());
         });
+        if (emailList.length == 0) {
+            $('#email-input-box').focus();
+            return;
+        }
         $.ajax({
             type: 'POST',
             url: '/site/send-signup-links',

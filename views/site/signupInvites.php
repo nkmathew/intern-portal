@@ -33,7 +33,7 @@
                 </div>
             </script>
         </div>
-        <button type="button" id="invite-button" class="btn btn-primary">
+        <button type="button" id="btn-invite-sender" class="btn btn-primary">
             <span class="glyphicon glyphicon-send"></span> Send invite links
         </button>
     </div>
