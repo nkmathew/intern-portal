@@ -100,10 +100,10 @@ a.desc:after {
     padding: 8px;
 }
 
-@media(max-width:768px) {
-	.nav li > form {
-	    padding: 3px;
-	}
+@media (max-width: 768px) {
+    .nav li > form {
+        padding: 3px;
+    }
 }
 
 .nav > li > form > button:hover {
@@ -190,4 +190,12 @@ td {
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
     background-color: #F1F1F1;
+}
+
+/* A wider container for gridview contents displayed in a modal */
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 1000px;
+        margin: 30px auto;
+    }
 }
