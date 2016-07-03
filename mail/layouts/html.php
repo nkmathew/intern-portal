@@ -12,6 +12,19 @@ use yii\helpers\Html;
     <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>" />
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <style>
+        body {
+            font-family: Verdana;
+            font-size: 14px;
+        }
+        a,strong {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
 </head>
 <body>
     <?php $this->beginBody() ?>
