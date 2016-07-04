@@ -10,15 +10,16 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 
+<style>
+    .alert {
+        font-weight: bold;
+    }
+</style>
 <div class="site-error">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
     <div class="alert alert-danger">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <?= nl2br(Html::encode($message)) ?>
     </div>
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+    <p>Please contact us if you think this is a server error. Thank you</p>
 </div>
