@@ -12,6 +12,8 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
+use app\assets\BootstrapDatepickerAsset;
+BootstrapDatepickerAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
