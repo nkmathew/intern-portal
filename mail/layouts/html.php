@@ -14,7 +14,7 @@ use yii\helpers\Html;
     <?php $this->head() ?>
     <style>
         body {
-            font-family: Verdana;
+            font-family: Monospace;
             font-size: 14px;
         }
         a,strong {
