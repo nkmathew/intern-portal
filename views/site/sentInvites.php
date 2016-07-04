@@ -79,6 +79,12 @@ echo GridView::widget([
 ]);
 ?>
 
+<style>
+    .modal-content {
+        padding: 4px;
+        border-radius: 0px;
+    }
+</style>
 <!-- Modal template -->
 <div id="modal-token-list" class="modal fade" role="dialog">
     <div class="modal-dialog">
