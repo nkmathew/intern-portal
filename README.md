@@ -85,6 +85,8 @@ coordinator to monitor student progress easily.
 + Should show the number of sent emails
 + Listen to onhashchange to react to tab urls like http://intern.jkuat.dev/#tab-invite
 + A coordinator should be shown a different looking profile form from a student
++ Show wordcount in daily journal
++ Once start date is picked, the intern can't change it later
 
 ### Installation Steps
 
