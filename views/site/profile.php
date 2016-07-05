@@ -10,8 +10,11 @@
 /* @var $this yii\web\View */
 /* @var $model app\models\Profile */
 
+use app\assets\ProfileAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+ProfileAsset::register($this);
 
 ?>
 

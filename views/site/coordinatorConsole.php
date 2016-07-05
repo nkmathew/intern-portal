@@ -2,6 +2,9 @@
 
 /* @var $this yii\web\View */
 
+use app\assets\CoordinatorConsoleAsset;
+CoordinatorConsoleAsset::register($this);
+
 ?>
 
 <title>Home</title> <!-- For Pjax's sake -->
