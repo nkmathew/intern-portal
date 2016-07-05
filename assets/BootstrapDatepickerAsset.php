@@ -18,10 +18,10 @@ class BootstrapDatepickerAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/bootstrap-datepicker3.standalone.min.css',
-        'css/bootstrap-datepicker3.standalone.min.css',
         'css/bootstrap-datepicker.min.css',
         'css/bootstrap-datepicker.standalone.min.css',
+        'css/bootstrap-datepicker3.min.css',
+        'css/bootstrap-datepicker3.standalone.min.css',
     ];
     public $js = [
         'js/vendor/bootstrap-datepicker.min.js',
