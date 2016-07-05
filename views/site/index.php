@@ -16,18 +16,18 @@ $this->title = 'Home';
         [
             'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
             'content' => $this->context->actionProfile(true),
-            'headerOptions' => ['id' => 'profile-tab'],
+            'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
         ],
         [
             'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
             'content' => $this->render('logbook'),
-            'headerOptions' => ['id' => 'logbook-tab'],
+            'headerOptions' => ['id' => 'logbook-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-logbook'],
         ],
         [
             'label' => '<span class="glyphicon glyphicon-inbox"></span> Notifications',
             'content' => $this->render('notifications'),
-            'headerOptions' => ['id' => 'notifications-tab'],
+            'headerOptions' => ['id' => 'notifications-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-notifications'],
         ],
     ];
@@ -36,7 +36,7 @@ $this->title = 'Home';
         $tabItems[] = [
             'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
             'content' => $this->render('coordinatorConsole'),
-            'headerOptions' => ['id' => 'coordinator-console-tab'],
+            'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-coordinator-console'],
         ];
     }

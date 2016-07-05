@@ -83,7 +83,7 @@ $(document).ready(function () {
         });
     });
 
-    $('a[data-toggle="tab"]').click(function (e) {
+    $('.tab-main > a[data-toggle="tab"]').click(function (e) {
         // Save the latest tab using a cookie
         Cookies.set('last_tab', $(e.target).attr('href'));
     });
