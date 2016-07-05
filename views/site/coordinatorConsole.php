@@ -20,7 +20,13 @@
                 <?= $this->render('signupInvites'); ?>
             </div>
             <div class="tab-pane" id="tab-sent-invites">
-                <?= $this->render('sentInvites'); ?>
+                <div id="btn-refresh-sent-invites"
+                     title="Refresh list"
+                     data-toggle="tooltip"
+                     class="glyphicon glyphicon-refresh"></div>
+                <div id="content-sent-invites">
+                    <?= $this->render('sentInvites'); ?>
+                </div>
             </div>
         </div>
     </div>

@@ -389,4 +389,8 @@ class SiteController extends Controller
            ]);
         }
     }
+
+    public function actionListSentInvites() {
+        return $this->renderPartial('sentInvites');
+    }
 }

@@ -2,6 +2,15 @@
  * Created by nkmathew on 23/06/2016.
  */
 
+var spinOptions = {
+    lines: 13,
+    length: 33,
+    width: 14,
+    radius: 42,
+    scale: 0.5,
+    color: '#000',
+};
+
 var source = $("#email-list-template").html();
 
 function addEmailToList() {
@@ -84,15 +93,15 @@ $(document).ready(function () {
     if (lastTab) {
         $('a[href=' + lastTab + ']').click();
     }
-    
-    $("#profile-form").submit(function(e) {
+
+    $("#profile-form").submit(function (e) {
         $("#btn-submit-profile").spin({color: 'grey'});
         var url = '/site/profile';
         $.ajax({
             type: 'POST',
             url: url,
             data: $("#profile-form").serialize(),
-            success: function(data) {
+            success: function (data) {
                 // Remove spinner
                 $("#btn-submit-profile").spin(false);
             },
@@ -105,4 +114,9 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
+
+    $('#btn-refresh-sent-invites').click(function () {
+        $('#content-sent-invites').load('/site/list-sent-invites');
+        $('#content-sent-invites').spin(spinOptions);
+    })
 });
