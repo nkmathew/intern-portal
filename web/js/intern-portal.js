@@ -105,7 +105,4 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
-
-    $('#sandbox-container input').datepicker({
-    });
 });

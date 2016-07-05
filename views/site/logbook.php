@@ -6,14 +6,17 @@
  * @date: 22/06/2016
  * @time: 12:58
  */
+use app\assets\LogbookAsset;
 
 /* @var $this yii\web\View */
+
+LogbookAsset::register($this);
 
 ?>
 
 <div id="site-logbook">
-    <p>Logbook section...</p>
+    <p>Fill your logbook here</p>
     <div id="sandbox-container">
-        <input type="text" class="form-control">
+        <div></div>
     </div>
 </div>
