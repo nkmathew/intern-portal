@@ -6,9 +6,9 @@ $(document).ready(function () {
     $('#sandbox-container div').datepicker({
         format: "dd/mm/yyyy",
         maxViewMode: 2,
-        todayBtn: true,
-        daysOfWeekDisabled: "2,3,4",
-        daysOfWeekHighlighted: "2,4",
+        // todayBtn: true,
+        // daysOfWeekDisabled: "2,3,4",
+        // daysOfWeekHighlighted: "2,4",
         calendarWeeks: true,
         todayHighlight: true,
         beforeShowDay: function (date){
@@ -17,7 +17,7 @@ $(document).ready(function () {
                     case 4:
                         return {
                             tooltip: 'Example tooltip',
-                            classes: 'active'
+                            // classes: 'active'
                         };
                     case 8:
                         return false;

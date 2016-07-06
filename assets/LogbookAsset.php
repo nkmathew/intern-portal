@@ -18,6 +18,7 @@ class LogbookAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/logbook.css'
     ];
     public $js = [
         'js/logbook.js',

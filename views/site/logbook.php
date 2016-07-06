@@ -16,7 +16,9 @@ LogbookAsset::register($this);
 
 <div id="site-logbook">
     <p>Fill your logbook here</p>
-    <div id="sandbox-container">
-        <div></div>
+    <div id="container-calendar" class="col-md-3">
+        <div id="sandbox-container">
+            <div></div>
+        </div>
     </div>
 </div>
