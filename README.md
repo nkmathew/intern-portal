@@ -87,6 +87,12 @@ coordinator to monitor student progress easily.
 + A coordinator should be shown a different looking profile form from a student
 + Show wordcount in daily journal
 + Once start date is picked, the intern can't change it later
++ Bigger datepicker
++ Show preview of log entry when you hover over a day in datepicker
++ Disable weekend days
++ Colour Sundays in red
++ Change the x button to something other than a button to prevent the groove effect
+  when clicked
 
 ### Installation Steps
 
