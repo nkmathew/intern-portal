@@ -12,6 +12,12 @@ $("#profile-form").submit(function (e) {
         success: function (data) {
             // Remove spinner
             $("#btn-submit-profile").spin(false);
+            // Remove green outline colouring when validation passes
+            setTimeout(function () {
+                $('.has-success').each(function () {
+                    $(this).removeClass('has-success');
+                })
+            }, 5000);
         },
         error: function (xhr, status, error) {
             $("#btn-invite-sender").spin(false);
