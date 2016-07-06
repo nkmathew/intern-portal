@@ -199,3 +199,7 @@ td {
         margin: 30px auto;
     }
 }
+
+.cursor-disabled {
+    cursor: not-allowed;
+}
