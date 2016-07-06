@@ -3,7 +3,7 @@
  */
 
 $("#profile-form").submit(function (e) {
-    $("#btn-submit-profile").spin({color: 'grey'});
+    $("#btn-submit-profile").spin(BIG_SPINNER);
     var url = '/site/profile';
     $.ajax({
         type: 'POST',
