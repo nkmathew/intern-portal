@@ -31,7 +31,7 @@ ProfileAsset::register($this);
                 <div class="panel panel-primary panel-default">
                     <div class="panel-heading">Personal Details</div>
                     <div class="panel-body">
-                        <?= $form->field($model, 'firstName')->textInput(['autofocus' => true, 'value' => $model->firstName]) ?>
+                        <?= $form->field($model, 'firstName')->textInput(['value' => $model->firstName]) ?>
                         <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
                         <?= $form->field($model, 'regNumber', ['enableAjaxValidation' => true])->textInput(['value' => $model->regNumber]) ?>
                         <?= $form->field($model, 'email')->textInput([
