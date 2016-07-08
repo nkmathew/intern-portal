@@ -25,18 +25,25 @@ ProfileAsset::register($this);
             'id' => 'profile-form',
             'validateOnSubmit' => true,
             'validateOnBlur' => true,
+            'fieldConfig' => [
+                'labelOptions' => ['class' => 'input-group-addon'],
+                'options' => [
+                    'class' => 'form-group input-group'
+                ]
+            ]
         ]); ?>
         <div style="overflow:auto;clear:both">
             <div class="col-lg-6">
                 <div class="panel panel-primary panel-default">
                     <div class="panel-heading">Personal Details</div>
                     <div class="panel-body">
-                        <?= $form->field($model, 'firstName')->textInput(['value' => $model->firstName]) ?>
+                        <?= $form->field($model, 'firstName')->textInput(['value' => $model->firstName])
+                        ?>
                         <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
                         <?= $form->field($model, 'regNumber', ['enableAjaxValidation' => true])->textInput(['value' => $model->regNumber]) ?>
                         <?= $form->field($model, 'email')->textInput([
-                            'class' => 'cursor-disabled form-control',
                             'readonly' => true,
+                            'class' => 'cursor-disabled form-control',
                             'value' => $model->email])
                         ?>
                         <?= $form->field($model, 'sex')->dropDownList(['Male', 'Female', 'Other']); ?>
@@ -47,7 +54,7 @@ ProfileAsset::register($this);
                 <div class="panel panel-primary panel-default">
                     <div class="panel-heading">Placement Information</div>
                     <div class="panel-body">
-                        <p>Other side of the profile form</p>
+                        <?php // form->field($model, 'Duration')->dropDownList(['8 Weeks', '12 Weeks']); ?>
                     </div>
                 </div>
             </div>

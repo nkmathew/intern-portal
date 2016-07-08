@@ -5,3 +5,11 @@
 .panel-primary > .panel-heading {
     text-align: center;
 }
+
+.site-profile .input-group-addon {
+    width: 90px;
+}
+
+.site-profile .input-group .form-control {
+    width: 387px;
+}
