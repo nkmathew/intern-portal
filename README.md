@@ -93,6 +93,7 @@ coordinator to monitor student progress easily.
 + Colour Sundays in red
 + Change the x button to something other than a button to prevent the groove effect
   when clicked
++ Richtext editor for log entry box? With markdown support pour les hackers??
 
 ### Installation Steps
 
