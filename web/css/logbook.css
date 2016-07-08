@@ -4,3 +4,13 @@
     height: 100%;
     min-height: 100%;
 }
+
+.datepicker-days,
+.datepicker-months,
+.datepicker-years,
+.datepicker-decades,
+.datepicker-centuries,
+.table-condensed {
+    width: 400px;
+    height: 400px;
+}
