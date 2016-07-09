@@ -203,3 +203,8 @@ td {
 .cursor-disabled {
     cursor: not-allowed;
 }
+
+/* Show stop cursor icon when hovering over disabled day in bootstrap datepicker */
+.disabled.day {
+    cursor: not-allowed !important;
+}
