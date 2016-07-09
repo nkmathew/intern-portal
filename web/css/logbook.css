@@ -5,12 +5,12 @@
     min-height: 100%;
 }
 
-.datepicker-days,
-.datepicker-months,
-.datepicker-years,
-.datepicker-decades,
-.datepicker-centuries,
-.table-condensed {
+#site-logbook .datepicker-days,
+#site-logbook .datepicker-months,
+#site-logbook .datepicker-years,
+#site-logbook .datepicker-decades,
+#site-logbook .datepicker-centuries,
+#site-logbook .table-condensed {
     width: 400px;
     height: 400px;
 }
