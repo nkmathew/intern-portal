@@ -47,7 +47,10 @@ ProfileAsset::register($this);
                 <div class="panel panel-primary panel-default">
                     <div class="panel-heading">Placement Information</div>
                     <div class="panel-body">
-                        <p>Other side of the profile form</p>
+                        <?= $form->field($model, 'duration')->dropDownList([
+                            8 => '8 Weeks',
+                            12 => '12 Weeks'
+                        ]); ?>
                     </div>
                 </div>
             </div>

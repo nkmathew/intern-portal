@@ -16,6 +16,7 @@ class ProfileForm extends Model
     public $surname;
     public $sex;
     public $email;
+    public $duration;
 
     private $_profile;
 
@@ -33,6 +34,7 @@ class ProfileForm extends Model
             ['regNumber', 'validateRegNumber'],
             // Trim spaces when submitting form
             [['firstName', 'regNumber', 'surname', 'email'], 'trim'],
+            [['duration'], 'integer'],
         ];
     }
 
@@ -110,6 +112,7 @@ class ProfileForm extends Model
         $profile->surname = $this->surname;
         $profile->firstname = $this->firstName;
         $profile->reg_number = $this->regNumber;
+        $profile->duration   = $this->duration;
 
         if ($oldProfile != $profile) {
             $profile->last_updated = time();

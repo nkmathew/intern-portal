@@ -14,6 +14,7 @@ use Yii;
  * @property string $surname
  * @property string $reg_number
  * @property integer $last_updated
+ * @property integer $duration
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -34,6 +35,7 @@ class Profile extends \yii\db\ActiveRecord
             [['sex', 'email', 'firstname', 'surname'], 'string', 'max' => 255],
             [['reg_number'], 'string', 'max' => 20],
             [['email'], 'unique'],
+            [['last_updated', 'duration'], 'integer'],
             [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
         ];
     }
@@ -51,6 +53,7 @@ class Profile extends \yii\db\ActiveRecord
             'surname' => 'Surname',
             'reg_number' => 'Reg Number',
             'last_update' => 'Last Updated',
+            'duration' => 'Duration',
         ];
     }
     
@@ -64,7 +67,6 @@ class Profile extends \yii\db\ActiveRecord
     {
         return static::findOne(['email' => $email]);
     }
-
 
     /**
      * Validates regNumber
