@@ -94,6 +94,7 @@ coordinator to monitor student progress easily.
 + Change the x button to something other than a button to prevent the groove effect
   when clicked
 + Richtext editor for log entry box? With markdown support pour les hackers??
++ Copy penzu's email layout
 
 ### Installation Steps
 
