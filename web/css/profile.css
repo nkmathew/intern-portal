@@ -5,3 +5,7 @@
 .panel-primary > .panel-heading {
     text-align: center;
 }
+
+.form-group {
+    margin-bottom: 0px;
+}
