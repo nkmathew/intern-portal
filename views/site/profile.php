@@ -34,7 +34,7 @@ ProfileAsset::register($this);
                         <?= $form->field($model, 'firstName')->textInput(['value' => $model->firstName]) ?>
                         <?= $form->field($model, 'surname')->textInput(['value' => $model->surname]) ?>
                         <?= $form->field($model, 'regNumber', ['enableAjaxValidation' => true])->textInput(['value' => $model->regNumber]) ?>
-                        <?= $form->field($model, 'email')->textInput([
+                        <?= $form->field($model, 'email', ['options' => ['class' => 'hidden']])->textInput([
                             'class' => 'cursor-disabled form-control',
                             'readonly' => true,
                             'value' => $model->email])
