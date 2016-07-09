@@ -68,9 +68,9 @@ class ProfileForm extends Model
                 if (substr_count($this->regNumber, '/') != 1) {
                     $this->addError($attribute, 'A valid reg number has only one forward slash');
                 } else {
-                    $year = (int)date('Y');
+                    $year    = (int)date('Y');
                     $regYear = (int)explode('/', $this->regNumber)[1];
-                    $diff = ($regYear - $year);
+                    $diff    = ($regYear - $year);
                     if (($diff > 0) || ($diff < -10)) {
                         $this->addError($attribute, 'Invalid year in registration number');
                     }
@@ -105,12 +105,12 @@ class ProfileForm extends Model
             return null;
         }
 
-        $profile = Profile::findByEmail($this->email);
-        $oldProfile = clone $profile;
-        $profile->email = $this->email ? $this->email : '';
-        $profile->sex = $this->sex;
-        $profile->surname = $this->surname;
-        $profile->firstname = $this->firstName;
+        $profile             = Profile::findByEmail($this->email);
+        $oldProfile          = clone $profile;
+        $profile->email      = $this->email ? $this->email : '';
+        $profile->sex        = $this->sex;
+        $profile->surname    = $this->surname;
+        $profile->firstname  = $this->firstName;
         $profile->reg_number = $this->regNumber;
         $profile->duration   = $this->duration;
 
