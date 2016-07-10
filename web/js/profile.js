@@ -37,6 +37,7 @@ $(document).ready(function () {
         todayHighlight: true,
         endDate: '0',
         toggleActive: true,
-        orientation: 'auto'
+        orientation: 'auto',
+        todayBtn: true,
     });
 });
