@@ -182,6 +182,7 @@ class SiteController extends Controller
         $model->surname = $profile->surname;
         $model->sex = $profile->sex;
         $model->regNumber = $profile->reg_number;
+        $model->startDate = $profile->start_date;
         if ($renderPartial) {
             return $this->renderPartial('profile', [
                 'model' => $model,
