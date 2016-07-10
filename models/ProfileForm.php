@@ -17,6 +17,7 @@ class ProfileForm extends Model
     public $sex;
     public $email;
     public $duration;
+    public $startDate;
 
     private $_profile;
 
@@ -35,6 +36,8 @@ class ProfileForm extends Model
             // Trim spaces when submitting form
             [['firstName', 'regNumber', 'surname', 'email'], 'trim'],
             [['duration'], 'integer'],
+            [['startDate'], 'safe'],
+            // ['start_date', 'validateDate']
         ];
     }
 
@@ -113,6 +116,7 @@ class ProfileForm extends Model
         $profile->firstname  = $this->firstName;
         $profile->reg_number = $this->regNumber;
         $profile->duration   = $this->duration;
+        $profile->start_date =  date('Y-m-d', strtotime($this->startDate));
 
         if ($oldProfile != $profile) {
             $profile->last_updated = time();

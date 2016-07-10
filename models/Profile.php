@@ -15,6 +15,7 @@ use Yii;
  * @property string $reg_number
  * @property integer $last_updated
  * @property integer $duration
+ * @property string $start_date
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -35,6 +36,7 @@ class Profile extends \yii\db\ActiveRecord
             [['sex', 'email', 'firstname', 'surname'], 'string', 'max' => 255],
             [['reg_number'], 'string', 'max' => 20],
             [['email'], 'unique'],
+            // [['start_date'], 'date'],
             [['last_updated', 'duration'], 'integer'],
             [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
         ];
@@ -54,6 +56,7 @@ class Profile extends \yii\db\ActiveRecord
             'reg_number' => 'Reg Number',
             'last_update' => 'Last Updated',
             'duration' => 'Duration',
+            'start_date' => 'Start Date',
         ];
     }
     

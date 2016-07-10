@@ -29,4 +29,14 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
+
+    $('#profileform-startdate').datepicker({
+        format: "dd/mm/yyyy",
+        maxViewMode: 2,
+        calendarWeeks: true,
+        todayHighlight: true,
+        endDate: '0',
+        toggleActive: true,
+        orientation: 'auto'
+    });
 });
