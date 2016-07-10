@@ -208,3 +208,8 @@ td {
 .disabled.day {
     cursor: not-allowed !important;
 }
+
+/* Navbar keeps hiding datepicker, has z-index of 1031 */
+.datepicker {
+    z-index: 9999 !important;
+}
