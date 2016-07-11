@@ -6,26 +6,15 @@ $(document).ready(function () {
     $('#sandbox-container div').datepicker({
         format: "dd/mm/yyyy",
         maxViewMode: 2,
-        // todayBtn: true,
-        // daysOfWeekDisabled: "2,3,4",
-        // daysOfWeekHighlighted: "2,4",
-        calendarWeeks: true,
+        todayBtn: true,
         todayHighlight: true,
-        beforeShowDay: function (date){
-            if (date.getMonth() == (new Date()).getMonth())
-                switch (date.getDate()){
-                    case 4:
-                        return {
-                            tooltip: 'Example tooltip',
-                            // classes: 'active'
-                        };
-                    case 8:
-                        return false;
-                    case 12:
-                        return "green";
-                }
+        beforeShowDay: function (date) {
+            if (date.getDay() == 0) {
+                // Colour Sundays as red
+                return { classes: 'sunday' }
+            }
         },
-        beforeShowMonth: function (date){
+        beforeShowMonth: function (date) {
             if (date.getMonth() == 8) {
                 return false;
             }
