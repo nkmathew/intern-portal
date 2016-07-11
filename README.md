@@ -95,6 +95,11 @@ coordinator to monitor student progress easily.
   when clicked
 + Richtext editor for log entry box? With markdown support pour les hackers??
 + Copy penzu's email layout
++ Internship start date should not be a one-time permanent change to cater for
+  mistakes. Instead the coordinator should be notified when the intern sets his/her
+  start date and maybe the number of times the start date has been changed to
+  monitor people who are trying to misuse the system
++ Add list of provinces and districts
 
 ### Installation Steps
 
