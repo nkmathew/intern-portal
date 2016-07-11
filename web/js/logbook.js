@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function () {
-    $('#sandbox-container div').datepicker({
+    $('#container-logbook-date').datepicker({
         format: "dd/mm/yyyy",
         maxViewMode: 2,
         todayBtn: true,
