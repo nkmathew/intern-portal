@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\Logbook;
 use app\models\Profile;
 use app\models\User;
 use app\models\SignupLinks;
@@ -393,5 +394,42 @@ class SiteController extends Controller
 
     public function actionListSentInvites() {
         return $this->renderPartial('sentInvites');
+    }
+
+    public function actionShowLogbook() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $action = Yii::$app->request->get('action');
+        $entryDate = Yii::$app->request->get('entryDate');
+        if ($entryDate) {
+            $logbook = Logbook::findOne(['entry_for' => $entryDate]);
+            $logbook = $logbook ? $logbook : new Logbook();
+            if ($action == 'save') {
+                // Save or update the entry for the specified date
+                $postData           = Yii::$app->request->post();
+                $logbook->created   = $postData['created'];
+                $logbook->updated   = $postData['updated'];
+                $logbook->entry_for = $postData['entry_for'];
+                $logbook->entry     = $postData['entry'];
+                $logbook->author    = Yii::$app->user->identity->email;
+                $retVal             = $logbook->save();
+                if ($retVal) {
+                    return ['status' => 'Success'];
+                } else {
+                    return ['status' => 'Failed to save the record'];
+                }
+            } else {
+                // Display logbook entry for the specified date
+                return $logbook;
+            }
+        } else {
+            // Show today's entry by default
+            $dateToday = date('Y-m-d');
+            $logbook = Logbook::findOne(['entry_for' => $dateToday]);
+            if ($logbook) {
+                return $logbook;
+            } else {
+                return new Logbook();
+            }
+        }
     }
 }
