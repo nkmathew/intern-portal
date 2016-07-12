@@ -22,8 +22,8 @@ class m160711_114250_create_logbook extends Migration
         $this->createTable('logbook', [
             'id' => $this->primaryKey(),
             'text' => $this->string(),
-            'updated' => $this->string()->notNull()->unique(),
-            'created' => $this->string(),
+            'updated' => $this->integer(),
+            'created' => $this->integer(),
             'author' => $this->string(),
         ], $tableOptions);
 
