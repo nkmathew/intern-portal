@@ -2,7 +2,17 @@
  * Created by nkmathew on 05/07/2016.
  */
 
+var template = $("#logbook-template").html();
+
 $(document).ready(function () {
+
+    template = Handlebars.compile(template);
+
+    $.getJSON('/site/show-logbook', function (json) {
+        var html = template(json);
+        $('#container-logbook').append(html);
+    })
+
     $('#container-logbook-date').datepicker({
         format: "dd/mm/yyyy",
         maxViewMode: 2,
