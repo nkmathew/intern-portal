@@ -213,3 +213,7 @@ td {
 .datepicker {
     z-index: 9999 !important;
 }
+
+.glyphicon {
+    top: 2px;
+}
