@@ -21,10 +21,10 @@ class m160711_114250_create_logbook extends Migration
 
         $this->createTable('logbook', [
             'id' => $this->primaryKey(),
-            'text' => $this->string(),
+            'entry' => $this->string(),
             'updated' => $this->integer(),
             'created' => $this->integer(),
-            'author' => $this->string(),
+            'author' => $this->string()->notNull(),
         ], $tableOptions);
 
         $this->addForeignKey('FK_logbook_user', 'logbook', 'author', 'user', 'email');
