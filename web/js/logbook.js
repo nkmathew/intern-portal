@@ -9,6 +9,8 @@ $(document).ready(function () {
     template = Handlebars.compile(template);
 
     $.getJSON('/site/show-logbook', function (json) {
+        json.updated = moment.unix(json.updated).fromNow();
+        json.created = moment.unix(json.created).fromNow();
         var html = template(json);
         $('#container-logbook').append(html);
     })
