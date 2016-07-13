@@ -22,8 +22,10 @@ class LogbookAsset extends AssetBundle
     ];
     public $js = [
         'js/logbook.js',
+        'js/vendor/bootstrap-confirmation.min.js'
     ];
     public $depends = [
         'app\assets\BootstrapDatepickerAsset',
+        'app\assets\AppAsset',
     ];
 }
