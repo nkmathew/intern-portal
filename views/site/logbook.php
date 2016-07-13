@@ -21,17 +21,17 @@ LogbookAsset::register($this);
     <div class="col-md-6">
         <script id="logbook-template" type="text/x-handlebars-template">
             <div id="entry-stats" class="well well-sm">
-                <div class="entry-date-updated">
+                <div class="entry-date-updated" title="Edited" data-placement="left" data-toggle="tooltip">
                     <span class="glyphicon glyphicon-time"></span>
-                    Changed: {{updated}}
+                    {{updated}}
                 </div>
-                <div class="entry-date-created">
+                <div class="entry-date-created" title="Created" data-placement="left" data-toggle="tooltip">
                     <span class="glyphicon glyphicon-dashboard"></span>
-                    Created: &nbsp; {{created}}
+                    {{created}}
                 </div>
-                <div class="entry-date-created">
+                <div class="entry-date-created" title="Entry For" data-placement="left" data-toggle="tooltip">
                     <span class="glyphicon glyphicon-calendar"></span>
-                    Entry for: &nbsp; {{entry_for}}
+                    {{entry_for}}
                 </div>
             </div>
             <div class="form-group field-logbook-text">

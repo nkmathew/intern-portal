@@ -13,6 +13,7 @@ $(document).ready(function () {
         json.created = moment.unix(json.created).fromNow();
         var html = template(json);
         $('#container-logbook').append(html);
+        $('[data-toggle="tooltip"]').tooltip();
     })
 
     $('#container-logbook-date').datepicker({
