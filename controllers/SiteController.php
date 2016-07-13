@@ -425,11 +425,8 @@ class SiteController extends Controller
             // Show today's entry by default
             $dateToday = date('Y-m-d');
             $logbook = Logbook::findOne(['entry_for' => $dateToday]);
-            if ($logbook) {
-                return $logbook;
-            } else {
-                return new Logbook();
-            }
+            $logbook = $logbook ? $logbook : new Logbook();
+            return $logbook;
         }
     }
 }
