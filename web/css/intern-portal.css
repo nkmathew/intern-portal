@@ -217,3 +217,7 @@ td {
 .glyphicon {
     top: 2px;
 }
+
+.site-coordinator-console .glyphicon {
+    top: 0px;
+}
