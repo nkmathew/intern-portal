@@ -100,6 +100,9 @@ coordinator to monitor student progress easily.
   start date and maybe the number of times the start date has been changed to
   monitor people who are trying to misuse the system
 + Add list of provinces and districts
++ Show a checkmark when the entry is saved
++ The entry editor should like Penzu's with ruled lines like a textbook
++ Use CKEditor
 
 ### Installation Steps
 
