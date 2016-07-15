@@ -5,8 +5,8 @@
 var TEMPLATE = $("#logbook-template").html();
 
 function renderLogbookEntry(json, template) {
-    json.updated = moment.unix(json.updated).fromNow();
-    json.created = moment.unix(json.created).fromNow();
+    json.updated = moment(parseFloat(json.updated)).fromNow();
+    json.created = moment(parseFloat(json.created)).fromNow();
     var html     = template(json);
     $('#container-logbook').html(html);
     $('[data-toggle="tooltip"]').tooltip(); // Initialize description tooltips
