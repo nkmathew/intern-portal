@@ -94,6 +94,7 @@ $(document).ready(function () {
     $('#container-logbook-date').datepicker({
         format: "dd/mm/yyyy",
         maxViewMode: 2,
+        endDate: '0',
         todayBtn: true,
         todayHighlight: true,
         beforeShowDay: function (date) {
