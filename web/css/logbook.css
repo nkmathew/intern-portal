@@ -18,3 +18,12 @@
 .sunday {
     color: red;
 }
+
+.centered-text {
+    display: inline-block;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
