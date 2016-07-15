@@ -402,12 +402,15 @@ class SiteController extends Controller
         $entryDate = Yii::$app->request->get('entryDate');
         if ($entryDate) {
             $logbook = Logbook::findOne(['entry_for' => $entryDate]);
-            $logbook = $logbook ? $logbook : new Logbook();
             if ($action == 'save') {
                 // Save or update the entry for the specified date
                 $postData           = Yii::$app->request->post();
-                $logbook->created   = $postData['created'];
-                $logbook->updated   = $postData['updated'];
+                if ($logbook) {
+                    $logbook->updated = $postData['updated'];
+                } else {
+                    $logbook->created = $postData['created'];
+                    $logbook->updated = $postData['updated'];
+                }
                 $logbook->entry_for = $postData['entry_for'];
                 $logbook->entry     = $postData['entry'];
                 $logbook->author    = Yii::$app->user->identity->email;
@@ -419,7 +422,7 @@ class SiteController extends Controller
                 }
             } else {
                 // Display logbook entry for the specified date
-                return $logbook;
+                return $logbook ? $logbook : new Logbook();
             }
         } else {
             // Show today's entry by default
