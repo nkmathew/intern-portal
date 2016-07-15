@@ -103,6 +103,9 @@ coordinator to monitor student progress easily.
 + Show a checkmark when the entry is saved
 + The entry editor should like Penzu's with ruled lines like a textbook
 + Use CKEditor
++ Show entry preview when mouse hovers over date for some seconds the way
+  stackoverflow shows tag description on hover
++ Little checkbox at the left top corner for dates with entries
 
 ### Installation Steps
 
