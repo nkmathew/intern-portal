@@ -19,11 +19,15 @@ LogbookAsset::register($this);
         <div id="container-logbook-date"></div>
     </div>
     <div class="col-md-6">
-        <div id="new-entry-prompt" class="hidden centered-text col-md-12 well">
-            <button id="btn-create-new-entry" class="btn btn-primary" onclick="promptForNewEntry()">Create New Entry</button>
+        <div id="new-entry-prompt" class="alert alert-danger hidden centered-text col-md-12">
+            No entry found for <strong id="selected-date"></strong>, click to create one.<br/>
+            <button id="btn-create-new-entry" class="btn btn-sm btn-primary" onclick="promptForNewEntry()">
+                <span class="glyphicon glyphicon-plus"></span>
+                New Entry
+            </button>
         </div>
         <script id="logbook-template" type="text/x-handlebars-template">
-            <div id="logbook-entry-area">
+            <div id="logbook-entry-area" data-entry-for="{{entry_for}}">
                 <div class="entry-stats well well-sm">
                     <div class="stat entry-date-updated" title="Edited" data-placement="left" data-toggle="tooltip">
                         <span class="glyphicon glyphicon-time"></span>
@@ -43,11 +47,15 @@ LogbookAsset::register($this);
                     <p class="help-block help-block-error"></p>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="btn-save-logbook" class="btn btn-primary" onclick="saveLogbookEntry()">
+                    <button id="btn-save-logbook" class="btn btn-sm btn-primary" onclick="saveLogbookEntry()">
                         <span class="glyphicon glyphicon-floppy-disk"></span>
                         <span id="btn-save-logbook-label">
                             Save
                         </span>
+                    </button>
+                    <button id="btn-delete-logbook" class="btn btn-sm btn-danger" onclick="">
+                        <span class="glyphicon glyphicon-floppy-remove"></span>
+                        Delete
                     </button>
                 </div>
             </div>

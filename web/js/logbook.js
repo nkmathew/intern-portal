@@ -3,6 +3,7 @@
  */
 
 var TEMPLATE = $("#logbook-template").html();
+var FMT = 'dddd, MMMM Do YYYY';
 
 function renderLogbookEntry(json, template) {
     json.updated = moment(parseFloat(json.updated)).fromNow();
@@ -19,13 +20,26 @@ function showLogbook(date) {
     if (date !== undefined) {
         url += '?entryDate=' + date;
     }
+    $(".active.day").spin({color: 'white'});
     $.getJSON(url, function (json) {
+        $(".active.day").spin(false);
         console.log(url, json)
         if (!jQuery.isEmptyObject(json)) {
             $('#new-entry-prompt').hide();
             $('.entry-stats').show();
             $('#logbook-entry-area').show();
-            renderLogbookEntry(json, TEMPLATE)
+            renderLogbookEntry(json, TEMPLATE);
+            $('#btn-delete-logbook').confirmation({
+                onConfirm: function (event) {
+                    var entryFor = $('#logbook-entry-area').data('entry-for')
+                    var url = '/site/show-logbook?action=delete&entryDate=' + entryFor;
+                    $.getJSON(url, function (json) {
+                        alertSuccess(json.message);
+                        var date = moment().format('Y-M-D');
+                        showLogbook(date);
+                    })
+                },
+            });
         } else {
             $('.entry-stats').hide();
             $('#new-entry-prompt').removeClass('hidden');
@@ -43,24 +57,17 @@ function promptForNewEntry() {
     $('#new-entry-prompt').hide();
     $('#logbook-entry-area').show();
     var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
-    var date = moment(selectedDate).format('dddd, MMMM Do YYYY')
+    var date = moment(selectedDate).format(FMT)
     $('#btn-save-logbook-label').text('Create entry for ' + date);
 }
 
 function saveLogbookEntry() {
-    console.log('Saving logbook')
-    $('#btn-save-logbook').confirmation({
-        onConfirm: function () {
-            console.log('Confirmed')
-            alert('Confirmed')
-        }
-    });
     var url          = '/site/show-logbook?action=save';
     var txt          = $('#logbook-text').val();
     var time         = new Date().getTime();
     var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
     selectedDate     = moment(selectedDate).format('Y-M-D');
-    $("#btn-save-logbook").spin({color: 'black'});
+    $("#logbook-entry-area").spin({color: 'black'});
     $.ajax({
         type: 'POST',
         url: url + '&entryDate=' + selectedDate,
@@ -72,13 +79,14 @@ function saveLogbookEntry() {
         },
         success: function (data) {
             // Remove spinner
-            $("#btn-save-logbook").spin(false);
+            $("#logbook-entry-area").spin(false);
+            showLogbook(selectedDate);
         },
         error: function (xhr, status, error) {
-            $("#btn-save-logbook").spin(false);
             $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
             $('.alert-box').addClass('alert-danger');
             $('.alert-box').show();
+            $("#logbook-entry-area").spin(false);
         },
     });
 }
@@ -86,6 +94,8 @@ function saveLogbookEntry() {
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
+
+    $('#selected-date').html(moment().format(FMT));
 
     TEMPLATE = Handlebars.compile(TEMPLATE);
 
@@ -115,6 +125,7 @@ $(document).ready(function () {
     // When a different date is clicked in the calendar
     $(this).on('changeDate', function (event) {
         var date = event.date;
+        $('#selected-date').html(moment(date).format(FMT));
         date     = moment(date).format('Y-M-D');
         showLogbook(date);
     });

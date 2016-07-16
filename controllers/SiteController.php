@@ -408,6 +408,7 @@ class SiteController extends Controller
                 if ($logbook) {
                     $logbook->updated = $postData['updated'];
                 } else {
+                    $logbook = new Logbook();
                     $logbook->created = $postData['created'];
                     $logbook->updated = $postData['updated'];
                 }
@@ -419,6 +420,25 @@ class SiteController extends Controller
                     return ['status' => 'Success'];
                 } else {
                     return ['status' => 'Failed to save the record'];
+                }
+            } elseif ($action == 'delete') {
+                if (!$logbook) {
+                    if ($logbook->delete()) {
+                        return [
+                            'status' => 'success',
+                            'message' => 'Entry deleted successfully'
+                        ];
+                    } else {
+                        return [
+                            'status' => 'error',
+                            'message' => 'Problem deleting entry'
+                        ];
+                    }
+                } else {
+                    return [
+                        'status' => 'error',
+                        'message' => 'Entry does not exist'
+                    ];
                 }
             } else {
                 // Display logbook entry for the specified date
