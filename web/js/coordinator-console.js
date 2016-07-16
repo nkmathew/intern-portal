@@ -49,12 +49,7 @@ $(document).ready(function () {
                 'email-list': JSON.stringify(emailList),
             },
             success: function () {
-                $('.alert-box .msg').html('Signup links sent successfully');
-                $('.alert-box').addClass('alert-success');
-                $('.alert-box').show();
-                $("#alert-box").fadeTo(3000, 500).slideUp(500, function () {
-                    $("#alert-box").hide();
-                });
+                alertSuccess('Signup links sent successfully');
 
                 // Remove spinner
                 $("#btn-invite-sender").spin(false);
