@@ -107,10 +107,12 @@ $(document).ready(function () {
         endDate: '0',
         todayBtn: true,
         todayHighlight: true,
+        startDate: '-3m',
         beforeShowDay: function (date) {
-            if (date.getDay() == 0) {
-                // Colour Sundays as red
-                return {classes: 'sunday'}
+            if (date.getDay() == 0 ||
+                date.getDay() == 6) {
+                // Disable weekends
+                return false;
             }
         },
         beforeShowMonth: function (date) {

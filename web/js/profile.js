@@ -39,5 +39,13 @@ $(document).ready(function () {
         toggleActive: true,
         orientation: 'auto',
         todayBtn: true,
+        beforeShowDay: function (date) {
+            if (date.getDay() == 0 ||
+                date.getDay() == 6) {
+                // Disable weekends
+                return false;
+            }
+        },
+        startDate: '-3m'
     });
 });
