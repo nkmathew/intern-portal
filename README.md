@@ -10,7 +10,6 @@ coordinator to monitor student progress easily.
 
 ### TODO/Features
 
-+ Design simple logo
 + Should support login for three types of users:
   - Coordinators
     - The teacher/lecturer in who does supervision of all the interns from a certain
@@ -106,6 +105,8 @@ coordinator to monitor student progress easily.
 + Show entry preview when mouse hovers over date for some seconds the way
   stackoverflow shows tag description on hover
 + Little checkbox at the left top corner for dates with entries
++ Should not change updated timestamp until a change is actually made
++ Disable button until there's an actual change??
 
 ### Installation Steps
 
