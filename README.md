@@ -85,11 +85,7 @@ coordinator to monitor student progress easily.
 + Listen to onhashchange to react to tab urls like http://intern.jkuat.dev/#tab-invite
 + A coordinator should be shown a different looking profile form from a student
 + Show wordcount in daily journal
-+ Once start date is picked, the intern can't change it later
-+ Bigger datepicker
 + Show preview of log entry when you hover over a day in datepicker
-+ Disable weekend days
-+ Colour Sundays in red
 + Change the x button to something other than a button to prevent the groove effect
   when clicked
 + Richtext editor for log entry box? With markdown support pour les hackers??
