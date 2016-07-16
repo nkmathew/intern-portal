@@ -27,3 +27,13 @@
     width: 100%;
     height: 100%;
 }
+
+/* Make spinner be within the div instead of center of calendar */
+td.active.day {
+    position: relative;
+}
+
+/* ALign glyphicon */
+div#new-entry-prompt .glyphicon {
+    top: 1px;
+}
