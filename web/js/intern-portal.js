@@ -12,6 +12,16 @@ var BIG_SPINNER = {
     color: '#000',
 };
 
+// Display a success message
+function alertSuccess(message) {
+    $('.alert-box .msg').html(message);
+    $('.alert-box').addClass('alert-success');
+    $('.alert-box').show();
+    $("#alert-box").fadeTo(3000, 500).slideUp(500, function () {
+        $("#alert-box").hide();
+    });
+}
+
 $(document).ready(function () {
 
     // Initialize bootstrap tooltip plugin
