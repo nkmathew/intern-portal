@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
 use yii\base\Model;
+use Carbon\Carbon;
 
 /**
  * ContactForm is the model behind the contact form.
@@ -36,8 +38,8 @@ class ProfileForm extends Model
             // Trim spaces when submitting form
             [['firstName', 'regNumber', 'surname', 'email'], 'trim'],
             [['duration'], 'integer'],
-            [['startDate'], 'safe'],
-            // ['start_date', 'validateDate']
+            // [['startDate'], 'safe'],
+            [['startDate'], 'validateDateFormat'],
         ];
     }
 
@@ -88,6 +90,33 @@ class ProfileForm extends Model
     }
 
     /**
+     * Checks that the internship start date is not set to more than three months before or after now
+     *
+     * @param $date
+     * @return bool
+     */
+    public function validateDateFormat($attribute, $params) {
+        if (!$this->hasErrors()) {
+            $profile = $this->getProfile();
+            if ($profile) {
+                $date = Carbon::createFromFormat('d/m/Y', $this->startDate);
+                $monthDiff = $date->diffInMonths();
+                $dateDiff = $date->diffForHumans();
+                // throw new \Exception('Profile: ' . $profile);
+                // $time = date('H:i:s');
+                // throw new \Exception("Date[$time]: $profile->start_date ==> $this->startDate  <<$monthDiff>>");
+
+                if ($monthDiff >= 3) {
+                    $date = $date->format('l, jS F Y');
+                    $this->addError($attribute, "Start date($date) is more than three months away($dateDiff)");
+                }
+            } else {
+                $this->addError($attribute, 'Could not find a profile associated with the email');
+            }
+        }
+    }
+
+    /**
      * @inheritdoc
      */
     public function attributeLabels()
@@ -108,7 +137,8 @@ class ProfileForm extends Model
             return null;
         }
 
-        $profile             = Profile::findByEmail($this->email);
+        $profile = Profile::findByEmail($this->email);
+
         $oldProfile          = clone $profile;
         $profile->email      = $this->email ? $this->email : '';
         $profile->sex        = $this->sex;
@@ -116,7 +146,7 @@ class ProfileForm extends Model
         $profile->firstname  = $this->firstName;
         $profile->reg_number = $this->regNumber;
         $profile->duration   = $this->duration;
-        $profile->start_date =  date('Y-m-d', strtotime($this->startDate));
+        $profile->start_date = Carbon::createFromFormat('d/m/Y', $this->startDate)->format('Y-m-d');
 
         if ($oldProfile != $profile) {
             $profile->last_updated = time();

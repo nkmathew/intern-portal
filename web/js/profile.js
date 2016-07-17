@@ -35,7 +35,7 @@ $(document).ready(function () {
         maxViewMode: 2,
         calendarWeeks: true,
         todayHighlight: true,
-        endDate: '0',
+        endDate: '+3m',
         toggleActive: true,
         orientation: 'auto',
         todayBtn: true,

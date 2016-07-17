@@ -52,7 +52,7 @@ ProfileAsset::register($this);
                             8 => '8 Weeks',
                             12 => '12 Weeks'
                         ]); ?>
-                        <?= $form->field($model, 'startDate')->textInput([
+                        <?= $form->field($model, 'startDate', ['enableAjaxValidation' => true])->textInput([
                             'value' => date_format(date_create($model->startDate), 'm/d/Y')
                         ]) ?>
                     </div>

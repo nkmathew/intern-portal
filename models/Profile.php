@@ -36,7 +36,6 @@ class Profile extends \yii\db\ActiveRecord
             [['sex', 'email', 'firstname', 'surname'], 'string', 'max' => 255],
             [['reg_number'], 'string', 'max' => 20],
             [['email'], 'unique'],
-            // [['start_date'], 'date'],
             [['last_updated', 'duration'], 'integer'],
             [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
         ];
