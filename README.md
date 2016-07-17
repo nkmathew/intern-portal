@@ -81,7 +81,6 @@ coordinator to monitor student progress easily.
 + Show the Course Name when you hover over the registration number
 + Email sender should keep track of the response from sending each email
 + Copy the styling used in Feedreader newsletters
-+ Should show the number of sent emails
 + Listen to onhashchange to react to tab urls like http://intern.jkuat.dev/#tab-invite
 + A coordinator should be shown a different looking profile form from a student
 + Show wordcount in daily journal
