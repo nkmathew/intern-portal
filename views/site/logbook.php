@@ -39,7 +39,7 @@ LogbookAsset::register($this);
                     </div>
                     <div class="stat entry-date-created" title="Entry For" data-placement="left" data-toggle="tooltip">
                         <span class="glyphicon glyphicon-calendar"></span>
-                        {{entry_for}}
+                        {{entryDate}}
                     </div>
                 </div>
                 <div class="form-group field-logbook-text">
