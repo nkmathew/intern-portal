@@ -21,7 +21,7 @@ $(document).ready(function () {
                 }, 5000);
             },
             error: function (xhr, status, error) {
-                $("#btn-invite-sender").spin(false);
+                $("#btn-submit-profile").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
                 $('.alert-box').addClass('alert-danger');
                 $('.alert-box').show();
