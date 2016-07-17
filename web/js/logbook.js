@@ -8,6 +8,7 @@ var FMT = 'dddd, MMMM Do YYYY';
 function renderLogbookEntry(json, template) {
     json.updated = moment(parseFloat(json.updated)).fromNow();
     json.created = moment(parseFloat(json.created)).fromNow();
+    json.entry_for = moment(json.entry_for).format(FMT);
     var html     = template(json);
     $('#container-logbook').html(html);
     $('[data-toggle="tooltip"]').tooltip(); // Initialize description tooltips
