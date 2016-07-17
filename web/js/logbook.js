@@ -126,10 +126,12 @@ $(document).ready(function () {
 
     // When a different date is clicked in the calendar
     $(this).on('changeDate', function (event) {
-        var date = event.date;
-        $('#selected-date').html(moment(date).format(FMT));
-        date     = moment(date).format('Y-M-D');
-        showLogbook(date);
+        if (event.target.id == 'container-logbook-date') {
+            var date = event.date;
+            $('#selected-date').html(moment(date).format(FMT));
+            date = moment(date).format('Y-M-D');
+            showLogbook(date);
+        }
     });
 
     $('#save-logbook').click(function (event) {
