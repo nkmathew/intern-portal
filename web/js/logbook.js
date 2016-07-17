@@ -14,13 +14,24 @@ function renderLogbookEntry(json, template) {
     $('[data-toggle="tooltip"]').tooltip(); // Initialize description tooltips
 }
 
+function prevWeekDay() {
+    // Find a weekday preceding today
+    var today = moment();
+    while (today.day() == 0 || today.day() == 6) {
+        today = today.add(-1, 'd');
+    }
+    return today;
+}
+
 function showLogbook(date) {
     // Checks and shows the logbook entry for the specified date and if not found
     // shows a prompt for creating a new entry
     var url = '/site/show-logbook';
-    if (date !== undefined) {
-        url += '?entryDate=' + date;
+    if (date == undefined) {
+        // Display the entry of a previous weekday day if a date is not supplied
+        date = prevWeekDay();
     }
+    url += '?entryDate=' + date;
     $(".active.day").spin({color: 'white'});
     $.getJSON(url, function (json) {
         $(".active.day").spin(false);
@@ -96,7 +107,7 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
 
-    $('#selected-date').html(moment().format(FMT));
+    $('#selected-date').html(prevWeekDay().format(FMT));
 
     TEMPLATE = Handlebars.compile(TEMPLATE);
 
