@@ -102,6 +102,8 @@ coordinator to monitor student progress easily.
 + Little checkbox at the left top corner for dates with entries
 + Should not change updated timestamp until a change is actually made
 + Disable button until there's an actual change??
++ Ability to export the whole logbook as a printable pdf with supervisor remarks and
+  student logs all in one
 
 ### Installation Steps
 
