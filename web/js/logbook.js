@@ -32,7 +32,7 @@ function showLogbook(date) {
         date = prevWeekDay();
     }
     url += '?entryDate=' + date;
-    $(".active.day").spin({color: 'white'});
+    $(".active.day").spin({color:'white',length:0,speed:1.4});
     $.getJSON(url, function (json) {
         $(".active.day").spin(false);
         console.log(url, json)
