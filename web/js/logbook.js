@@ -29,7 +29,7 @@ function showLogbook(date) {
     var url = '/site/show-logbook';
     if (date == undefined) {
         // Display the entry of a previous weekday day if a date is not supplied
-        date = prevWeekDay();
+        date = prevWeekDay().format('Y-M-D');
     }
     url += '?entryDate=' + date;
     $(".active.day").spin({color:'white',length:0,speed:1.4});
@@ -75,7 +75,7 @@ function promptForNewEntry() {
 
 function saveLogbookEntry() {
     var url          = '/site/show-logbook?action=save';
-    var txt          = $('#logbook-text').val();
+    var txt          = $('#logbook-editor').val();
     var time         = new Date().getTime();
     var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
     selectedDate     = moment(selectedDate).format('Y-M-D');
