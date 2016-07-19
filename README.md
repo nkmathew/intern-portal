@@ -115,6 +115,9 @@ coordinator to monitor student progress easily.
 CREATE DATABASE `intern_system` /*!40100 COLLATE 'utf8mb4_unicode_ci' */
 ```
 + Create tables by running `yii migrate`
++ Head over to http://ckeditor.com/builder and use the `ckeditor/build-config.js` to
+  create a custom build of ckeditor after which you'll extract the contents to the
+  `ckeditor` folder
 + Run a server with `yii serve` while still in the root folder or with
   `php -S localhost:8080` if in the `web` folder
 + Refer to `tests/README.md` for information on running test suites
