@@ -21,7 +21,7 @@ LogbookAsset::register($this);
     <div class="col-md-6">
         <div id="new-entry-prompt" class="alert alert-danger hidden centered-text col-md-12">
             No entry found for <strong id="selected-date"></strong>, click to create one.<br/>
-            <button id="btn-create-new-entry" class="btn btn-sm btn-primary" onclick="promptForNewEntry()">
+            <button id="btn-create-new-entry" class="btn btn-sm btn-primary" onclick="prepareForNewEntry()">
                 <span class="glyphicon glyphicon-plus"></span>
                 New Entry
             </button>

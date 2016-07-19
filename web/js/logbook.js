@@ -12,24 +12,6 @@ function renderLogbookEntry(json, template) {
     var html     = template(json);
     $('#container-logbook').html(html);
 
-    CKEDITOR.config.toolbar = [
-        {
-            name: 'basicstyles',
-            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
-        }, {
-            name: 'paragraph',
-            items: [
-                'NumberedList', 'BulletedList', '-',
-                'Outdent', 'Indent', '-', 'Blockquote',
-                'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter',
-                'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
-        }, {
-            name: 'links',
-            items: ['Link', 'Unlink', 'Anchor']
-        },
-    ];
-    CKEDITOR.config.contentsCss = '/css/logbook.css';
-
     // Turn textarea into a rich text editor
     CKEDITOR.replace('logbook-editor');
 
@@ -75,21 +57,26 @@ function showLogbook(date) {
                 },
             });
         } else {
+            // Show the button for creating a new entry
             $('.entry-stats').hide();
             $('#new-entry-prompt').removeClass('hidden');
             $('#new-entry-prompt').show();
             $('#logbook-entry-area').hide();
+            CKEDITOR.instances['logbook-editor'].updateElement();
+            CKEDITOR.instances['logbook-editor'].destroy();
         }
     });
 }
 
-function promptForNewEntry() {
+function prepareForNewEntry() {
     var html = TEMPLATE();
     $('#container-logbook').html(html);
     $('[data-toggle="tooltip"]').tooltip(); // Initialize description tooltips
     $('.entry-stats').hide();
     $('#new-entry-prompt').hide();
+    $('#logbook-editor').hide();
     $('#logbook-entry-area').show();
+    CKEDITOR.replace('logbook-editor');
     var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
     var date = moment(selectedDate).format(FMT)
     $('#btn-save-logbook-label').text('Create entry for ' + date);
@@ -132,6 +119,25 @@ $(document).ready(function () {
     $('#selected-date').html(prevWeekDay().format(FMT));
 
     TEMPLATE = Handlebars.compile(TEMPLATE);
+
+    CKEDITOR.config.toolbar = [
+        {
+            name: 'basicstyles',
+            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+        }, {
+            name: 'paragraph',
+            items: [
+                'NumberedList', 'BulletedList', '-',
+                'Outdent', 'Indent', '-', 'Blockquote',
+                'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter',
+                'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+        }, {
+            name: 'links',
+            items: ['Link', 'Unlink', 'Anchor']
+        },
+    ];
+    CKEDITOR.config.contentsCss = '/css/logbook.css';
+
 
     // window.CKEDITOR_BASEPATH = '/js/vendor/ckeditor/';
 
