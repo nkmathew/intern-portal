@@ -11,6 +11,28 @@ function renderLogbookEntry(json, template) {
     json.entryDate = moment(json.entry_for).format(FMT);
     var html     = template(json);
     $('#container-logbook').html(html);
+
+    CKEDITOR.config.toolbar = [
+        {
+            name: 'basicstyles',
+            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+        }, {
+            name: 'paragraph',
+            items: [
+                'NumberedList', 'BulletedList', '-',
+                'Outdent', 'Indent', '-', 'Blockquote',
+                'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter',
+                'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+        }, {
+            name: 'links',
+            items: ['Link', 'Unlink', 'Anchor']
+        },
+    ];
+    CKEDITOR.config.contentsCss = '/css/logbook.css';
+
+    // Turn textarea into a rich text editor
+    CKEDITOR.replace('logbook-editor');
+
     $('[data-toggle="tooltip"]').tooltip(); // Initialize description tooltips
 }
 
@@ -75,7 +97,7 @@ function promptForNewEntry() {
 
 function saveLogbookEntry() {
     var url          = '/site/show-logbook?action=save';
-    var txt          = $('#logbook-editor').val();
+    var content      = CKEDITOR.instances['logbook-editor'].getData()
     var time         = new Date().getTime();
     var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
     selectedDate     = moment(selectedDate).format('Y-M-D');
@@ -84,7 +106,7 @@ function saveLogbookEntry() {
         type: 'POST',
         url: url + '&entryDate=' + selectedDate,
         data: {
-            entry: txt,
+            entry: content,
             created: time,
             updated: time,
             entry_for: selectedDate
@@ -110,6 +132,8 @@ $(document).ready(function () {
     $('#selected-date').html(prevWeekDay().format(FMT));
 
     TEMPLATE = Handlebars.compile(TEMPLATE);
+
+    // window.CKEDITOR_BASEPATH = '/js/vendor/ckeditor/';
 
     showLogbook();
 

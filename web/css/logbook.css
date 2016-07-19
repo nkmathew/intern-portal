@@ -37,3 +37,17 @@ td.active.day {
 div#new-entry-prompt .glyphicon {
     top: 1px;
 }
+
+.entry-stats {
+    margin-bottom: 10px;
+}
+
+/* CKEditor styling */
+.cke_editable {
+    line-height: 1.2;
+    font-family: Calibri;
+}
+
+.cke_editable p {
+    margin: 0px;
+}
