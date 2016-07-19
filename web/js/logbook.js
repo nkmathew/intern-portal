@@ -138,9 +138,6 @@ $(document).ready(function () {
     ];
     CKEDITOR.config.contentsCss = '/css/logbook.css';
 
-
-    // window.CKEDITOR_BASEPATH = '/js/vendor/ckeditor/';
-
     showLogbook();
 
     $('#container-logbook-date').datepicker({

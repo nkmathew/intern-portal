@@ -22,10 +22,8 @@ class LogbookAsset extends AssetBundle
     ];
     public $js = [
         'js/logbook.js',
-        '//cdn.ckeditor.com/4.5.10/basic/ckeditor.js',
-        // 'ckeditor/ckeditor.js',
-        // 'js/vendor/ckeditor/ckeditor.js',
-        'js/vendor/bootstrap-confirmation.min.js'
+        'js/vendor/bootstrap-confirmation.min.js',
+        'ckeditor/ckeditor.js',
     ];
     public $depends = [
         'app\assets\BootstrapDatepickerAsset',
