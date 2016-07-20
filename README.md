@@ -66,7 +66,6 @@ coordinator to monitor student progress easily.
 + Login with google accounts since student emails are managed by gmail
 + Records login attempts
 + Ability to search within your log
-+ A better looking error page with a different layout
 + Add gravatar support
 + Logout link should be in a dropdown with the dropbdown showing the truncated
   email, the avatar
@@ -77,26 +76,20 @@ coordinator to monitor student progress easily.
 + Track user logins, record their ips and times maybe show in an account activity
   tab
 + Stackoverflow style notifications??
-+ Remember the tab you were on when the page is reloaded(cookies?)
 + Show the Course Name when you hover over the registration number
 + Email sender should keep track of the response from sending each email
 + Copy the styling used in Feedreader newsletters
 + Listen to onhashchange to react to tab urls like http://intern.jkuat.dev/#tab-invite
 + A coordinator should be shown a different looking profile form from a student
-+ Show wordcount in daily journal
-+ Show preview of log entry when you hover over a day in datepicker
 + Change the x button to something other than a button to prevent the groove effect
   when clicked
-+ Richtext editor for log entry box? With markdown support pour les hackers??
 + Copy penzu's email layout
 + Internship start date should not be a one-time permanent change to cater for
   mistakes. Instead the coordinator should be notified when the intern sets his/her
   start date and maybe the number of times the start date has been changed to
   monitor people who are trying to misuse the system
 + Add list of provinces and districts
-+ Show a checkmark when the entry is saved
 + The entry editor should like Penzu's with ruled lines like a textbook
-+ Use CKEditor
 + Show entry preview when mouse hovers over date for some seconds the way
   stackoverflow shows tag description on hover
 + Little checkbox at the left top corner for dates with entries
@@ -104,6 +97,7 @@ coordinator to monitor student progress easily.
 + Disable button until there's an actual change??
 + Ability to export the whole logbook as a printable pdf with supervisor remarks and
   student logs all in one
++ Ability to view diffs when entries are updated??
 
 ### Installation Steps
 
