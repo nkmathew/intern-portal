@@ -422,16 +422,16 @@ class SiteController extends Controller
                     return ['status' => 'Failed to save the record'];
                 }
             } elseif ($action == 'delete') {
-                if (!$logbook) {
+                if ($logbook) {
                     if ($logbook->delete()) {
                         return [
                             'status' => 'success',
-                            'message' => 'Entry deleted successfully'
+                            'message' => "Entry for $entryDate deleted successfully"
                         ];
                     } else {
                         return [
                             'status' => 'error',
-                            'message' => 'Problem deleting entry'
+                            'message' => "Problem deleting entry for $entryDate"
                         ];
                     }
                 } else {
