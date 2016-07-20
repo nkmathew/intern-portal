@@ -28,7 +28,3 @@ phpunit.phar
 
 # Vagrant stuff
 /.vagrant
-
-# CKEditor folder
-/web/ckeditor
-/js/vendor/ckeditor
