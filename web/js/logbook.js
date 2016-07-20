@@ -137,6 +137,9 @@ $(document).ready(function () {
         },
     ];
     CKEDITOR.config.contentsCss = '/css/logbook.css';
+    CKEDITOR.config.wordcount = {
+        showCharCount: true
+    }
 
     showLogbook();
 
