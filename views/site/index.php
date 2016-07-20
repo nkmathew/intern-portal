@@ -25,10 +25,10 @@ $this->title = 'Home';
             'options' => ['id' => 'tab-logbook'],
         ],
         [
-            'label' => '<span class="glyphicon glyphicon-inbox"></span> Notifications',
-            'content' => $this->render('notifications'),
-            'headerOptions' => ['id' => 'notifications-tab', 'class' => 'tab-main'],
-            'options' => ['id' => 'tab-notifications'],
+            'label' => '<span class="glyphicon glyphicon-stats"></span> Progress',
+            'content' => $this->render('progress'),
+            'headerOptions' => ['id' => 'progress-tab', 'class' => 'tab-main'],
+            'options' => ['id' => 'tab-progress'],
         ],
     ];
     $email = Yii::$app->user->identity->email;

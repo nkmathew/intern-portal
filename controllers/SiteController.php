@@ -90,13 +90,13 @@ class SiteController extends Controller
 
 
     /**
-     * Displays notifications.
+     * Displays progress page
      *
      * @return mixed
      */
-    public function actionNotifications()
+    public function actionProgress()
     {
-        return $this->renderPjax('notifications');
+        return $this->renderPjax('progress');
     }
 
     /**
