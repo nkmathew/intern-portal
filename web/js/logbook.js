@@ -39,7 +39,6 @@ function showLogbook(date) {
     $(".active.day").spin({color:'white',length:0,speed:1.4});
     $.getJSON(url, function (json) {
         $(".active.day").spin(false);
-        console.log(url, json)
         if (!jQuery.isEmptyObject(json)) {
             $('#new-entry-prompt').hide();
             $('.entry-stats').show();
@@ -62,8 +61,10 @@ function showLogbook(date) {
             $('#new-entry-prompt').removeClass('hidden');
             $('#new-entry-prompt').show();
             $('#logbook-entry-area').hide();
-            CKEDITOR.instances['logbook-editor'].updateElement();
-            CKEDITOR.instances['logbook-editor'].destroy();
+            if (CKEDITOR.instances['logbook-editor'] != undefined) {
+                CKEDITOR.instances['logbook-editor'].updateElement();
+                CKEDITOR.instances['logbook-editor'].destroy();
+            }
         }
     });
 }
