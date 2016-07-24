@@ -48,31 +48,36 @@ function showInternshipCalendar(weeks, startDate) {
                 endDate: end.toDate(),
                 beforeShowDay: function (date) {
                     var mdate = moment(date);
+                    var className = '';
                     if (mdate.isBefore(endDate1)) {
                         if (date.getDay() == 0) {
-                            return {classes: 'intern-day sunday'};
+                            className = 'intern-day sunday';
                         } else if (mdate.isSame(startDate)) {
-                            return {classes: 'terminal-start-day'}
+                            className = 'terminal-start-day';
                         } else if (mdate.isSame(endDate)) {
-                            return {classes: 'terminal-end-day'}
+                            className = 'terminal-end-day';
                         } else {
-                            return {classes: 'intern-day'};
+                            className = 'intern-day';
                         }
                     } else {
                         if (date.getDay() == 0) {
-                            return {classes: 'sunday'};
+                            className = 'sunday';
                         }
                     }
-                }
-                ,
+                    if (className.indexOf('intern-day') != -1) {
+                        // Colour completed internship days
+                        if (mdate.isBefore(moment())) {
+                            className += ' completed-intern-day';
+                        }
+                    }
+                    return {classes: className};
+                },
                 toggleActive: true
             }
-            ;
-
         $('#calendar-month-' + id).datepicker(dateOptions);
     }
 }
 
 $(document).ready(function () {
-    showInternshipCalendar(10, '27/04/2016')
+    showInternshipCalendar(12, '27/05/2016')
 });
