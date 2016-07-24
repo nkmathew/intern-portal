@@ -17,10 +17,7 @@
     border-radius: 0px 8px 8px 0px !important;
 }
 
-.intern-calendar {
-    float: left;
+#internship-calendars {
+    border-right: 1px solid #5DBA40;
 }
 
-#calendar-month-1 {
-    float: left;
-}
