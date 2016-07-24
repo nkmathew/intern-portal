@@ -3,7 +3,6 @@
  */
 
 var TEMPLATE = $("#logbook-template").html();
-var FMT = 'dddd, MMMM Do YYYY';
 
 function renderLogbookEntry(json, template) {
     json.updated = moment(parseFloat(json.updated)).fromNow();

@@ -12,6 +12,8 @@ var BIG_SPINNER = {
     color: '#000',
 };
 
+var FMT = 'dddd, MMMM Do YYYY';
+
 // Display a success message
 function alertSuccess(message) {
     $('.alert-box .msg').html(message);
