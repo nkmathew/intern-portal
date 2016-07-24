@@ -16,3 +16,11 @@
     background-color: #357EBD;
     border-radius: 0px 8px 8px 0px !important;
 }
+
+.intern-calendar {
+    float: left;
+}
+
+#calendar-month-1 {
+    float: left;
+}

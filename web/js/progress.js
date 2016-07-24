@@ -4,6 +4,14 @@
 
 var fmt = 'D/M/Y';
 
+function indexOfArray(val, array) {
+    var hash = {}, i;
+    for (i = 0; i < array.length; i++) {
+        hash[array[i]] = i;
+    }
+    return hash.hasOwnProperty(val);
+};
+
 /*
  * Displays a calendar showing the start, finish of the internship and
  * highlights the days in between
@@ -16,18 +24,23 @@ function showInternshipCalendar(weeks, startDate) {
     var endDate  = moment(startDate).add(weeks, 'w');
     var endDate1 = moment(endDate).add(1, 'd');
     var date     = moment(startDate);
-    var id       = 0;
+    var months   = [];
     while (date.isBefore(endDate1)) {
-        id++;
         var start = moment(date).startOf('month');
         var end   = moment(date).endOf('month');
-
+        var arr = [start.format(fmt), end.format(fmt)];
+        date1 = moment(date)
+        date.add(1, 'd');
+        if (!indexOfArray(arr, months)) {
+            months.push(arr);
+        }
+    }
+    for (var id = 1; id <= months.length; id++) {
+        var start = moment(months[id-1][0], fmt),
+            end = moment(months[id-1][1], fmt);
         if (start.isBefore(startDate)) {
             start = moment(startDate);
         }
-
-        date.add(1, 'M');
-
         var dateOptions = {
                 maxViewMode: 2,
                 todayHighlight: true,
@@ -61,5 +74,5 @@ function showInternshipCalendar(weeks, startDate) {
 }
 
 $(document).ready(function () {
-    showInternshipCalendar(10, '14/06/2016')
+    showInternshipCalendar(10, '27/04/2016')
 });
