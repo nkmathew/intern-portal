@@ -1,0 +1,18 @@
+.intern-day {
+    background-color: #EBF4F8;
+    border-radius: 0px !important;
+}
+
+.terminal-start-day {
+    color: white;
+    font-weight: bold;
+    background-color: #357EBD;
+    border-radius: 8px 0px 0px 8px !important;
+}
+
+.terminal-end-day {
+    color: white;
+    font-weight: bold;
+    background-color: #357EBD;
+    border-radius: 0px 8px 8px 0px !important;
+}
