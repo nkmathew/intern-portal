@@ -26,7 +26,7 @@ $this->title = 'Home';
         ],
         [
             'label' => '<span class="glyphicon glyphicon-stats"></span> Progress',
-            'content' => $this->render('progress'),
+            'content' => $this->context->actionProgress(),
             'headerOptions' => ['id' => 'progress-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-progress'],
         ],

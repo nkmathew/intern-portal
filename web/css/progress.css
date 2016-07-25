@@ -22,7 +22,13 @@
 }
 
 .completed-intern-day {
-    background-color: rgba(133, 196, 0, 0.54);
+    background-color: rgba(133, 196, 0, 0.38);
+    font-weight: bold;
+}
+
+.stat-number {
+    color: #0c9100;
+    font-size: 24px;
     font-weight: bold;
 }
 

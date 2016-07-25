@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
 ProfileAsset::register($this);
 
+$this->title = "Profile";
+
 ?>
 
 <div class="site-profile">

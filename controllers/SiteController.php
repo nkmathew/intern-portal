@@ -19,6 +19,7 @@ use app\models\ContactForm;
 use app\models\ProfileForm;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
+use Carbon\Carbon;
 
 /**
  * Site controller
@@ -96,7 +97,15 @@ class SiteController extends Controller
      */
     public function actionProgress()
     {
-        return $this->renderPjax('progress');
+        $profile = Profile::findByEmail(Yii::$app->user->identity->email);
+        $date = $profile->start_date;
+        $daysLeft = Carbon::parse($date)->diffInDays(Carbon::now(), false);
+        $duration = $profile->duration;
+        return $this->renderPartial('progress', [
+            'duration' => $duration,
+            'startDate' => $date,
+            'daysLeft' => $daysLeft,
+        ]);
     }
 
     /**
