@@ -98,13 +98,20 @@ class SiteController extends Controller
     public function actionProgress()
     {
         $profile = Profile::findByEmail(Yii::$app->user->identity->email);
-        $date = $profile->start_date;
-        $daysLeft = Carbon::parse($date)->diffInDays(Carbon::now(), false);
+        $start = $profile->start_date;
         $duration = $profile->duration;
+        $startDate = Carbon::parse($start);
+        $endDate = $startDate->copy()->addWeek($duration);
+        $daysLeft = Carbon::now()->diffInDays($endDate, false);
+        $weeksLeft = Carbon::now()->diffInWeeks($endDate, false);
+        $daysCompleted = $startDate->diffInDays(Carbon::now(), false);
         return $this->renderPartial('progress', [
             'duration' => $duration,
-            'startDate' => $date,
+            'startDate' => $start,
+            'endDate' => $endDate,
             'daysLeft' => $daysLeft,
+            'daysCompleted' => $daysCompleted,
+            'weeksLeft' => $weeksLeft
         ]);
     }
 

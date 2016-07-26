@@ -16,19 +16,24 @@ ProgressAsset::register($this);
         <div id="calendar-month-2" class="col-md-6 intern-calendar"></div>
         <div id="calendar-month-3" class="col-md-6 intern-calendar"></div>
         <div id="calendar-month-4" class="col-md-6 intern-calendar"></div>
-        <p>Test</p>
     </div>
     <div class="col-md-6">
         <div class="Mm">
-            <div class="stat-container">
-                <span class="stat-number"><?= abs($daysLeft) ?></span>
-                <span class="stat-desc">days left
-                    <?php
-                    if ($daysLeft < 0) {
-                        echo 'till start of Internship';
-                    }
-                    ?>
-                </span>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Days Completed</span>
+                <span class="stat-number"><?= $daysCompleted ?></span>
+            </div>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Days Left</span>
+                <span class="stat-number"><?= $daysLeft ?></span>
+            </div>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Duration(Weeks)</span>
+                <span class="stat-number"><?= $duration ?></span>
+            </div>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Weeks Left</span>
+                <span class="stat-number"><?= $weeksLeft ?></span>
             </div>
         </div>
     </div>

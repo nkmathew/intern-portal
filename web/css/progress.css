@@ -32,3 +32,18 @@
     font-weight: bold;
 }
 
+.stat-container:hover {
+    background-color: #f2f2f2;
+}
+
+.stat-container {
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.stat-desc {
+    display: block;
+    width: 100%;
+    font: bold 15px arial,sans-serif;
+}
