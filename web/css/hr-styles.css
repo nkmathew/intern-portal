@@ -1,0 +1,28 @@
+/**
+ * Favourite hr styles
+ *
+ * http://codepen.io/nkmathew/pen/kXpQxA
+ *
+ */
+hr.style3 {
+    border-top: 1px dashed #8c8b8b;
+}
+
+hr.style4 {
+    border-top: 1px dotted #8c8b8b;
+}
+
+hr.style6 {
+    background-color: #fff;
+    border-top: 2px dotted #8c8b8b;
+}
+
+hr.style9 {
+    border-top: 1px dashed #8c8b8b;
+    border-bottom: 1px dashed #fff;
+}
+
+hr.style10 {
+    border-top: 1px dotted #8c8b8b;
+    border-bottom: 1px dotted #fff;
+}

@@ -37,4 +37,8 @@ ProgressAsset::register($this);
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <hr class="style9">
+        <button class="btn-primary btn">Reveal Entries</button>
+    </div>
 </div>

@@ -18,7 +18,8 @@ class ProgressAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/progress.css'
+        'css/progress.css',
+        'css/hr-styles.css',
     ];
     public $js = [
         'js/progress.js',
