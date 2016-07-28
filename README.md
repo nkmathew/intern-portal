@@ -98,6 +98,8 @@ coordinator to monitor student progress easily.
 + Ability to export the whole logbook as a printable pdf with supervisor remarks and
   student logs all in one
 + Ability to view diffs when entries are updated??
++ Prompt user to save before leaving and show an icon that shows that the entry is
+  unsaved
 
 ### Installation Steps
 
