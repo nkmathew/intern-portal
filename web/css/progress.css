@@ -47,3 +47,7 @@
     width: 100%;
     font: bold 15px arial,sans-serif;
 }
+
+#internship-calendars .day.today {
+    border: 1px dashed #808080 !important;
+}
