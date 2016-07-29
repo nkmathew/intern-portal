@@ -51,3 +51,8 @@
 #internship-calendars .day.today {
     border: 1px dashed #808080 !important;
 }
+
+.date-with-entry-hl {
+    background: #85c400 !important;
+    color: black !important;
+}

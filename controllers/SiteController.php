@@ -97,7 +97,8 @@ class SiteController extends Controller
      */
     public function actionProgress()
     {
-        $profile = Profile::findByEmail(Yii::$app->user->identity->email);
+        $loggedInEmail = Yii::$app->user->identity->email;
+        $profile = Profile::findByEmail($loggedInEmail);
         $start = $profile->start_date;
         $duration = $profile->duration;
         $startDate = Carbon::parse($start);
@@ -105,14 +106,25 @@ class SiteController extends Controller
         $daysLeft = Carbon::now()->diffInDays($endDate, false);
         $weeksLeft = Carbon::now()->diffInWeeks($endDate, false);
         $daysCompleted = $startDate->diffInDays(Carbon::now(), false);
-        return $this->renderPartial('progress', [
-            'duration' => $duration,
-            'startDate' => $start,
-            'endDate' => $endDate,
-            'daysLeft' => $daysLeft,
-            'daysCompleted' => $daysCompleted,
-            'weeksLeft' => $weeksLeft
-        ]);
+
+        if (isset($_GET['list-entry-dates'])) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $entries = Logbook::findBySql("SELECT entry_for FROM logbook WHERE author = '$loggedInEmail'")->all();
+            $entryDates = [];
+            foreach ($entries as $entry) {
+                array_push($entryDates, $entry->entry_for);
+            }
+            return $entryDates;
+        } else {
+            return $this->renderPartial('progress', [
+                'duration' => $duration,
+                'startDate' => $start,
+                'endDate' => $endDate,
+                'daysLeft' => $daysLeft,
+                'daysCompleted' => $daysCompleted,
+                'weeksLeft' => $weeksLeft
+            ]);
+        }
     }
 
     /**

@@ -4,6 +4,7 @@
 
 // var fmt = 'D/M/Y';
 var fmt = 'Y-M-D';
+var FMT = 'Y-M-D';
 
 function indexOfArray(val, array) {
     var hash = {}, i;
@@ -27,6 +28,7 @@ function showInternshipCalendar(weeks, startDate, fmt) {
     var endDate1 = moment(endDate).add(1, 'd');
     var date     = moment(startDate);
     var months   = [];
+    var entryDates = $.ajax({url:'/site/progress?list-entry-dates', async:false}).responseJSON;
     while (date.isBefore(endDate1)) {
         var start = moment(date).startOf('month');
         var end   = moment(date).endOf('month');
@@ -71,11 +73,31 @@ function showInternshipCalendar(weeks, startDate, fmt) {
                     if (mdate.isBefore(moment())) {
                         className += ' completed-intern-day';
                     }
+                    if (entryDates.indexOf(mdate.format('Y-MM-DD')) != -1) {
+                        className += ' date-with-entry';
+                    }
                 }
                 return {classes: className};
             },
         }
         $('#calendar-month-' + id).datepicker(dateOptions);
+    }
+}
+
+/*
+ * Shows a checkmark beside every date with an associated entry
+ */
+function revealEntries() {
+    if ($('.date-with-entry').hasClass('date-with-entry-hl')) {
+        $('.date-with-entry').removeClass('date-with-entry-hl');
+        $('#btn-reveal-entries .label').text('Hide Entries');
+        $('#btn-reveal-entries div').removeClass('glyphicon-eye-open');
+        $('#btn-reveal-entries div').addClass('glyphicon-eye-close');
+    } else {
+        $('.date-with-entry').addClass('date-with-entry-hl');
+        $('#btn-reveal-entries .label').text('Reveal Entries');
+        $('#btn-reveal-entries div').removeClass('glyphicon-eye-close');
+        $('#btn-reveal-entries div').addClass('glyphicon-eye-open');
     }
 }
 

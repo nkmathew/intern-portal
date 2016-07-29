@@ -39,6 +39,10 @@ ProgressAsset::register($this);
     </div>
     <div class="col-md-6">
         <hr class="style9">
-        <button class="btn-primary btn">Reveal Entries</button>
+        <button id="btn-reveal-entries"
+                onClick="revealEntries()"
+                class="btn-primary btn">
+            <div class="glyphicon glyphicon-eye-open"></div>
+            <span class="label">Reveal Entries</span></button>
     </div>
 </div>
