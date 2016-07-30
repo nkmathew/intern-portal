@@ -90,14 +90,14 @@ function showInternshipCalendar(weeks, startDate, fmt) {
 function revealEntries() {
     if ($('.date-with-entry').hasClass('date-with-entry-hl')) {
         $('.date-with-entry').removeClass('date-with-entry-hl');
-        $('#btn-reveal-entries .label').text('Hide Entries');
-        $('#btn-reveal-entries div').removeClass('glyphicon-eye-open');
-        $('#btn-reveal-entries div').addClass('glyphicon-eye-close');
-    } else {
-        $('.date-with-entry').addClass('date-with-entry-hl');
         $('#btn-reveal-entries .label').text('Reveal Entries');
         $('#btn-reveal-entries div').removeClass('glyphicon-eye-close');
         $('#btn-reveal-entries div').addClass('glyphicon-eye-open');
+    } else {
+        $('#btn-reveal-entries .label').text('Hide Entries');
+        $('.date-with-entry').addClass('date-with-entry-hl');
+        $('#btn-reveal-entries div').removeClass('glyphicon-eye-open');
+        $('#btn-reveal-entries div').addClass('glyphicon-eye-close');
     }
 }
 
