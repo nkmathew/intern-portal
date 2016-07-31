@@ -164,7 +164,7 @@ $(document).ready(function () {
         },
         datesDisabled: ['07/06/2016', '07/21/2016'],
         toggleActive: true
-    })
+    });
 
     // When a different date is clicked in the calendar
     $(this).on('changeDate', function (event) {

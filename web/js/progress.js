@@ -5,6 +5,12 @@
 // var fmt = 'D/M/Y';
 var fmt = 'Y-M-D';
 
+// Used to simulate a double click for the datepicker which only has a changeDate event
+var PREV_CLICK = {
+    time: 0,
+    date: Date()
+};
+
 function indexOfArray(val, array) {
     var hash = {}, i;
     for (i = 0; i < array.length; i++) {
@@ -109,6 +115,23 @@ $(document).ready(function () {
     var startDate = $('#internship-calendars').data('startdate'),
         duration  = $('#internship-calendars').data('duration');
     showInternshipCalendar(duration, startDate, fmt);
-    // Prevent days from being clicked
-    $("#internship-calendars .day").bind('click', false);
+
+    // Double clicking a date displays the entry for that date in the logbook tab
+    $(this).on('changeDate', function (event) {
+        if (event.target.parentNode.id == 'internship-calendars') {
+            var date = event.date;
+            if (date) {
+                PREV_CLICK.date = date;
+            } else {
+                date = PREV_CLICK.date;
+            }
+            var diff = Date.now() - PREV_CLICK.time;
+            PREV_CLICK.time = Date.now();
+            date = moment(date).format('Y-M-D');
+            if (diff <= 500) {
+                $('a[href=#tab-logbook]').click();
+                showLogbook(date);
+            }
+        }
+    });
 });
