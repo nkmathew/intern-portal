@@ -103,7 +103,6 @@ function revealEntries() {
 $(document).ready(function () {
     var startDate = $('#internship-calendars').data('startdate'),
         duration  = $('#internship-calendars').data('duration');
-    console.log(duration, startDate)
     showInternshipCalendar(duration, startDate, fmt);
     // Prevent days from being clicked
     $("#internship-calendars .day").bind('click', false);
