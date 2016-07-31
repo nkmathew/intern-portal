@@ -56,9 +56,9 @@ function showInternshipCalendar(weeks, startDate, fmt) {
                     if (date.getDay() == 0) {
                         className = 'intern-day sunday';
                     } else if (mdate.isSame(startDate)) {
-                        className = 'terminal-start-day';
+                        className = 'terminal terminal-start-day';
                     } else if (mdate.isSame(endDate)) {
-                        className = 'terminal-end-day';
+                        className = 'terminal terminal-end-day';
                     } else {
                         className = 'intern-day';
                     }

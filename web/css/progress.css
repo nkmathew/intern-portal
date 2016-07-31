@@ -3,17 +3,23 @@
     border-radius: 0px !important;
 }
 
-.terminal-start-day {
+.terminal {
     color: white;
     font-weight: bold;
     background-color: #357EBD;
+}
+
+.terminal:hover {
+    color: white !important;
+    font-weight: bold !important;
+    background-color: #357EBD !important;
+}
+
+.terminal-start-day {
     border-radius: 8px 0px 0px 8px !important;
 }
 
 .terminal-end-day {
-    color: white;
-    font-weight: bold;
-    background-color: #357EBD;
     border-radius: 0px 8px 8px 0px !important;
 }
 
