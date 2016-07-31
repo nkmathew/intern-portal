@@ -4,7 +4,6 @@
 
 // var fmt = 'D/M/Y';
 var fmt = 'Y-M-D';
-var FMT = 'Y-M-D';
 
 function indexOfArray(val, array) {
     var hash = {}, i;
