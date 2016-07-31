@@ -21,19 +21,15 @@ ProgressAsset::register($this);
         <div class="Mm">
             <div class="col-md-4 stat-container">
                 <span class="stat-desc">Days Completed</span>
-                <span class="stat-number"><?= $daysCompleted ?></span>
+                <span class="stat-number"><?php echo "$daysCompleted / $totalDays" ?></span>
+            </div>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Weeks Completed</span>
+                <span class="stat-number"><?php echo "$weeksCompleted / $duration" ?></span>
             </div>
             <div class="col-md-4 stat-container">
                 <span class="stat-desc">Days Left</span>
                 <span class="stat-number"><?= $daysLeft ?></span>
-            </div>
-            <div class="col-md-4 stat-container">
-                <span class="stat-desc">Duration(Weeks)</span>
-                <span class="stat-number"><?= $duration ?></span>
-            </div>
-            <div class="col-md-4 stat-container">
-                <span class="stat-desc">Weeks Left</span>
-                <span class="stat-number"><?= $weeksLeft ?></span>
             </div>
         </div>
     </div>

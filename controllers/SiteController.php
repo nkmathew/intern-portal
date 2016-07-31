@@ -103,9 +103,11 @@ class SiteController extends Controller
         $duration = $profile->duration;
         $startDate = Carbon::parse($start);
         $endDate = $startDate->copy()->addWeek($duration);
+        $totalDays = $startDate->diffInDays($endDate, false);
         $daysLeft = Carbon::now()->diffInDays($endDate, false);
         $weeksLeft = Carbon::now()->diffInWeeks($endDate, false);
         $daysCompleted = $startDate->diffInDays(Carbon::now(), false);
+        $weeksCompleted = ceil($daysCompleted/$totalDays*$duration);
 
         if (isset($_GET['list-entry-dates'])) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -122,7 +124,9 @@ class SiteController extends Controller
                 'endDate' => $endDate,
                 'daysLeft' => $daysLeft,
                 'daysCompleted' => $daysCompleted,
-                'weeksLeft' => $weeksLeft
+                'weeksLeft' => $weeksLeft,
+                'totalDays' => $totalDays,
+                'weeksCompleted' => $weeksCompleted
             ]);
         }
     }
