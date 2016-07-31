@@ -27,15 +27,15 @@ LogbookAsset::register($this);
             </button>
         </div>
         <script id="logbook-template" type="text/x-handlebars-template">
-            <div id="logbook-entry-area" data-entry-for="{{entry_for}}">
+            <div id="logbook-entry-area" data-entry-for="{{entry_for}}" data-updated="{{updated}}" data-created="{{created}}">
                 <div class="entry-stats well well-sm">
                     <div class="stat entry-date-updated" title="Edited" data-placement="left" data-toggle="tooltip">
                         <span class="glyphicon glyphicon-time"></span>
-                        {{updated}}
+                        <span id="entry-updated">{{updated1}}</span>
                     </div>
                     <div class="stat entry-date-created" title="Created" data-placement="left" data-toggle="tooltip">
                         <span class="glyphicon glyphicon-dashboard"></span>
-                        {{created}}
+                        <span id="entry-created">{{updated1}}</span>
                     </div>
                     <div class="stat entry-date-created" title="Entry For" data-placement="left" data-toggle="tooltip">
                         <span class="glyphicon glyphicon-calendar"></span>

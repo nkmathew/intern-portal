@@ -5,8 +5,8 @@
 var TEMPLATE = $("#logbook-template").html();
 
 function renderLogbookEntry(json, template) {
-    json.updated = moment(parseFloat(json.updated)).fromNow();
-    json.created = moment(parseFloat(json.created)).fromNow();
+    json.updated1 = moment(parseFloat(json.updated)).fromNow();
+    json.created1 = moment(parseFloat(json.created)).fromNow();
     json.entryDate = moment(json.entry_for).format(FMT);
     var html     = template(json);
     $('#container-logbook').html(html);
@@ -176,7 +176,10 @@ $(document).ready(function () {
         }
     });
 
-    $('#save-logbook').click(function (event) {
-    });
-
+   window.setInterval(function () {
+       var created = $('#logbook-entry-area').data('created');
+       var updated = $('#logbook-entry-area').data('updated');
+       $('#entry-created').text(moment(created).fromNow());
+       $('#entry-updated').text(moment(updated).fromNow());
+   }, 1000);
 });
