@@ -50,6 +50,11 @@ function showInternshipCalendar(weeks, startDate, fmt) {
             startDate: start.toDate(),
             endDate: end.toDate(),
             beforeShowDay: function (date) {
+                if (date.getDay() == 0 ||
+                    date.getDay() == 6) {
+                    // Disable weekends
+                    return false;
+                }
                 var mdate     = moment(date);
                 var className = '';
                 if (mdate.isBefore(endDate1)) {
