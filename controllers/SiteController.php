@@ -108,10 +108,11 @@ class SiteController extends Controller
         $weeksLeft = Carbon::now()->diffInWeeks($endDate, false);
         $daysCompleted = $startDate->diffInDays(Carbon::now(), false);
         $weeksCompleted = ceil($daysCompleted/$totalDays*$duration);
+        $weekdays = $startDate->diffInWeekdays($endDate, false);
 
+        $entries = Logbook::findBySql("SELECT entry_for FROM logbook WHERE author = '$loggedInEmail'")->all();
         if (isset($_GET['list-entry-dates'])) {
             Yii::$app->response->format = Response::FORMAT_JSON;
-            $entries = Logbook::findBySql("SELECT entry_for FROM logbook WHERE author = '$loggedInEmail'")->all();
             $entryDates = [];
             foreach ($entries as $entry) {
                 array_push($entryDates, $entry->entry_for);
@@ -126,7 +127,9 @@ class SiteController extends Controller
                 'daysCompleted' => $daysCompleted,
                 'weeksLeft' => $weeksLeft,
                 'totalDays' => $totalDays,
-                'weeksCompleted' => $weeksCompleted
+                'weeksCompleted' => $weeksCompleted,
+                'weekdays' => $weekdays,
+                'datesWithEntries' => count($entries),
             ]);
         }
     }

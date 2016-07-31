@@ -31,6 +31,10 @@ ProgressAsset::register($this);
                 <span class="stat-desc">Days Left</span>
                 <span class="stat-number"><?= $daysLeft ?></span>
             </div>
+            <div class="col-md-4 stat-container">
+                <span class="stat-desc">Filled Dates</span>
+                <span class="stat-number"><?php echo "$datesWithEntries / $weekdays" ?></span>
+            </div>
         </div>
     </div>
     <div class="col-md-6">
