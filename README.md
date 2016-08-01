@@ -61,28 +61,19 @@ coordinator to monitor student progress easily.
 ### Enhancements
 + Long emails should be ellipsified/truncated with the full address being displayed
   on hover
-+ Personalized greeting when pass reset is requested i.e refer to them by name
-  instead of by their email
 + Login with google accounts since student emails are managed by gmail
 + Records login attempts
 + Ability to search within your log
 + Add gravatar support
 + Logout link should be in a dropdown with the dropbdown showing the truncated
   email, the avatar
-+ The profile page should be moved to a modal from a tab opened through the dropdown
-  in the logout link
-+ Or the profile tab only becomes visible when opened from the dropdown in the
-  navbar
 + Track user logins, record their ips and times maybe show in an account activity
   tab
-+ Stackoverflow style notifications??
 + Show the Course Name when you hover over the registration number
 + Email sender should keep track of the response from sending each email
 + Copy the styling used in Feedreader newsletters
 + Listen to onhashchange to react to tab urls like http://intern.jkuat.dev/#tab-invite
 + A coordinator should be shown a different looking profile form from a student
-+ Change the x button to something other than a button to prevent the groove effect
-  when clicked
 + Copy penzu's email layout
 + Internship start date should not be a one-time permanent change to cater for
   mistakes. Instead the coordinator should be notified when the intern sets his/her
@@ -92,8 +83,6 @@ coordinator to monitor student progress easily.
 + The entry editor should like Penzu's with ruled lines like a textbook
 + Show entry preview when mouse hovers over date for some seconds the way
   stackoverflow shows tag description on hover
-+ Little checkbox at the left top corner for dates with entries
-+ Should not change updated timestamp until a change is actually made
 + Disable button until there's an actual change??
 + Ability to export the whole logbook as a printable pdf with supervisor remarks and
   student logs all in one
