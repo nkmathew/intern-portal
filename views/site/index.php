@@ -30,6 +30,12 @@ $this->title = 'Home';
             'headerOptions' => ['id' => 'progress-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-progress'],
         ],
+        [
+            'label' => '<span class="glyphicon glyphicon-list-alt"></span> Preview',
+            'content' => $this->render('preview'),
+            'headerOptions' => ['id' => 'preview-tab', 'class' => 'tab-main'],
+            'options' => ['id' => 'tab-preview'],
+        ]
     ];
     $email = Yii::$app->user->identity->email;
     if (!Yii::$app->user->isGuest && !strchr($email, 'student')) {

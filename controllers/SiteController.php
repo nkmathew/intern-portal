@@ -487,4 +487,21 @@ class SiteController extends Controller
             return $logbook;
         }
     }
+
+    /**
+     * Displays the full logbook a week at a time
+     *
+     */
+    public function actionPreviewLogbook() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $week = Yii::$app->request->get('week');
+        $week = $week ? 1 : $week;
+        $loggedInEmail = Yii::$app->user->identity->email;
+        $profile = new Profile();
+        $startDate = Profile::findOne(['email' => $loggedInEmail])->start_date;
+        $startDate = Carbon::parse($startDate);
+        $week = $startDate->copy()->addWeek(1)->format('Y-m-d');
+        return Logbook::findBySql("SELECT * from Logbook WHERE entry_for < '$week'");
+        // return $startDate;
+    }
 }
