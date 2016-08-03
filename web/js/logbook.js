@@ -59,6 +59,8 @@ function showLogbook(date) {
             $('.entry-stats').hide();
             $('#new-entry-prompt').removeClass('hidden');
             $('#new-entry-prompt').show();
+            $('#selected-date').html(moment(date).format(FMT));
+            $('#selected-date').data('requestedDate', moment(date).format('Y-M-D'));
             $('#logbook-entry-area').hide();
             if (CKEDITOR.instances['logbook-editor'] != undefined) {
                 CKEDITOR.instances['logbook-editor'].updateElement();
@@ -77,8 +79,8 @@ function prepareForNewEntry() {
     $('#logbook-editor').hide();
     $('#logbook-entry-area').show();
     CKEDITOR.replace('logbook-editor');
-    var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
-    var date = moment(selectedDate).format(FMT)
+    var requestedDate = $('#selected-date').data('requestedDate');
+    var date = moment(requestedDate).format(FMT)
     $('#btn-save-logbook-label').text('Create entry for ' + date);
 }
 
@@ -86,7 +88,7 @@ function saveLogbookEntry() {
     var url          = '/site/show-logbook?action=save';
     var content      = CKEDITOR.instances['logbook-editor'].getData()
     var time         = new Date().getTime();
-    var selectedDate = $('#container-logbook-date').data('datepicker').viewDate;
+    var selectedDate = $('#selected-date').data('requestedDate');
     selectedDate     = moment(selectedDate).format('Y-M-D');
     $("#logbook-entry-area").spin({color: 'black'});
     $.ajax({
@@ -115,8 +117,6 @@ function saveLogbookEntry() {
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
-
-    $('#selected-date').html(prevWeekDay().format(FMT));
 
     TEMPLATE = Handlebars.compile(TEMPLATE);
 
@@ -170,7 +170,6 @@ $(document).ready(function () {
     $(this).on('changeDate', function (event) {
         if (event.target.id == 'container-logbook-date') {
             var date = event.date;
-            $('#selected-date').html(moment(date).format(FMT));
             date = moment(date).format('Y-M-D');
             showLogbook(date);
         }
