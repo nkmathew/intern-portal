@@ -60,6 +60,7 @@ function showLogbook(date) {
             $('#new-entry-prompt').removeClass('hidden');
             $('#new-entry-prompt').show();
             $('#selected-date').html(moment(date).format(FMT));
+            $("#selected-date").fadeIn(500).fadeOut(500).fadeIn(1000);
             $('#selected-date').data('requestedDate', moment(date).format('Y-M-D'));
             $('#logbook-entry-area').hide();
             if (CKEDITOR.instances['logbook-editor'] != undefined) {
