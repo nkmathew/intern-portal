@@ -89,6 +89,7 @@ coordinator to monitor student progress easily.
 + Ability to view diffs when entries are updated??
 + Prompt user to save before leaving and show an icon that shows that the entry is
   unsaved
++ Capture Ctrl+S keypress
 
 ### Installation Steps
 
