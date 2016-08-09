@@ -90,6 +90,9 @@ coordinator to monitor student progress easily.
 + Prompt user to save before leaving and show an icon that shows that the entry is
   unsaved
 + Capture Ctrl+S keypress
++ Logbook editor calendar should start on the intership day and not just 3 months
+  before the current date
++ Throw error when no date is specified
 
 ### Installation Steps
 
