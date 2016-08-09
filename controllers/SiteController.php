@@ -431,6 +431,10 @@ class SiteController extends Controller
         return $this->renderPartial('sentInvites');
     }
 
+    public function actionPreview() {
+        return $this->render('preview');
+    }
+
     public function actionShowLogbook() {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $action = Yii::$app->request->get('action');
@@ -454,7 +458,7 @@ class SiteController extends Controller
                 if ($retVal) {
                     return ['status' => 'Success'];
                 } else {
-                    return ['status' => 'Failed to save the record'];
+                    return ['status' => 'Failed to save the record ' . $retVal];
                 }
             } elseif ($action == 'delete') {
                 if ($logbook) {
@@ -489,19 +493,41 @@ class SiteController extends Controller
     }
 
     /**
+     * Returns a date range representing the given week starting from the specified date
+     *
+     */
+    public function weekRanges($startDate, $week) {
+        $startDate = Carbon::parse($startDate);
+        $ranges = [];
+        for ($i = 0; $i < $week+1; $i++) {
+            $ranges[$i]['start'] = $startDate->format('Y-m-d');
+            $ranges[$i]['end'] = $startDate->addWeek(1)->format('Y-m-d');
+            $startDate->addDay(1);
+        }
+        return $ranges[$week];
+    }
+
+    /**
      * Displays the full logbook a week at a time
      *
      */
     public function actionPreviewLogbook() {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $week = Yii::$app->request->get('week');
-        $week = $week ? 1 : $week;
+        $week = intval($week) ? intval($week) : -1;
         $loggedInEmail = Yii::$app->user->identity->email;
-        $profile = new Profile();
+        $profile = Profile::findByEmail($loggedInEmail);
         $startDate = Profile::findOne(['email' => $loggedInEmail])->start_date;
         $startDate = Carbon::parse($startDate);
-        $week = $startDate->copy()->addWeek(1)->format('Y-m-d');
-        return Logbook::findBySql("SELECT * from Logbook WHERE entry_for < '$week'");
+        if ($week < 0) {
+            $week = $profile->duration + $week;
+        }
+        $wk = $week;
+        $weekRanges = $this->weekRanges($startDate, $wk);
+        $start = $weekRanges['start'];
+        $end = $weekRanges['end'];
+        // return [$profile->duration, $weeka, $week, $weekRanges];
+        return Logbook::findBySql("SELECT * from Logbook WHERE entry_for >= '$start' AND entry_for <= '$end'")->all();
         // return $startDate;
     }
 }

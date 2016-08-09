@@ -6,20 +6,25 @@
  * @date: 01/08/2016
  * @time: 09:27
  */
- 
+
 /* @var $this yii\web\View */
 
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
+use app\assets\PreviewAsset;
 
+PreviewAsset::register($this);
 ?>
 
 <div class="site-preview">
-    <div class="col-md-3">First</div>
-    <div class="col-md-3">Second</div>
-    <div class="col-md-3">Third</div>
-    <div class="col-md-3">Fourth</div>
-    <div class="col-md-3">Fifth</div>
-    <div class="col-md-3">Sixth</div>
-    <div class="col-md-3">Seventh</div>
+    <div id="entry-list" class="container">
+        <script id="logbook-preview-template" type="text/x-handlebars-template">
+            <div class="entry-body col-md-3">
+                <div class="entry-text">{{{entry}}}</div>
+                <div class="date-overlay">{{entry_for}}</div>
+            </div>
+        </script>
+    </div>
+    <div class="nav-buttons">
+        <button class="btn btn-primary">Refresh</button>
+        <button class="btn btn-primary">Next</button>
+    </div>
 </div>

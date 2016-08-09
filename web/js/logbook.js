@@ -38,6 +38,7 @@ function showLogbook(date) {
     $(".active.day").spin({color:'white',length:0,speed:1.4});
     $.getJSON(url, function (json) {
         $(".active.day").spin(false);
+        $('#selected-date').data('requestedDate', moment(date).format('Y-M-D'));
         if (!jQuery.isEmptyObject(json)) {
             $('#new-entry-prompt').hide();
             $('.entry-stats').show();
@@ -61,7 +62,6 @@ function showLogbook(date) {
             $('#new-entry-prompt').show();
             $('#selected-date').html(moment(date).format(FMT));
             $("#selected-date").fadeIn(500).fadeOut(500).fadeIn(1000);
-            $('#selected-date').data('requestedDate', moment(date).format('Y-M-D'));
             $('#logbook-entry-area').hide();
             if (CKEDITOR.instances['logbook-editor'] != undefined) {
                 CKEDITOR.instances['logbook-editor'].updateElement();

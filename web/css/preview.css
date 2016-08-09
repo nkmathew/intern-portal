@@ -1,0 +1,30 @@
+.entry-body {
+    line-height: 1.2;
+    font-family: Calibri;
+    font-size: 115%;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 5px;
+    border: 1px solid #5DBA40;
+    padding: 0px;
+}
+
+.nav-buttons {
+    padding-top: 10px;
+    float: right;
+}
+
+.entry-text {
+    height: 90%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.date-overlay {
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.28);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
