@@ -28,3 +28,12 @@
     text-align: center;
     font-weight: bold;
 }
+
+.week-label:hover {
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+}
+
+.week-label {
+    font-weight: bold;
+}

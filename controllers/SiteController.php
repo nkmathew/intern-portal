@@ -519,11 +519,8 @@ class SiteController extends Controller
         $profile = Profile::findByEmail($loggedInEmail);
         $startDate = Profile::findOne(['email' => $loggedInEmail])->start_date;
         $startDate = Carbon::parse($startDate);
-        if ($week < 0) {
-            $week = $profile->duration + $week;
-        }
-        $wk = $week;
-        $weekRanges = $this->weekRanges($startDate, $wk);
+        $week = ($week + $profile->duration) % 8;
+        $weekRanges = $this->weekRanges($startDate, $week);
         $start = $weekRanges['start'];
         $end = $weekRanges['end'];
         return Logbook::findBySql("SELECT * from Logbook WHERE entry_for >= '$start' AND entry_for <= '$end' ORDER BY `entry_for`")->all();
