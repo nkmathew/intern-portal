@@ -493,43 +493,31 @@ class SiteController extends Controller
     }
 
     /**
-     * Returns a date range representing the given week starting from the specified date
-     *
-     */
-    public function weekRanges($startDate, $week) {
-        $startDate = Carbon::parse($startDate);
-        $ranges = [];
-        for ($i = 0; $i < $week+1; $i++) {
-            $ranges[$i]['start'] = $startDate->format('Y-m-d');
-            $ranges[$i]['end'] = $startDate->addWeek(1)->format('Y-m-d');
-            $startDate->addDay(1);
-        }
-        return $ranges[$week];
-    }
-
-    /**
      * Displays the full logbook a week at a time
      *
      */
     public function actionPreviewLogbook() {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $week = Yii::$app->request->get('week');
-        $week = intval($week) ? intval($week) : -1;
+        $week = intval($week);
+        // return $week;
         $loggedInEmail = Yii::$app->user->identity->email;
         $profile = Profile::findByEmail($loggedInEmail);
+        $duration = $profile->duration + 1;
+        $week = ($week + $duration) % $duration;
         $startDate = Profile::findOne(['email' => $loggedInEmail])->start_date;
         $startDate = Carbon::parse($startDate);
-        $week = ($week + $profile->duration) % 8;
-        $weekRanges = $this->weekRanges($startDate, $week);
-        $start = $weekRanges['start'];
-        $end = $weekRanges['end'];
+        $start = $startDate->copy()->startOfWeek()->addWeeks($week);
+        $end = $startDate->copy()->endOfWeek()->addWeeks($week);
+
         $entryList = Logbook::findBySql("
         SELECT * from
         Logbook WHERE entry_for >= '$start'
                 AND entry_for <= '$end'
         ORDER BY `entry_for`")->all();
         return [
-            'startDate' => $startDate,
+            'start' => $start->format('jS F Y'),
+            'end' => $end->format('jS F Y'),
             'week' => $week,
             'entryList' => $entryList,
         ];

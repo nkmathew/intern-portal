@@ -34,5 +34,5 @@ function prevWeek() {
 
 $(document).ready(function () {
     PREV_TEMPLATE = Handlebars.compile(PREV_TEMPLATE);
-    displayWeek(-2);
+    displayWeek(-1);
 });
