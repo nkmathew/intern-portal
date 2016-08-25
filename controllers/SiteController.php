@@ -523,6 +523,15 @@ class SiteController extends Controller
         $weekRanges = $this->weekRanges($startDate, $week);
         $start = $weekRanges['start'];
         $end = $weekRanges['end'];
-        return Logbook::findBySql("SELECT * from Logbook WHERE entry_for >= '$start' AND entry_for <= '$end' ORDER BY `entry_for`")->all();
+        $entryList = Logbook::findBySql("
+        SELECT * from
+        Logbook WHERE entry_for >= '$start'
+                AND entry_for <= '$end'
+        ORDER BY `entry_for`")->all();
+        return [
+            'startDate' => $startDate,
+            'week' => $week,
+            'entryList' => $entryList,
+        ];
     }
 }

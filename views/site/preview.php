@@ -27,7 +27,7 @@ PreviewAsset::register($this);
         <button class="btn btn-sm btn-primary" onclick="prevWeek()">
             <span class="glyphicon glyphicon-step-backward"></span>Previous
         </button>
-        <span class="btn btn-sm btn-success week-label" id="week-number">8</span>
+        <span class="btn btn-sm btn-success week-label" id="week-number">Week 8</span>
         <button class="btn btn-sm btn-primary" onclick="nextWeek()">Next
             <span class="glyphicon glyphicon-step-forward"></span>
         </button>
