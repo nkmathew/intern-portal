@@ -136,7 +136,6 @@ function initializeCalendar() {
                     return false;
                 }
             },
-            datesDisabled: ['07/06/2016', '07/21/2016'],
             toggleActive: true
         });
     });
