@@ -522,4 +522,16 @@ class SiteController extends Controller
             'entryList' => $entryList,
         ];
     }
+
+    /**
+     * Returns profile information as JSON
+     *
+     * @return null|static
+     */
+    public function actionFetchProfile() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $loggedInEmail = Yii::$app->user->identity->email;
+        $profile = Profile::findByEmail($loggedInEmail);
+        return $profile;
+    }
 }
