@@ -131,11 +131,6 @@ function initializeCalendar() {
                     return false;
                 }
             },
-            beforeShowMonth: function (date) {
-                if (date.getMonth() == 8) {
-                    return false;
-                }
-            },
             toggleActive: true
         });
     });
