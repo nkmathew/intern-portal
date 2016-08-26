@@ -12,8 +12,11 @@
 }
 
 .nav-buttons {
+    position: fixed;
+    bottom: 70px;
+    right: 40px;
     padding-top: 10px;
-    float: right;
+    /*float: right;*/
 }
 
 .entry-text {
