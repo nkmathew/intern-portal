@@ -55,7 +55,7 @@ $this->title = "Profile";
                             12 => '12 Weeks'
                         ]); ?>
                         <?= $form->field($model, 'startDate', ['enableAjaxValidation' => true])->textInput([
-                            'value' => date_format(date_create($model->startDate), 'm/d/Y')
+                            'value' => date_format(date_create($model->startDate), 'd/m/Y')
                         ]) ?>
                     </div>
                 </div>
