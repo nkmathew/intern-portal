@@ -115,6 +115,33 @@ function saveLogbookEntry() {
     });
 }
 
+function initializeCalendar() {
+    $.getJSON('/site/fetch-profile', function (json) {
+        $('#container-logbook-date').datepicker({
+            format: "dd/mm/yyyy",
+            maxViewMode: 2,
+            endDate: '0',
+            todayBtn: true,
+            todayHighlight: true,
+            startDate: new Date(json.start_date),
+            beforeShowDay: function (date) {
+                if (date.getDay() == 0 ||
+                    date.getDay() == 6) {
+                    // Disable weekends
+                    return false;
+                }
+            },
+            beforeShowMonth: function (date) {
+                if (date.getMonth() == 8) {
+                    return false;
+                }
+            },
+            datesDisabled: ['07/06/2016', '07/21/2016'],
+            toggleActive: true
+        });
+    });
+}
+
 $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
@@ -144,28 +171,7 @@ $(document).ready(function () {
 
     showLogbook();
 
-    $('#container-logbook-date').datepicker({
-        format: "dd/mm/yyyy",
-        maxViewMode: 2,
-        endDate: '0',
-        todayBtn: true,
-        todayHighlight: true,
-        startDate: '-3m',
-        beforeShowDay: function (date) {
-            if (date.getDay() == 0 ||
-                date.getDay() == 6) {
-                // Disable weekends
-                return false;
-            }
-        },
-        beforeShowMonth: function (date) {
-            if (date.getMonth() == 8) {
-                return false;
-            }
-        },
-        datesDisabled: ['07/06/2016', '07/21/2016'],
-        toggleActive: true
-    });
+    initializeCalendar();
 
     // When a different date is clicked in the calendar
     $(this).on('changeDate', function (event) {
