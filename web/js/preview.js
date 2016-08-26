@@ -17,8 +17,7 @@ function displayWeek(week) {
             entryDays[day] = val;
         });
         entries = '';
-        console.log(startDate)
-        for (i = 0; i < 5; i++) {
+        for (i = 1; i < 6; i++) {
             val = entryDays[i];
             if (val != undefined) {
                 val.entry_for = moment(val.entry_for).format(FMT);
@@ -27,7 +26,7 @@ function displayWeek(week) {
             } else {
                var html = PREV_TEMPLATE({
                    entry_class: 'missing-entry',
-                   entry_for: moment(startDate).add(i, 'day').format(FMT),
+                   entry_for: moment(startDate).add(i-1, 'day').format(FMT),
                    entry: 'No Entry Found!',
                    center_class: 'centered-text',
                    entry_text_class: 'entry-text-centered'
