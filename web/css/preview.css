@@ -42,3 +42,8 @@
 .week-label {
     font-weight: bold;
 }
+
+.missing-entry {
+    background: #DCDCDC;
+    border: 1px dashed;
+}

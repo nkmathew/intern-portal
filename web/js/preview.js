@@ -10,12 +10,28 @@ function displayWeek(week) {
     var url = '/site/preview-logbook?week=' + week;
     $("#entry-list").spin({color: 'black'});
     $.getJSON(url, function (json) {
-        entries = ''
+        entryDays = [];
+        startDate = json.start;
         $.each(json.entryList, function (index, val) {
-            val.entry_for = moment(val.entry_for).format(FMT);
-            var html = PREV_TEMPLATE(val);
-            entries += html
+            day = moment(val.entry_for).day();
+            entryDays[day] = val;
         });
+        entries = '';
+        console.log(startDate)
+        for (i = 0; i < 6; i++) {
+            val = entryDays[i];
+            if (val != undefined) {
+                val.entry_for = moment(val.entry_for).format(FMT);
+                var html      = PREV_TEMPLATE(val);
+                entries += html
+            } else {
+               var html = PREV_TEMPLATE({
+                   entry_class: 'missing-entry',
+                   entry_for: moment(startDate).add(i, 'day').format(FMT)
+               });
+               entries += html;
+            }
+        }
         $("#entry-list").spin(false);
         $('#entry-list').html(entries);
         $('#week-number').html('Week ' + json.week);
