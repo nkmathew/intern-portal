@@ -18,7 +18,7 @@ PreviewAsset::register($this);
     <div id="entry-list" class="container" week="1">
         <script id="logbook-preview-template" type="text/x-handlebars-template">
             <div class="entry-body col-md-3 {{entry_class}}">
-                <div class="entry-text">{{{entry}}}</div>
+                <div class="entry-text {{entry_text_class}}">{{{entry}}}</div>
                 <div class="date-overlay">{{entry_for}}</div>
             </div>
         </script>

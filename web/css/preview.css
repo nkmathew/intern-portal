@@ -21,8 +21,18 @@
 
 .entry-text {
     height: 90%;
+    width: 100%;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.entry-text-centered {
+    padding-top: 86px;
+    text-align: center;
+    color: purple;
+    font-size: 21px;
+    font-weight: bold;
+    font-family: arial;
 }
 
 .date-overlay {

@@ -27,7 +27,10 @@ function displayWeek(week) {
             } else {
                var html = PREV_TEMPLATE({
                    entry_class: 'missing-entry',
-                   entry_for: moment(startDate).add(i, 'day').format(FMT)
+                   entry_for: moment(startDate).add(i, 'day').format(FMT),
+                   entry: 'No Entry Found!',
+                   center_class: 'centered-text',
+                   entry_text_class: 'entry-text-centered'
                });
                entries += html;
             }
