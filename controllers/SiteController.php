@@ -516,8 +516,8 @@ class SiteController extends Controller
                 AND entry_for <= '$end'
         ORDER BY `entry_for`")->all();
         return [
-            'start' => $start->format('jS F Y'),
-            'end' => $end->format('jS F Y'),
+            'start' => $start->format('Y-m-d'),
+            'end' => $end->format('Y-m-d'), // jS F Y
             'week' => $week,
             'entryList' => $entryList,
         ];
