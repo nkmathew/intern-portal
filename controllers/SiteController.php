@@ -463,9 +463,10 @@ class SiteController extends Controller
             } elseif ($action == 'delete') {
                 if ($logbook) {
                     if ($logbook->delete()) {
+                        $entryDate = Carbon::parse($entryDate)->format('l jS F Y');
                         return [
                             'status' => 'success',
-                            'message' => "Entry for $entryDate deleted successfully"
+                            'message' => "Entry for <strong>$entryDate</strong> deleted successfully"
                         ];
                     } else {
                         return [
