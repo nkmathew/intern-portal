@@ -18,7 +18,7 @@ function displayWeek(week) {
         });
         entries = '';
         console.log(startDate)
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 5; i++) {
             val = entryDays[i];
             if (val != undefined) {
                 val.entry_for = moment(val.entry_for).format(FMT);
