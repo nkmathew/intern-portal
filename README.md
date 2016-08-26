@@ -8,6 +8,10 @@ A system that automates the internship process essentially doing away with the
 need for a logbook for keeping track of progress enabling a supervisor and
 coordinator to monitor student progress easily.
 
+Was an exercise for my internship/industrial attachment. It's not very practical and
+far from complete but was a fun thing to work on daily. Will probably never touch it
+again once my internship is up
+
 ### TODO/Features
 
 + Should support login for three types of users:
@@ -90,8 +94,6 @@ coordinator to monitor student progress easily.
 + Prompt user to save before leaving and show an icon that shows that the entry is
   unsaved
 + Capture Ctrl+S keypress
-+ Logbook editor calendar should start on the intership day and not just 3 months
-  before the current date
 + Throw error when no date is specified
 
 ### Installation Steps
