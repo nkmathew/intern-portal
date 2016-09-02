@@ -6,8 +6,8 @@
  * Time: 03:38
  */
 
-use app\assets\AccountDeletionAsset;
-AccountDeletionAsset::register($this);
+use app\assets\AdminAccountAsset;
+AdminAccountAsset::register($this);
 
 ?>
 

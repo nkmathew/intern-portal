@@ -30,10 +30,16 @@ $userRole = Yii::$app->user->identity->role;
     } else if ($userRole == 'superuser') {
         $tabItems = [
             [
-            'label' => '<span class="glyphicon glyphicon-trash"></span> Account Deletion',
-            'content' => $this->render('admin/accountDeletion'),
-            'headerOptions' => ['id' => 'account-deletion-tab', 'class' => 'tab-main'],
-            'options' => ['id' => 'tab-account-deletion'],
+                'label' => '<span class="glyphicon glyphicon-trash"></span> Account Deletion',
+                'content' => $this->render('admin/accountDeletion'),
+                'headerOptions' => ['id' => 'account-deletion-tab', 'class' => 'tab-main'],
+                'options' => ['id' => 'tab-account-deletion'],
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-console"></span> Invite Supervisors',
+                'content' => $this->render('admin/adminConsole'),
+                'headerOptions' => ['id' => 'admin-console-tab', 'class' => 'tab-main'],
+                'options' => ['id' => 'tab-admin-console'],
             ]
         ];
     } else if ($userRole == 'intern') {

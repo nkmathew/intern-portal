@@ -13,7 +13,7 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AccountDeletionAsset extends AssetBundle
+class AdminAccountAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -22,6 +22,7 @@ class AccountDeletionAsset extends AssetBundle
     ];
     public $js = [
         'js/admin/account-deletion.js',
+        'js/admin/admin-console.js',
     ];
     public $depends = [
         'app\assets\AppAsset',
