@@ -32,8 +32,12 @@ class m160902_081807_create_user_roles extends Migration
                     'System administrator',
                 ],
                 [
+                    'coordinator',
+                    "Assesses the intern's progress and work at the end of the internship period"
+                ],
+                [
                     'supervisor',
-                    'Supervises student progress'
+                    'Monitors weekly student progress in their placement'
                 ],
                 [
                     'intern',
