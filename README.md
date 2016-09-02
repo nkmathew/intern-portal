@@ -14,7 +14,14 @@ again once my internship is up
 
 ### TODO/Features
 
-+ Should support login for three types of users:
++ Should support login for four types of users:
+  - Admin
+    Responsible for creating signup invite links for supervisors and coordinators
+    and general administration:
+    + Defining working hours outside which entries will not be accepted
+    + Whether missed days due to late entries should result in increased internship
+      days
+    + Whether old entries should be editable etc etc.
   - Coordinators
     - The teacher/lecturer in who does supervision of all the interns from a certain
       class and does an on site assessment of the student interns in their
@@ -95,6 +102,7 @@ again once my internship is up
   unsaved
 + Capture Ctrl+S keypress
 + Throw error when no date is specified
++ Clicking on the tabs should change the title of the tab
 
 ### Installation Steps
 
