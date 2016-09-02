@@ -231,6 +231,11 @@ td {
     color: #ecf0f1;
 }
 
+body {
+    font-family: Calibri;
+    font-size: 16px;
+}
+
 /* ~~~~~~~~~~~~~[ NavBar for Supervisors/Coordinators ]~~~~~~~~~~~~~~~~~~~~ */
 .navbar-supervisor {
     background-color: #9a2f24;
