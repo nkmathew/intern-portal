@@ -377,6 +377,12 @@ class SiteController extends Controller
         if (!count($emailList)) {
             return;
         }
+        $userRole = Yii::$app->user->identity->role;
+        if ($userRole == 'supervisor') {
+            $role = 'intern';
+        } else if ($userRole == 'superuser') {
+            $role = 'supervisor';
+        }
         for ($i = 0; $i < count($emailList); $i++) {
             $email = $emailList[$i];
             if (User::findByEmail($email)) {
@@ -386,7 +392,7 @@ class SiteController extends Controller
             $signupLink->email = $email;
             $signupLink->date_sent = time();
             $signupLink->inviter = Yii::$app->user->identity->email;
-            $signupLink->role = Yii::$app->user->identity->role;
+            $signupLink->role = $role;
             $signupLink->generateSignupToken();
             $mailStatus = Yii::$app->mailer->compose(
                 ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
