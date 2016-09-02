@@ -386,9 +386,9 @@ class SiteController extends Controller
             $signupLink->email = $email;
             $signupLink->date_sent = time();
             $signupLink->inviter = Yii::$app->user->identity->email;
+            $signupLink->role = Yii::$app->user->identity->role;
             $signupLink->generateSignupToken();
-            $signupLink->insert();
-            Yii::$app->mailer->compose(
+            $mailStatus = Yii::$app->mailer->compose(
                 ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
                 ['signupLink' => $signupLink]
             )
@@ -396,6 +396,9 @@ class SiteController extends Controller
             ->setTo($email)
             ->setSubject('Signup link for ' . Yii::$app->name)
             ->send();
+            if ($mailStatus) {
+                $signupLink->insert();
+            }
         }
     }
 
