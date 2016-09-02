@@ -104,7 +104,7 @@ if (!$isGuest) {
                 <?= Alert::widget() ?>
                 <div id="main-content-area">
                     <div id="alert-box" class="alert-box alert">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <a href="#" class="close" onclick="$('.alert').hide()">×</a>
                         <span class="msg"></span>
                     </div>
                     <?= $content ?>
