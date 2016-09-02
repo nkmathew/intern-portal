@@ -30,6 +30,7 @@ class m160904_224902_create_supervisorprofile extends Migration
             'work_position' => $this->string(),
             'phone_number' => $this->string(),
             'role' => $this->string(),
+            'last_updated' => $this->dateTime()
         ], $tableOptions);
 
         $this->addForeignKey('FK_supervisorprofile_user',
