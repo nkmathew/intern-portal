@@ -188,9 +188,20 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Returns this user's profile
      */
     public function getProfile()
     {
         return Profile::findOne(['email' => $this->email]);
+    }
+
+    /**
+     * Returns signup links generated for this user
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSignupLinks()
+    {
+        return SignupLinks::find(['email' => $this->email])->all();
     }
 }
