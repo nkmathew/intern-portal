@@ -43,6 +43,7 @@ class SignupForm extends Model
         
         $user = new User();
         $user->email = $this->email;
+        $user->role = SignupLinks::findByEmail($this->email)->role;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         
