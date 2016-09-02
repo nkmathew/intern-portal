@@ -24,6 +24,7 @@ class ProfileAsset extends AssetBundle
         'js/profile.js',
     ];
     public $depends = [
+        'app\assets\BootstrapDatepickerAsset',
         'app\assets\AppAsset',
     ];
 }
