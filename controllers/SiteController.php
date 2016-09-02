@@ -432,6 +432,7 @@ class SiteController extends Controller
                 'model' => $model,
                 'email' => $email->email,
                 'signup_token' => $token,
+                'role' => $email->role
             ]);
         } else {
            return $this->render('error', [

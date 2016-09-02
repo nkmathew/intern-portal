@@ -13,10 +13,11 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 $this->title = 'Link Signup';
+
 ?>
 
 <div class="site-link-signup">
-    <h3>Student intern link signup</h3>
+    <h3>Welcome <strong style="font-style:italic;"><?= $role ?></strong>, fill in the details below to signup</h3>
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'action' => '/site/signup']); ?>
