@@ -12,19 +12,33 @@ $this->title = 'Home';
 $email = Yii::$app->user->identity->email;
 $profile = Profile::findByEmail($email);
 
+$userRole = Yii::$app->user->identity->role;
+
 ?>
 
 <title>Home</title> <!-- For Pjax's sake -->
 <div class="site-index">
     <?php
-    $tabItems = [
-        [
-            'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
-            'content' => $this->context->actionProfile(true),
-            'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
-        ]
-    ];
-    if ($profile->duration) {
+    $tabItems = [];
+    if ($userRole == 'intern') {
+        $tabItems = [
+            [
+                'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
+                'content' => $this->context->actionProfile(true),
+                'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
+            ]
+        ];
+    } else if ($userRole == 'superuser') {
+        $tabItems = [
+            [
+            'label' => '<span class="glyphicon glyphicon-trash"></span> Account Deletion',
+            'content' => $this->render('accountDeletion'),
+            'headerOptions' => ['id' => 'account-deletion-tab', 'class' => 'tab-main'],
+            'options' => ['id' => 'tab-account-deletion'],
+            ]
+        ];
+    }
+    if ($profile->duration && $userRole == 'intern') {
         $moreItems = [
             [
                 'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
@@ -46,10 +60,11 @@ $profile = Profile::findByEmail($email);
             ]
         ];
         $tabItems = array_merge_recursive($moreItems, $tabItems);
-    } else {
+    }
+    if (!$profile->duration && $userRole == 'intern') {
         Yii::$app->session->setFlash('error', 'Please save the start date and duration of your internship first');
     }
-    if (!Yii::$app->user->isGuest && !strchr($email, 'student')) {
+    if ($userRole != 'intern') {
         $tabItems[] = [
             'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
             'content' => $this->render('coordinatorConsole'),

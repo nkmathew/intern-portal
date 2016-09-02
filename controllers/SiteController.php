@@ -536,4 +536,22 @@ class SiteController extends Controller
         $profile = Profile::findByEmail($loggedInEmail);
         return $profile;
     }
+
+    /**
+     * Fetches user by email
+     */
+    public function actionFetchUser() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user = User::findByEmail(Yii::$app->request->get('email'));
+        return $user ? $user : [];
+    }
+
+    /**
+     * Deletes user by email
+     */
+    public function actionDeleteUser() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user = User::findByEmail(Yii::$app->request->post('email'));
+        return $user->delete();
+    }
 }
