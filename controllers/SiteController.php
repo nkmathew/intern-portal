@@ -408,6 +408,11 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Generates a signup form when a signup link is clicked/followed
+     *
+     * @return string
+     */
     public function actionLinkSignup() {
         $token = Yii::$app->request->get('signup_token');
         $signupLink = new SignupLinks();
