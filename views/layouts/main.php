@@ -12,6 +12,19 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
+
+$userRole = Yii::$app->user->identity->role;
+
+$roleLabel = 'Intern';
+$navbarClass = 'navbar-default navbar-fixed-top';
+if ($userRole == 'supervisor') {
+    $roleLabel = 'Intern Supervisor';
+    $navbarClass = 'navbar-supervisor navbar-fixed-top';
+} else {
+    $roleLabel = 'Portal Administrator';
+    $navbarClass = 'navbar-administrator navbar-fixed-top';
+}
+
 ?>
 
 <?php $this->beginPage() ?>
@@ -37,11 +50,12 @@ AppAsset::register($this);
         <?php $this->beginBody() ?>
         <div class="wrap">
             <?php
+            $logoImage = '<img src="/jkuat-logo.png" style="display:inline" title="JKUAT Intern Portal">';
             NavBar::begin([
-                'brandLabel' => Html::img('/jkuat-logo.png', ['title' => 'JKUAT Intern Portal']),
+                'brandLabel' => "$logoImage <span>$roleLabel</span>",
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
+                    'class' => $navbarClass,
                 ],
             ]);
             $menuItems = [
@@ -59,11 +73,11 @@ AppAsset::register($this);
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (<span style="color:#87C540;font-weight: bold" title="'
+                        'Logout (<span title="'
                         . $email . '">'
                         . $username
                         . '</span>)',
-                        ['class' => 'btn btn-link']
+                        ['class' => 'btn-logout btn btn-link']
                     )
                     . Html::endForm()
                     . '</li>';
