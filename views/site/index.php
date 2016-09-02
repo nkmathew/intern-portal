@@ -79,10 +79,9 @@ $userRole = Yii::$app->user->identity->role;
                 ]
             ];
             $tabItems = array_merge_recursive($moreItems, $tabItems);
+        } else {
+            Yii::$app->session->setFlash('error', 'Please save the start date and duration of your internship first');
         }
-    }
-    if (!$profile->duration && $userRole == 'intern') {
-        Yii::$app->session->setFlash('error', 'Please save the start date and duration of your internship first');
     }
     echo Tabs::widget(['encodeLabels' => false, 'items' => $tabItems]);
     ?>
