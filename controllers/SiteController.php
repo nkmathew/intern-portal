@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\Logbook;
 use app\models\Profile;
+use app\models\SupervisorProfile;
 use app\models\User;
 use app\models\SignupLinks;
 use Yii;
@@ -107,7 +108,7 @@ class SiteController extends Controller
         $daysLeft = Carbon::now()->diffInDays($endDate, false);
         $weeksLeft = Carbon::now()->diffInWeeks($endDate, false);
         $daysCompleted = $startDate->diffInDays(Carbon::now(), false);
-        $weeksCompleted = ceil($daysCompleted/$totalDays*$duration);
+        $weeksCompleted = ceil($daysCompleted / $totalDays * $duration);
         $weekdays = $startDate->diffInWeekdays($endDate, false);
 
         $entries = Logbook::findBySql("SELECT entry_for FROM logbook WHERE author = '$loggedInEmail'")->all();
@@ -117,6 +118,7 @@ class SiteController extends Controller
             foreach ($entries as $entry) {
                 array_push($entryDates, $entry->entry_for);
             }
+
             return $entryDates;
         } else {
             return $this->renderPartial('progress', [
@@ -182,6 +184,52 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    /**
+     * Displays profile page for the logged in user
+     *
+     * @return mixed
+     */
+    public function actionSupervisorProfile()
+    {
+        $model = new SupervisorProfile();
+
+        // Ajax form validation is done here
+        if (Yii::$app->request->post('ajax') == 'supervisorprofile-form') {
+            $model->load(Yii::$app->request->post());
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            $res = $model->updateProfile();
+            if ($res) {
+                if (!Yii::$app->request->isAjax) {
+                    return $this->goHome();
+                } else {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return "{msg: 'success'}";
+                }
+            }
+        }
+
+        // Get profile record for current user
+        $profile = SupervisorProfile::findByEmail(Yii::$app->user->identity->email);
+        $model->email = $profile->email;
+        $model->sex = $profile->sex;
+        $model->surname = $profile->surname;
+        $model->firstname = $profile->firstname;
+        $model->id_number = $profile->id_number;
+        $model->company_name = $profile->company_name;
+        $model->company_address = $profile->company_address;
+        $model->work_position = $profile->work_position;
+        $model->phone_number = $profile->phone_number;
+        $model->role = $profile->role;
+        return $this->renderPartial('supervisorProfile', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Displays profile page for the logged in user
@@ -299,7 +347,11 @@ class SiteController extends Controller
                     // Invalidate all tokens associated with the email
                     SignupLinks::updateAll(['token_disabled' => 1], "email = '$model->email'");
                     // Initialize profile table
-                    $profile = new Profile();
+                    if ($user->role == 'supervisor' || $user->role == 'superuser') {
+                        $profile = new SupervisorProfile();
+                    } else {
+                        $profile = new Profile();
+                    }
                     $profile->email = $model->email;
                     $profile->surname = '';
                     $profile->firstname = '';

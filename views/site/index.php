@@ -20,12 +20,19 @@ $userRole = Yii::$app->user->identity->role;
 <div class="site-index">
     <?php
     $tabItems = [];
-    if ($userRole == 'supervisor') {
-        $tabItems[] = [
-            'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
-            'content' => $this->render('coordinatorConsole'),
-            'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
-            'options' => ['id' => 'tab-coordinator-console'],
+    if (($userRole == 'coordinator') || ($userRole == 'supervisor')) {
+        $tabItems = [
+            [
+                'label' => '<span class="glyphicon glyphicon-user"></span> Supervisor Profile',
+                'content' => $this->context->actionSupervisorProfile(),
+                'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator Console',
+                'content' => $this->render('coordinatorConsole'),
+                'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
+                'options' => ['id' => 'tab-coordinator-console']
+            ],
         ];
     } else if ($userRole == 'superuser') {
         $tabItems = [
