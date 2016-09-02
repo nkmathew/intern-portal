@@ -13,16 +13,20 @@ use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 
-$userRole = Yii::$app->user->identity->role;
+$isGuest = Yii::$app->user->isGuest;
 
-$roleLabel = 'Intern';
-$navbarClass = 'navbar-default navbar-fixed-top';
-if ($userRole == 'supervisor') {
-    $roleLabel = 'Intern Supervisor';
-    $navbarClass = 'navbar-supervisor navbar-fixed-top';
-} else {
-    $roleLabel = 'Portal Administrator';
-    $navbarClass = 'navbar-administrator navbar-fixed-top';
+$roleLabel = 'Intern Portal';
+$navbarClass = 'navbar-inverse navbar-fixed-top';
+
+if (!$isGuest) {
+    $userRole = Yii::$app->user->identity->role;
+    if ($userRole == 'supervisor') {
+        $roleLabel = 'Intern Supervisor';
+        $navbarClass = 'navbar-supervisor navbar-fixed-top';
+    } else if ($userRole == 'superuser') {
+        $roleLabel = 'Portal Administrator';
+        $navbarClass = 'navbar-administrator navbar-fixed-top';
+    }
 }
 
 ?>
@@ -63,7 +67,7 @@ if ($userRole == 'supervisor') {
                 '<li>' . Html::a('About', '/site/about', ['id' => 'link-about']) . '</li>',
                 '<li>' . Html::a('Contact', '/site/contact', ['id' => 'link-contact']) . '</li>',
             ];
-            if (Yii::$app->user->isGuest) {
+            if ($isGuest) {
                 $menuItems[] =
                 '<li>' . Html::a('Signup', '/site/signup', ['id' => 'link-signup']) . '</li>' .
                 '<li>' . Html::a('Login', '/site/login', ['id' => 'link-login']) . '</li>';
