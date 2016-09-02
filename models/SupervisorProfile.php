@@ -42,8 +42,7 @@ class SupervisorProfile extends \yii\db\ActiveRecord
             [['email'], 'required'],
             [['last_updated'], 'safe'],
             [['sex', 'email', 'firstname', 'surname', 'id_number', 'company_name', 'company_address', 'work_position', 'phone_number', 'role'], 'string', 'max' => 255],
-            // [['email'], 'unique'],
-            // [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
+            [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
             [['role'], 'exist', 'skipOnError' => true, 'targetClass' => UserRoles::className(), 'targetAttribute' => ['role' => 'role_name']],
         ];
     }
@@ -103,6 +102,7 @@ class SupervisorProfile extends \yii\db\ActiveRecord
         $profile->company_address = $this->company_address;
         $profile->work_position = $this->work_position;
         $profile->phone_number = $this->phone_number;
+        $profile->role = $this->role;
 
         if ($oldProfile != $profile) {
             $profile->last_updated = date('Y-m-d H:i:s');
