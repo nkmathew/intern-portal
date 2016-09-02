@@ -20,13 +20,12 @@ $userRole = Yii::$app->user->identity->role;
 <div class="site-index">
     <?php
     $tabItems = [];
-    if ($userRole == 'intern') {
-        $tabItems = [
-            [
-                'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
-                'content' => $this->context->actionProfile(true),
-                'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
-            ]
+    if ($userRole == 'supervisor') {
+        $tabItems[] = [
+            'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
+            'content' => $this->render('coordinatorConsole'),
+            'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
+            'options' => ['id' => 'tab-coordinator-console'],
         ];
     } else if ($userRole == 'superuser') {
         $tabItems = [
@@ -37,8 +36,14 @@ $userRole = Yii::$app->user->identity->role;
             'options' => ['id' => 'tab-account-deletion'],
             ]
         ];
-    }
-    if ($profile->duration && $userRole == 'intern') {
+    } else if ($userRole == 'intern') {
+        $tabItems = [
+            [
+                'label' => '<span class="glyphicon glyphicon-user"></span> Profile',
+                'content' => $this->context->actionProfile(true),
+                'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
+            ]
+        ];
         $moreItems = [
             [
                 'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
@@ -59,18 +64,12 @@ $userRole = Yii::$app->user->identity->role;
                 'options' => ['id' => 'tab-preview'],
             ]
         ];
-        $tabItems = array_merge_recursive($moreItems, $tabItems);
+        if ($profile->duration) {
+            $tabItems = array_merge_recursive($moreItems, $tabItems);
+        }
     }
     if (!$profile->duration && $userRole == 'intern') {
         Yii::$app->session->setFlash('error', 'Please save the start date and duration of your internship first');
-    }
-    if ($userRole != 'intern') {
-        $tabItems[] = [
-            'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator\'s Console',
-            'content' => $this->render('coordinatorConsole'),
-            'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
-            'options' => ['id' => 'tab-coordinator-console'],
-        ];
     }
     echo Tabs::widget(['encodeLabels' => false, 'items' => $tabItems]);
     ?>
