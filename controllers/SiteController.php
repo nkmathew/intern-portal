@@ -515,6 +515,7 @@ class SiteController extends Controller
         SELECT * from
         Logbook WHERE entry_for >= '$start'
                 AND entry_for <= '$end'
+                AND author = '$loggedInEmail'
         ORDER BY `entry_for`")->all();
         return [
             'start' => $start->format('Y-m-d'),
