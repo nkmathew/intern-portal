@@ -17,6 +17,7 @@ var FMT = 'dddd, MMMM Do YYYY';
 // Display a success message
 function alertSuccess(message) {
     $('.alert-box .msg').html(message);
+    $('.alert-box').removeClass('alert-danger');
     $('.alert-box').addClass('alert-success');
     $('.alert-box').show();
     $("#alert-box").fadeTo(3000, 500).slideUp(500, function () {
