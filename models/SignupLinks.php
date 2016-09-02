@@ -13,6 +13,7 @@ use Yii;
  * @property string $inviter
  * @property string $signup_token
  * @property string $token_disabled
+ * @property string $role
  */
 class SignupLinks extends \yii\db\ActiveRecord
 {
