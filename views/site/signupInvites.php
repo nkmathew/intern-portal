@@ -28,13 +28,13 @@
                         <a href="mailto:{{email}}">{{email}}</a>
                     </div>
                     <button type="button" class="email-delete-btn btn btn-danger btn-xs">
-                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="glyph-sm glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
             </script>
         </div>
         <button type="button" id="btn-invite-sender" class="btn btn-primary">
-            <span class="glyphicon glyphicon-send"></span> Send invite links
+            <span class="glyph-sm glyphicon glyphicon-send"></span> Send invite links
         </button>
     </div>
 </div>
