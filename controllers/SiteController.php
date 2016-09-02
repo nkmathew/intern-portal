@@ -552,6 +552,7 @@ class SiteController extends Controller
     public function actionDeleteUser() {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $user = User::findByEmail(Yii::$app->request->post('email'));
+        $user->getProfile()->delete();
         return $user->delete();
     }
 }
