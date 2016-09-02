@@ -73,9 +73,9 @@ class ProfileForm extends Model
                 if (substr_count($this->regNumber, '/') != 1) {
                     $this->addError($attribute, 'A valid reg number has only one forward slash');
                 } else {
-                    $year    = (int)date('Y');
+                    $year = (int)date('Y');
                     $regYear = (int)explode('/', $this->regNumber)[1];
-                    $diff    = ($regYear - $year);
+                    $diff = ($regYear - $year);
                     if (($diff > 0) || ($diff < -10)) {
                         $this->addError($attribute, 'Invalid year in registration number');
                     }
@@ -95,7 +95,8 @@ class ProfileForm extends Model
      * @param $date
      * @return bool
      */
-    public function validateDateFormat($attribute, $params) {
+    public function validateDateFormat($attribute, $params)
+    {
         if (!$this->hasErrors()) {
             $profile = $this->getProfile();
             if ($profile) {
@@ -137,16 +138,18 @@ class ProfileForm extends Model
             return null;
         }
 
-        $profile = Profile::findByEmail($this->email);
+        $profile = SupervisorProfile::findByEmail($this->email);
 
-        $oldProfile          = clone $profile;
-        $profile->email      = $this->email ? $this->email : '';
-        $profile->sex        = $this->sex;
-        $profile->surname    = $this->surname;
-        $profile->firstname  = $this->firstName;
-        $profile->reg_number = $this->regNumber;
-        $profile->duration   = $this->duration;
-        $profile->start_date = Carbon::createFromFormat('d/m/Y', $this->startDate)->format('Y-m-d');
+        $oldProfile = clone $profile;
+        $profile->email = $this->email ? $this->email : '';
+        $profile->sex = $this->sex;
+        $profile->surname = $this->surname;
+        $profile->firstname = $this->firstName;
+        $profile->company_name = $this->company_name;
+        $profile->company_address = $this->company_address;
+        $profile->work_position = $this->work_position;
+        $profile->phone_number = $this->phone_number;
+        $profile->role = $this->role;
 
         if ($oldProfile != $profile) {
             $profile->last_updated = time();
