@@ -22,7 +22,7 @@ function deleteUser(email) {
 $(document).ready(function () {
     DEL_TEMPLATE = Handlebars.compile(DEL_TEMPLATE);
 
-    $("#btn-search").click(function (e) {
+    $("#deletion-form").submit(function (e) {
         var email = $('#input-email').val();
         if (email.trim() == '') {
             $('#input-email').focus();
@@ -35,5 +35,6 @@ $(document).ready(function () {
             $('#results').html(html);
            console.log(json);
         });
+        e.preventDefault();
     });
 });

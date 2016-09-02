@@ -14,12 +14,14 @@ AccountDeletionAsset::register($this);
 <div class="site-account-deletion">
     <div class="container">
         <div class="col-lg-5">
-            <div class="input-group">
-                <input type="text" id="input-email" class="form-control" placeholder="Search user by email...">
-                <span class="input-group-btn">
-                    <button id="btn-search" class="btn btn-primary">Search</button>
-                </span>
-            </div>
+            <form id="deletion-form">
+                <div class="input-group">
+                    <input type="text" id="input-email" class="form-control" placeholder="Search user by email...">
+                    <span class="input-group-btn">
+                        <button id="btn-search" class="btn btn-primary">Search</button>
+                    </span>
+                </div>
+            </form>
             <div id="results">
             <script id="deletion-template" type="text/x-handlebars-template">
                 <div class="col-md-6 well-sm container">
