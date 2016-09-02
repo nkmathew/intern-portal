@@ -31,7 +31,7 @@ $userRole = Yii::$app->user->identity->role;
         $tabItems = [
             [
             'label' => '<span class="glyphicon glyphicon-trash"></span> Account Deletion',
-            'content' => $this->render('accountDeletion'),
+            'content' => $this->render('admin/accountDeletion'),
             'headerOptions' => ['id' => 'account-deletion-tab', 'class' => 'tab-main'],
             'options' => ['id' => 'tab-account-deletion'],
             ]

@@ -21,7 +21,7 @@ class AccountDeletionAsset extends AssetBundle
         // 'css/account-deletion.css',
     ];
     public $js = [
-        'js/account-deletion.js',
+        'js/admin/account-deletion.js',
     ];
     public $depends = [
         'app\assets\AppAsset',
