@@ -44,27 +44,27 @@ $userRole = Yii::$app->user->identity->role;
                 'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
             ]
         ];
-        $moreItems = [
-            [
-                'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
-                'content' => $this->render('logbook'),
-                'headerOptions' => ['id' => 'logbook-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-logbook'],
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-stats"></span> Progress',
-                'content' => $this->context->actionProgress(),
-                'headerOptions' => ['id' => 'progress-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-progress'],
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-list-alt"></span> Preview',
-                'content' => $this->render('preview'),
-                'headerOptions' => ['id' => 'preview-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-preview'],
-            ]
-        ];
         if ($profile->duration) {
+            $moreItems = [
+                [
+                    'label' => '<span class="glyphicon glyphicon-book"></span> Log Book',
+                    'content' => $this->render('logbook'),
+                    'headerOptions' => ['id' => 'logbook-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-logbook'],
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-stats"></span> Progress',
+                    'content' => $this->context->actionProgress(),
+                    'headerOptions' => ['id' => 'progress-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-progress'],
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-list-alt"></span> Preview',
+                    'content' => $this->render('preview'),
+                    'headerOptions' => ['id' => 'preview-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-preview'],
+                ]
+            ];
             $tabItems = array_merge_recursive($moreItems, $tabItems);
         }
     }
