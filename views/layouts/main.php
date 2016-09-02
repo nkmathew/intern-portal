@@ -74,14 +74,12 @@ if (!$isGuest) {
             } else {
                 $email = Yii::$app->user->identity->email;
                 $username = explode('@', $email)[0];
-                $menuItems[] = '<li>'
+                $menuItems[] = "<li data-toggle='tooltip' data-placement='bottom' title='$email'>"
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (<span title="'
-                        . $email . '">'
-                        . $username
-                        . '</span>)',
-                        ['class' => 'btn-logout btn btn-link']
+                        'Logout (<span style="font-size:16px">'
+                        . $username . '</span>)',
+                        ['class' => 'btn-logout btn-link']
                     )
                     . Html::endForm()
                     . '</li>';

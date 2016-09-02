@@ -229,11 +229,24 @@ td {
 
 .btn-logout {
     color: #ecf0f1;
+    padding-top: 3px;
+}
+
+.btn-logout span {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 body {
     font-family: Calibri;
     font-size: 16px;
+}
+
+/** Smaller Glyphicon */
+.glyph-sm {
+    font-size: 12px;
+    padding-right: 3px;
 }
 
 /* ~~~~~~~~~~~~~[ NavBar for Supervisors/Coordinators ]~~~~~~~~~~~~~~~~~~~~ */
