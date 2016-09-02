@@ -103,6 +103,9 @@ again once my internship is up
 + Capture Ctrl+S keypress
 + Throw error when no date is specified
 + Clicking on the tabs should change the title of the tab
++ Stop running sql queries to fetch logbook entries and profiles for the logged in
+  user. Use instead ActiveQuery methods available through the User model since they
+  are connected through a foreign key
 
 ### Installation Steps
 
