@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\models\Logbook;
 use app\models\Profile;
 use app\models\SupervisorProfile;
+use app\models\SupervisorProfileForm;
 use app\models\User;
 use app\models\SignupLinks;
 use Yii;
@@ -192,7 +193,7 @@ class SiteController extends Controller
      */
     public function actionSupervisorProfile()
     {
-        $model = new SupervisorProfile();
+        $model = new SupervisorProfileForm();
 
         // Ajax form validation is done here
         if (Yii::$app->request->post('ajax') == 'supervisorprofile-form') {

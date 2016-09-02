@@ -78,36 +78,4 @@ class SupervisorProfile extends \yii\db\ActiveRecord
     {
         return static::findOne(['email' => $email]);
     }
-
-    /**
-     * Updates profile
-     *
-     * @return User|null the saved model or null if saving fails
-     */
-    public function updateProfile()
-    {
-        if (!$this->validate()) {
-            return null;
-        }
-
-        $profile = SupervisorProfile::findByEmail($this->email);
-
-        $oldProfile = clone $profile;
-        $profile->email = $this->email ? $this->email : '';
-        $profile->sex = $this->sex;
-        $profile->surname = $this->surname;
-        $profile->firstname = $this->firstname;
-        $profile->id_number = $this->id_number;
-        $profile->company_name = $this->company_name;
-        $profile->company_address = $this->company_address;
-        $profile->work_position = $this->work_position;
-        $profile->phone_number = $this->phone_number;
-        $profile->role = $this->role;
-
-        if ($oldProfile != $profile) {
-            $profile->last_updated = date('Y-m-d H:i:s');
-        }
-
-        return $profile->update() ? $profile : null;
-    }
 }
