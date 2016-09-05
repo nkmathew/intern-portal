@@ -38,10 +38,6 @@ $this->title = "Supervisor's Profile";
             'female' => 'Female',
             'other' => 'Other'
         ]); ?>
-        <?= $form->field($model, 'role')->dropDownList([
-            'supervisor' => 'Supervisor',
-            'coordinator' => 'Coordinator',
-        ]); ?>
         <?= $form->field($model, 'email', ['options' => ['class' => 'hidden']])->textInput([
             'class' => 'cursor-disabled form-control',
             'readonly' => true,

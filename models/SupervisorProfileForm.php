@@ -18,7 +18,6 @@ class SupervisorProfileForm extends Model
     public $company_address;
     public $work_position;
     public $phone_number;
-    public $role;
     public $last_updated;
 
     /**
@@ -35,7 +34,6 @@ class SupervisorProfileForm extends Model
                     'sex', 'email', 'firstname',
                     'surname', 'id_number', 'company_name',
                     'company_address', 'work_position', 'phone_number',
-                    'role'
                 ], 'required'],
         ];
     }
@@ -64,7 +62,6 @@ class SupervisorProfileForm extends Model
         $profile->company_address = $this->company_address;
         $profile->work_position = $this->work_position;
         $profile->phone_number = $this->phone_number;
-        $profile->role = $this->role;
 
         if ($oldProfile != $profile) {
             $profile->last_updated = date('Y-m-d H:i:s');

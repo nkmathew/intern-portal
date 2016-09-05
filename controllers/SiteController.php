@@ -225,7 +225,6 @@ class SiteController extends Controller
         $model->company_address = $profile->company_address;
         $model->work_position = $profile->work_position;
         $model->phone_number = $profile->phone_number;
-        $model->role = $profile->role;
         return $this->renderPartial('supervisorProfile', [
             'model' => $model,
         ]);

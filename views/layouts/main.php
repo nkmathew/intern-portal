@@ -27,6 +27,9 @@ if (!$isGuest) {
         $roleLabel = 'Portal Administrator';
         $navbarClass = 'navbar-administrator navbar-fixed-top';
     }
+    if ($userRole == 'coordinator') {
+        $roleLabel = 'Intern Coordinator';
+    }
 }
 
 ?>

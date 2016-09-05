@@ -17,11 +17,9 @@ use Yii;
  * @property string $company_address
  * @property string $work_position
  * @property string $phone_number
- * @property string $role
  * @property string $last_updated
  *
  * @property User $email0
- * @property UserRoles $role0
  */
 class SupervisorProfile extends \yii\db\ActiveRecord
 {
@@ -41,9 +39,8 @@ class SupervisorProfile extends \yii\db\ActiveRecord
         return [
             [['email'], 'required'],
             [['last_updated'], 'safe'],
-            [['sex', 'email', 'firstname', 'surname', 'id_number', 'company_name', 'company_address', 'work_position', 'phone_number', 'role'], 'string', 'max' => 255],
+            [['sex', 'email', 'firstname', 'surname', 'id_number', 'company_name', 'company_address', 'work_position', 'phone_number'], 'string', 'max' => 255],
             [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
-            [['role'], 'exist', 'skipOnError' => true, 'targetClass' => UserRoles::className(), 'targetAttribute' => ['role' => 'role_name']],
         ];
     }
 
@@ -63,7 +60,6 @@ class SupervisorProfile extends \yii\db\ActiveRecord
             'company_address' => 'Company Address',
             'work_position' => 'Work Position',
             'phone_number' => 'Phone Number',
-            'role' => 'Role',
             'last_updated' => 'Last Updated',
         ];
     }
