@@ -628,4 +628,36 @@ class SiteController extends Controller
         }
         return $user->delete();
     }
+
+    /**
+     * Change a supervisor's role to that of a coordinator enabling
+     * him/her to view everyone's logbook
+     */
+    public function actionSupervisorToCoordinator() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $email = Yii::$app->request->post('email');
+        $user = User::findByEmail(Yii::$app->request->post('email'));
+        if ($user) {
+            if ($user->role == 'supervisor') {
+                $user->role = 'coordinator';
+                if ($user->save()) {
+                    return [
+                        'message' => 'Role changed to coordinator successfully'
+                    ];
+                } else {
+                    return [
+                        'error' => 'Error in changing role to coordinator'
+                    ];
+                }
+            } else {
+                return [
+                    'error' => "User with email <strong>$email</strong> is not a supervisor"
+                ];
+            }
+        } else {
+            return [
+                'error' => 'User with email not found',
+            ];
+        }
+    }
 }

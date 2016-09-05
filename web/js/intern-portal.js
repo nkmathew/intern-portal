@@ -14,6 +14,28 @@ var BIG_SPINNER = {
 
 var FMT = 'dddd, MMMM Do YYYY';
 
+function alertMessage(message) {
+    if (typeof message == 'object') {
+        if (message.error != undefined) {
+            alertError(message.error);
+        } else {
+            alertSuccess(message.message);
+        }
+    } else {
+        alertSuccess(message.message);
+    }
+}
+
+function alertError(message) {
+    $('.alert-box .msg').html(message);
+    $('.alert-box').removeClass('alert-success');
+    $('.alert-box').addClass('alert-danger');
+    $('.alert-box').show();
+    $("#alert-box").fadeTo(5000, 500).slideUp(500, function () {
+        $("#alert-box").hide();
+    });
+}
+
 // Display a success message
 function alertSuccess(message) {
     $('.alert-box .msg').html(message);

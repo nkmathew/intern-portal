@@ -3,6 +3,22 @@
  */
 var DEL_TEMPLATE = $("#deletion-template").html();
 
+function promoteToCoordinator(email) {
+    $.ajax({
+        type: 'POST',
+        url: '/site/supervisor-to-coordinator',
+        data: {email: email},
+        success: function (data) {
+            alertMessage(data);
+        },
+        error: function (xhr, status, error) {
+            $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
+            $('.alert-box').addClass('alert-danger');
+            $('.alert-box').show();
+        },
+    });
+}
+
 function deleteUser(email) {
     $.ajax({
         type: 'POST',
@@ -31,6 +47,7 @@ $(document).ready(function () {
         $('#results').spin();
         $.getJSON('/site/fetch-user?email=' + email, function (json) {
             $('#results').spin(false);
+            json.created_at = moment.unix(json.created_at).fromNow();
             var html = DEL_TEMPLATE(json);
             $('#results').html(html);
            console.log(json);

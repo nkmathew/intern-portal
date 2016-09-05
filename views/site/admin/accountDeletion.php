@@ -32,24 +32,31 @@ AdminAccountAsset::register($this);
                                 <td class="table-warning">{{id}}</td>
                             </tr>
                             <tr>
-                                <td class="table-info">auth_key</td>
+                                <td class="table-info">Auth Key</td>
                                 <td class="table-warning">{{auth_key}}</td>
                             </tr>
                             <tr>
-                                <td class="table-info">password_hash</td>
+                                <td class="table-info">Password Hash</td>
                                 <td class="table-warning">{{password_hash}}</td>
                             </tr>
                             <tr>
-                                <td class="table-info">password_reset_token</td>
-                                <td class="table-warning">{{password_reset_token}}</td>
+                                <td class="table-info">Account Created</td>
+                                <td class="table-warning">{{created_at}}</td>
                             </tr>
                             <tr>
                                 <td class="table-info">email</td>
                                 <td class="table-warning">{{email}}</td>
                             </tr>
+                            <tr>
+                                <td class="table-info">Role</td>
+                                <td class="table-warning"><strong>{{role}}</strong></td>
+                            </tr>
                         </tbody>
                     </table>
-                    <button class="btn-sm btn-primary" onclick="deleteUser('{{email}}')">Delete User</button>
+                    <div class="">
+                        <button class="btn btn-sm btn-primary" onclick="deleteUser('{{email}}')">Delete User</button>
+                        <button class="btn btn-sm btn-primary" onclick="promoteToCoordinator('{{email}}')">Promote to Coordinator</button>
+                    </div>
                 </div>
              </script>
                 </div>
