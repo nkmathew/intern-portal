@@ -76,9 +76,15 @@ $userRole = Yii::$app->user->identity->role;
                     'content' => $this->render('preview'),
                     'headerOptions' => ['id' => 'preview-tab', 'class' => 'tab-main'],
                     'options' => ['id' => 'tab-preview'],
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-list"></span> Overview',
+                    'content' => $this->render('overview'),
+                    'headerOptions' => ['id' => 'overview-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-overview'],
                 ]
             ];
-            $tabItems = array_merge_recursive($moreItems, $tabItems);
+            $tabItems = array_merge_recursive($tabItems, $moreItems);
         } else {
             Yii::$app->session->setFlash('error', 'Please save the start date and duration of your internship first');
         }
