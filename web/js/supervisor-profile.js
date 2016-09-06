@@ -4,7 +4,6 @@
 
 $(document).ready(function () {
     $("#supervisorprofile-form").submit(function (e) {
-        console.log('HERE');
         $("#btn-submit-profile").spin(BIG_SPINNER);
         var url = '/site/supervisor-profile';
         $.ajax({
