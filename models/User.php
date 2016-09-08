@@ -23,6 +23,9 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    /**
+     *
+     */
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -185,6 +188,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Returns this user's logbook entries
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLogbook()
+    {
+        return Logbook::find(['author' => $this->email])->orderBy('entry_for');
     }
 
     /**
