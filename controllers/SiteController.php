@@ -77,6 +77,15 @@ class SiteController extends Controller
     }
 
     /**
+     * Returns an object representing the currently logged in user
+     *
+     * @return null | \app\models\User
+     */
+    private function getUser() {
+        return User::findByEmail(Yii::$app->user->identity->email);
+    }
+
+    /**
      * Renders a view depending on whether it was requested with pjax or via a
      * normal link visit
      *
@@ -199,6 +208,7 @@ class SiteController extends Controller
         if (Yii::$app->request->post('ajax') == 'supervisorprofile-form') {
             $model->load(Yii::$app->request->post());
             Yii::$app->response->format = Response::FORMAT_JSON;
+
             return ActiveForm::validate($model);
         }
 
@@ -209,6 +219,7 @@ class SiteController extends Controller
                     return $this->goHome();
                 } else {
                     Yii::$app->response->format = Response::FORMAT_JSON;
+
                     return "{msg: 'success'}";
                 }
             }
@@ -225,6 +236,7 @@ class SiteController extends Controller
         $model->company_address = $profile->company_address;
         $model->work_position = $profile->work_position;
         $model->phone_number = $profile->phone_number;
+
         return $this->renderPartial('supervisorProfile', [
             'model' => $model,
         ]);
@@ -236,7 +248,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionProfile($renderPartial=null)
+    public function actionProfile($renderPartial = null)
     {
         $model = new ProfileForm();
 
@@ -244,6 +256,7 @@ class SiteController extends Controller
         if (Yii::$app->request->post('ajax') == 'profile-form') {
             $model->load(Yii::$app->request->post());
             Yii::$app->response->format = Response::FORMAT_JSON;
+
             return ActiveForm::validate($model);
         }
 
@@ -254,6 +267,7 @@ class SiteController extends Controller
                     return $this->goHome();
                 } else {
                     Yii::$app->response->format = Response::FORMAT_JSON;
+
                     return "{msg: 'success'}";
                 }
             }
@@ -322,8 +336,9 @@ class SiteController extends Controller
     public function actionListInvitesByUser()
     {
         $email = Yii::$app->request->get('email');
+
         return $this->renderPartial('listInvitesByUser', [
-             'email' => $email
+            'email' => $email
         ]);
     }
 
@@ -360,6 +375,7 @@ class SiteController extends Controller
                     $profile->firstname = '';
                     $profile->sex = '';
                     $ret = $profile->save();
+
                     return $this->goHome();
                 }
             }
@@ -409,7 +425,8 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() &&
-            $model->resetPassword()) {
+            $model->resetPassword()
+        ) {
             Yii::$app->session->setFlash('success', 'New password was saved.');
 
             return $this->goHome();
@@ -452,10 +469,10 @@ class SiteController extends Controller
                 ['html' => 'signupLink-html', 'text' => 'signupLink-text'],
                 ['signupLink' => $signupLink]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' admin'])
-            ->setTo($email)
-            ->setSubject('Signup link for ' . Yii::$app->name)
-            ->send();
+                ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' admin'])
+                ->setTo($email)
+                ->setSubject('Signup link for ' . Yii::$app->name)
+                ->send();
             if ($mailStatus) {
                 $signupLink->insert();
             }
@@ -467,7 +484,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLinkSignup() {
+    public function actionLinkSignup()
+    {
         $token = Yii::$app->request->get('signup_token');
         $signupLink = new SignupLinks();
         $email = $signupLink::findOne(['signup_token' => $token]);
@@ -482,6 +500,7 @@ class SiteController extends Controller
         if ($email) {
             // Token found. Invalidate the others associated with the user about to signup
             $model = new SignupForm();
+
             return $this->renderPjax('linkSignup', [
                 'model' => $model,
                 'email' => $email->email,
@@ -489,22 +508,25 @@ class SiteController extends Controller
                 'role' => $email->role
             ]);
         } else {
-           return $this->render('error', [
-               'name' => 'Unknown Signup Token',
-               'message' => "We don't recognize that signup token. Sorry :("
-           ]);
+            return $this->render('error', [
+                'name' => 'Unknown Signup Token',
+                'message' => "We don't recognize that signup token. Sorry :("
+            ]);
         }
     }
 
-    public function actionListSentInvites() {
+    public function actionListSentInvites()
+    {
         return $this->renderPartial('sentInvites');
     }
 
-    public function actionPreview() {
+    public function actionPreview()
+    {
         return $this->render('preview');
     }
 
-    public function actionShowLogbook() {
+    public function actionShowLogbook()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $action = Yii::$app->request->get('action');
         $entryDate = Yii::$app->request->get('entryDate');
@@ -512,7 +534,7 @@ class SiteController extends Controller
             $logbook = Logbook::findOne(['entry_for' => $entryDate]);
             if ($action == 'save') {
                 // Save or update the entry for the specified date
-                $postData           = Yii::$app->request->post();
+                $postData = Yii::$app->request->post();
                 if ($logbook) {
                     $logbook->updated = $postData['updated'];
                 } else {
@@ -521,9 +543,9 @@ class SiteController extends Controller
                     $logbook->updated = $postData['updated'];
                 }
                 $logbook->entry_for = $postData['entry_for'];
-                $logbook->entry     = $postData['entry'];
-                $logbook->author    = Yii::$app->user->identity->email;
-                $retVal             = $logbook->save();
+                $logbook->entry = $postData['entry'];
+                $logbook->author = Yii::$app->user->identity->email;
+                $retVal = $logbook->save();
                 if ($retVal) {
                     return ['status' => 'Success'];
                 } else {
@@ -533,6 +555,7 @@ class SiteController extends Controller
                 if ($logbook) {
                     if ($logbook->delete()) {
                         $entryDate = Carbon::parse($entryDate)->format('l jS F Y');
+
                         return [
                             'status' => 'success',
                             'message' => "Entry for <strong>$entryDate</strong> deleted successfully"
@@ -558,6 +581,7 @@ class SiteController extends Controller
             $dateToday = date('Y-m-d');
             $logbook = Logbook::findOne(['entry_for' => $dateToday]);
             $logbook = $logbook ? $logbook : new Logbook();
+
             return $logbook;
         }
     }
@@ -566,7 +590,8 @@ class SiteController extends Controller
      * Displays the full logbook a week at a time
      *
      */
-    public function actionPreviewLogbook() {
+    public function actionPreviewLogbook()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $week = Yii::$app->request->get('week');
         $week = intval($week);
@@ -586,6 +611,7 @@ class SiteController extends Controller
                 AND entry_for <= '$end'
                 AND author = '$loggedInEmail'
         ORDER BY `entry_for`")->all();
+
         return [
             'start' => $start->format('Y-m-d'),
             'end' => $end->format('Y-m-d'), // jS F Y
@@ -599,26 +625,31 @@ class SiteController extends Controller
      *
      * @return null|static
      */
-    public function actionFetchProfile() {
+    public function actionFetchProfile()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $loggedInEmail = Yii::$app->user->identity->email;
         $profile = Profile::findByEmail($loggedInEmail);
+
         return $profile;
     }
 
     /**
      * Fetches user by email
      */
-    public function actionFetchUser() {
+    public function actionFetchUser()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $user = User::findByEmail(Yii::$app->request->get('email'));
+
         return $user ? $user : [];
     }
 
     /**
      * Deletes user by email
      */
-    public function actionDeleteUser() {
+    public function actionDeleteUser()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $user = User::findByEmail(Yii::$app->request->post('email'));
         SignupLinks::deleteAll(['email' => $user->email]);
@@ -626,6 +657,7 @@ class SiteController extends Controller
         if ($profile) {
             $profile->delete();
         }
+
         return $user->delete();
     }
 
@@ -633,7 +665,8 @@ class SiteController extends Controller
      * Change a supervisor's role to that of a coordinator enabling
      * him/her to view everyone's logbook
      */
-    public function actionSupervisorToCoordinator() {
+    public function actionSupervisorToCoordinator()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $email = Yii::$app->request->post('email');
         $user = User::findByEmail(Yii::$app->request->post('email'));
@@ -659,5 +692,64 @@ class SiteController extends Controller
                 'error' => 'User with email not found',
             ];
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function actionOverview() {
+        return $this->render('overview');
+    }
+
+    /**
+     * Exports the whole logbook as a pdf
+     *
+     * The entries are taken in order of their dates to be the way
+     * the final logbook will look like since someone is not allowed to
+     * make late entries if he/she misses a day
+     *
+     */
+    public function actionExportLogbook()
+    {
+        Yii::$app->response->format = Response::FORMAT_RAW;
+
+        // create new PDF document
+        $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        $pdf->AddPage();
+        $pdf->SetFont('helvetica', '', 8);
+        $tbl = $this->actionLogbookTable();
+        $pdf->writeHTML($tbl, true, false, false, false, '');
+        $pdf->Output('Internship_Logbook.pdf', 'I');
+    }
+
+    public function actionLogbookTable() {
+        $entries = $this->getUser()->getLogbook()->all();
+        $entryByWeek = [];
+        $week = 0;
+        foreach ($entries as $x => $value) {
+            if (!isset($entryByWeek[$week])) {
+                $entryByWeek[$week] = [];
+            }
+            array_push($entryByWeek[$week], $value);
+            if (($x+1) % 5 == 0) {
+                $week++;
+            }
+        }
+
+        $weekNum = Yii::$app->request->get('week');
+        $weekNum = intval($weekNum);
+        if ($weekNum <= 0) {
+            $weekNum = 1;
+        } else if ($weekNum > count($entryByWeek)) {
+            $weekNum = count($entryByWeek);
+        }
+
+        return $this->renderPartial('logbookPdf', [
+            'entryList' => $entryByWeek[$weekNum-1],
+            'weekNumber' => $weekNum
+        ]);
     }
 }
