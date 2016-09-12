@@ -18,7 +18,7 @@ function alertMessage(message) {
     if (typeof message == 'object') {
         if (message.error != undefined) {
             alertError(message.error);
-        } else {
+        } else if (message.message != undefined) {
             alertSuccess(message.message);
         }
     } else {
