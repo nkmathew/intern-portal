@@ -2,10 +2,8 @@
 
 /* @var $this yii\web\View */
 
-use app\models\ProfileForm;
 use app\models\Profile;
 use yii\bootstrap\Tabs;
-use app\controllers\SiteController;
 
 $this->title = 'Home';
 
@@ -32,6 +30,12 @@ $userRole = Yii::$app->user->identity->role;
                 'content' => $this->render('coordinatorConsole'),
                 'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
                 'options' => ['id' => 'tab-coordinator-console']
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-list"></span> Reviews',
+                'content' => $this->context->actionReviews(),
+                'headerOptions' => ['id' => 'supervisor-reviews-tab', 'class' => 'tab-main'],
+                'options' => ['id' => 'tab-supervisor-reviews']
             ],
         ];
     } else if ($userRole == 'superuser') {
