@@ -81,4 +81,11 @@ class Profile extends \yii\db\ActiveRecord
         $regNumber = explode('-', $regNumber)[0];
         return Course::findBySql("SELECT * FROM courses WHERE course_code LIKE '$regNumber%' LIMIT 10")->one();
     }
+
+    /**
+     * Concatenates first and second names
+     */
+    public function fullName() {
+        return "$this->firstname $this->surname";
+    }
 }

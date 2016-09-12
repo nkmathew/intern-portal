@@ -74,4 +74,12 @@ class SupervisorProfile extends \yii\db\ActiveRecord
     {
         return static::findOne(['email' => $email]);
     }
+
+    /**
+     * Returns's full name
+     */
+    public function fullName() {
+        return "$this->firstname $this->surname";
+    }
+
 }
