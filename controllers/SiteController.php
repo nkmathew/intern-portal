@@ -1,6 +1,8 @@
 <?php
 namespace app\controllers;
 
+use app\models\AssociationLinks;
+use app\models\Associations;
 use app\models\Logbook;
 use app\models\Profile;
 use app\models\SupervisorProfile;
@@ -237,7 +239,7 @@ class SiteController extends Controller
         $model->work_position = $profile->work_position;
         $model->phone_number = $profile->phone_number;
 
-        return $this->renderPartial('supervisorProfile', [
+        return $this->renderPartial('supervisor/supervisorProfile', [
             'model' => $model,
         ]);
     }
@@ -751,5 +753,82 @@ class SiteController extends Controller
             'entryList' => $entryByWeek[$weekNum-1],
             'weekNumber' => $weekNum
         ]);
+    }
+
+    /**
+     * Supervisor/coordinator logbook reviews
+     */
+    public function actionReviews() {
+        return $this->renderPartial('supervisor/supervisorReviews');
+    }
+
+    /**
+     * Send a link to the intern's email requesting access to his/her logbook
+     * in order to review it
+     */
+    public function actionAssociationLink() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $email = Yii::$app->request->post('email');
+        $assocLink = new AssociationLinks();
+        $assocLink->intern = $email;
+        $assocLink->is_disabled = 0;
+        $assocLink->date_sent = date('Y-m-d H:i:s');
+        $assocLink->supervisor = $this->getUser()->email;
+        $assocLink->generateToken();
+        // return $assocLink;
+        $mailStatus = Yii::$app->mailer->compose(
+            ['html' => 'associationLink-html', 'text' => 'associationLink-text'],
+            ['assocLink' => $assocLink]
+            )
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' admin'])
+            ->setTo($email)
+            ->setSubject('Signup link for ' . Yii::$app->name)
+            ->send();
+        if ($mailStatus) {
+            $assocLink->insert();
+            return [
+                'message' => 'Association link sent successfully'
+            ];
+        } else {
+            return [
+                'error' => 'Error in sending association link email'
+            ];
+        }
+    }
+
+    /**
+     * Handle intern's response to an association link from a supervisor/coordinator
+     *
+     */
+    public function actionAcceptAssociation() {
+        $reponse = Yii::$app->request->post('response');
+        $token = Yii::$app->request->get('assoc_token');
+        $assocLink = AssociationLinks::findOne(['token' => $token, 'is_disabled' => 0]);
+        if (!$assocLink) {
+            return $this->render('error', [
+                'name' => 'Error in intern association',
+                'message' => "Sorry, could not find a valid corresponding association token"
+            ]);
+        }
+        if ($reponse == '1') {
+            AssociationLinks::updateAll(['is_disabled' => 1], "supervisor = '$assocLink->supervisor'");
+            $association = new Associations();
+            $association->intern = $assocLink->intern;
+            if ($assocLink->supervisor0->role0->role_name == 'supervisor') {
+                $association->supervisor = $assocLink->supervisor;
+            } else {
+                $association->coordinator = $assocLink->supervisor;
+            }
+            $association->save();
+            $fullName = $assocLink->supervisor0->supervisorprofile->fullName();
+            $email = $assocLink->supervisor0->supervisorprofile->email;
+            Yii::$app->session->setFlash('success', "<strong>$fullName ($email)</strong> is now your supervisor");
+        } else if ($assocLink) {
+            return $this->render('supervisor/acceptAssociation', [
+                'assocLink' => $assocLink
+            ]);
+        }
+        header('Location: /');
+        exit();
     }
 }
