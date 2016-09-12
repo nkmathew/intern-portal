@@ -11,15 +11,27 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
+ * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
- * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $role
- * @property string $password write-only password
+ *
+ * @property Associationlinks[] $associationlinks
+ * @property Associationlinks[] $associationlinks0
+ * @property Associations[] $associations
+ * @property Associations[] $associations0
+ * @property Associations[] $associations1
+ * @property Logbook[] $logbooks
+ * @property Profile $profile
+ * @property Reviews[] $reviews
+ * @property Reviews[] $reviews0
+ * @property Signuplinks[] $signuplinks
+ * @property SupervisorProfile $supervisorprofile
+ * @property UserRoles $role0
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -201,20 +213,83 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Returns this user's profile
+     * @return \yii\db\ActiveQuery
      */
     public function getProfile()
     {
-        return Profile::findOne(['email' => $this->email]);
+        return $this->hasOne(Profile::className(), ['email' => 'email']);
     }
 
     /**
-     * Returns signup links generated for this user
-     *
      * @return \yii\db\ActiveQuery
      */
-    public function getSignupLinks()
+    public function getRole0()
     {
-        return SignupLinks::find(['email' => $this->email])->all();
+        return $this->hasOne(UserRoles::className(), ['role_name' => 'role']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReviews0()
+    {
+        return $this->hasMany(Reviews::className(), ['reviewer' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssociations()
+    {
+        return $this->hasMany(Associations::className(), ['coordinator' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssociations0()
+    {
+        return $this->hasMany(Associations::className(), ['intern' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssociations1()
+    {
+        return $this->hasMany(Associations::className(), ['supervisor' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssociationlinks0()
+    {
+        return $this->hasMany(AssociationLinks::className(), ['supervisor' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssociationlinks()
+    {
+        return $this->hasMany(AssociationLinks::className(), ['intern' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSignuplinks()
+    {
+        return $this->hasMany(SignupLinks::className(), ['inviter' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSupervisorprofile()
+    {
+        return $this->hasOne(SupervisorProfile::className(), ['email' => 'email']);
+    }
+
 }
