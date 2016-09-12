@@ -36,10 +36,7 @@ class m160622_095150_create_profile extends Migration
     public function down()
     {
         // drops foreign key for table `profile`
-        $this->dropForeignKey(
-            'FK_profile_user',
-            'profile'
-        );
+        $this->dropForeignKey('FK_profile_user', 'profile');
 
         $this->dropTable('profile');
     }
