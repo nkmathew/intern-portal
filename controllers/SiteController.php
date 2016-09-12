@@ -367,7 +367,6 @@ class SiteController extends Controller
                     if ($user->role == 'supervisor' || $user->role == 'superuser') {
                         $profile = new SupervisorProfile();
                         $profile->last_updated = date('Y-m-d H:i:s');
-                        $profile->role = $user->role;
                     } else {
                         $profile = new Profile();
                         $profile->last_updated = time();
@@ -653,11 +652,13 @@ class SiteController extends Controller
     public function actionDeleteUser()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $user = User::findByEmail(Yii::$app->request->post('email'));
+        $email = Yii::$app->request->post('email');
+        $user = User::findByEmail($email);
         SignupLinks::deleteAll(['email' => $user->email]);
-        $profile = $user->getProfile();
-        if ($profile) {
-            $profile->delete();
+        if ($user->role == 'intern') {
+            Profile::deleteAll(['email' => $email]);
+        } else {
+            SupervisorProfile::deleteAll(['email' => $email]);
         }
 
         return $user->delete();
