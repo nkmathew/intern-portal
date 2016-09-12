@@ -249,6 +249,11 @@ body {
     padding-right: 3px;
 }
 
+.bitalics {
+    font-weight: bold;
+    font-style: italic;
+}
+
 /* ~~~~~~~~~~~~~[ NavBar for Supervisors/Coordinators ]~~~~~~~~~~~~~~~~~~~~ */
 .navbar-supervisor {
     background-color: #9a2f24;
