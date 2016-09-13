@@ -812,18 +812,22 @@ class SiteController extends Controller
             ]);
         }
         if ($reponse == '1') {
-            AssociationLinks::updateAll(['is_disabled' => 1], "supervisor = '$assocLink->supervisor'");
-            $association = new Associations();
+            $association = Associations::findOne(['intern' => $this->getUser()->email]);
+            if (!$association) {
+                $association = new Associations();
+            }
             $association->intern = $assocLink->intern;
             if ($assocLink->supervisor0->role0->role_name == 'supervisor') {
                 $association->supervisor = $assocLink->supervisor;
             } else {
                 $association->coordinator = $assocLink->supervisor;
             }
-            $association->save();
-            $fullName = $assocLink->supervisor0->supervisorprofile->fullName();
-            $email = $assocLink->supervisor0->supervisorprofile->email;
-            Yii::$app->session->setFlash('success', "<strong>$fullName ($email)</strong> is now your supervisor");
+            if ($association->save()) {
+                AssociationLinks::updateAll(['is_disabled' => 1], "supervisor = '$assocLink->supervisor'");
+                $fullName = $assocLink->supervisor0->supervisorprofile->fullName();
+                $email = $assocLink->supervisor0->supervisorprofile->email;
+                Yii::$app->session->setFlash('success', "<strong>$fullName ($email)</strong> is now your supervisor");
+            }
         } else if ($assocLink) {
             return $this->render('supervisor/acceptAssociation', [
                 'assocLink' => $assocLink

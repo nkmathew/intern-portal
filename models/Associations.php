@@ -33,6 +33,7 @@ class Associations extends \yii\db\ActiveRecord
     {
         return [
             [['intern', 'supervisor', 'coordinator'], 'string', 'max' => 255],
+            [['intern'], 'unique'],
             [['coordinator'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['coordinator' => 'email']],
             [['intern'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['intern' => 'email']],
             [['supervisor'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['supervisor' => 'email']],
