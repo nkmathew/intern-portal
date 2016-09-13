@@ -450,7 +450,7 @@ class SiteController extends Controller
             return;
         }
         $userRole = Yii::$app->user->identity->role;
-        if ($userRole == 'supervisor') {
+        if ($userRole == 'coordinator' || $userRole == 'supervisor') {
             $role = 'intern';
         } else if ($userRole == 'superuser') {
             $role = 'supervisor';
@@ -835,5 +835,14 @@ class SiteController extends Controller
         }
         header('Location: /');
         exit();
+    }
+
+    /**
+     * Render intern review page
+     */
+    public function actionReviewIntern() {
+        return $this->render('supervisor/reviewIntern', [
+
+        ]);
     }
 }
