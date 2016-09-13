@@ -16,6 +16,7 @@ use yii\helpers\Html;
 $this->title = 'Accept association request';
 $supervisorName = $assocLink->supervisor0->supervisorprofile->fullName();
 $supervisorEmail = $assocLink->supervisor0->supervisorprofile->email;
+$supervisorRole = $assocLink->supervisor0->role;
 
 ?>
 
@@ -25,10 +26,11 @@ $supervisorEmail = $assocLink->supervisor0->supervisorprofile->email;
     ]); ?>
        <?= Html::csrfMetaTags() ?>
 
-       You are about to assign <div class="bitalics"><?= $supervisorName ?></div> with email,
-       <div class="bitalics"><?= $supervisorEmail ?></div> as your supervisor hence granting him
-       access to your logbook and reponsibility to review your progress. Click <em>Confirm</em> to
-       accept and <em>Reject</em> to ignore this request <br>
+       You are about to assign <span class="bitalics"><?= $supervisorName ?></span> with email,
+       <span class="bitalics"><?= $supervisorEmail ?></span> as your <span class="bitalics"><?= $supervisorRole ?></span>
+       <br>hence granting him
+       access to your logbook and reponsibility to review your progress. <br>
+       Click <em>Confirm</em> to accept and <em>Reject</em> to ignore this request <br>
        <button class="btn btn-success" type="submit" name="response" value="1">Confirm </button>
     <button class="btn btn-danger" type="submit" name="response" value="0">Reject </button>
     <?php ActiveForm::end(); ?>
