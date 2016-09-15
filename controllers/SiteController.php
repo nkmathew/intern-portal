@@ -728,7 +728,13 @@ class SiteController extends Controller
         $pdf->Output('Internship_Logbook.pdf', 'I');
     }
 
-    public function actionLogbookTable() {
+    /**
+     * Returns all logbook entries week-wise
+     *
+     * @param bool|null $asJSON
+     * @return array|string
+     */
+    public function actionEntriesByWeek($asJSON = true) {
         $entries = $this->getUser()->getLogbook()->all();
         $entryByWeek = [];
         $week = 0;
@@ -741,7 +747,21 @@ class SiteController extends Controller
                 $week++;
             }
         }
+        if ($asJSON) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $entryByWeek;
+        } else {
+            return $entryByWeek;
+        }
+    }
 
+    /**
+     * Renders the logbook entries as a html table
+     *
+     * @return string
+     */
+    public function actionLogbookTable() {
+        $entryByWeek = $this->actionEntriesByWeek(false);
         $weekNum = Yii::$app->request->get('week');
         $weekNum = intval($weekNum);
         if ($weekNum <= 0) {
