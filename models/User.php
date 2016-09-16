@@ -23,14 +23,15 @@ use yii\web\IdentityInterface;
  * @property Associationlinks[] $associationlinks
  * @property Associationlinks[] $associationlinks0
  * @property Associations[] $associations
- * @property Associations[] $associations0
+ * @property Associations $associations0
  * @property Associations[] $associations1
+ * @property Config $config
+ * @property CoordinatorReviews[] $coordinatorReviews
  * @property Logbook[] $logbooks
  * @property Profile $profile
- * @property Reviews[] $reviews
- * @property Reviews[] $reviews0
  * @property Signuplinks[] $signuplinks
- * @property SupervisorProfile $supervisorprofile
+ * @property SupervisorReviews[] $supervisorReviews
+ * @property Supervisorprofile $supervisorprofile
  * @property UserRoles $role0
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -247,7 +248,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAssociations0()
     {
-        return $this->hasMany(Associations::className(), ['intern' => 'email']);
+        return $this->hasOne(Associations::className(), ['intern' => 'email']);
     }
 
     /**
@@ -256,6 +257,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function getAssociations1()
     {
         return $this->hasMany(Associations::className(), ['supervisor' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getConfig()
+    {
+        return $this->hasOne(Config::className(), ['supervisor' => 'email']);
     }
 
     /**
