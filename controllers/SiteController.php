@@ -537,6 +537,13 @@ class SiteController extends Controller
 
     public function actionShowLogbook()
     {
+        $thisUser = $this->getUser();
+        $config = null;
+        $assoc = $thisUser->associations0;
+        if ($assoc && $assoc->supervisor) {
+            // Intern has been associated with a supervisor
+            $config = $assoc->supervisor0->config;
+        }
         Yii::$app->response->format = Response::FORMAT_JSON;
         $action = Yii::$app->request->get('action');
         $entryDate = Yii::$app->request->get('entryDate');
@@ -545,17 +552,34 @@ class SiteController extends Controller
             if ($action == 'save') {
                 // Save or update the entry for the specified date
                 $postData = Yii::$app->request->post();
+                $isToday = Carbon::parse($postData['entry_for'])->isToday();
                 if ($logbook) {
+                    if (!$isToday && $config && !$config->can_modify_later) {
+                        return ['error' => 'Late modifications have been disallowed by your supervisor'];
+                    }
                     $logbook->updated = $postData['updated'];
                 } else {
+                    if (!$isToday && $config && !$config->can_add_later) {
+                        return ['error' => 'Missed entries can not be added at a later date as per your supervisor'];
+                    }
                     $logbook = new Logbook();
                     $logbook->created = $postData['created'];
                     $logbook->updated = $postData['updated'];
                 }
                 $logbook->entry_for = $postData['entry_for'];
                 $logbook->entry = $postData['entry'];
-                $logbook->author = Yii::$app->user->identity->email;
-                $retVal = $logbook->save();
+                $logbook->author = $thisUser->email;
+                if ($config) {
+                    $start = Carbon::parse($config->starting_hour);
+                    $close = Carbon::parse($config->closing_hour);
+                    $time = Carbon::parse(Yii::$app->request->post('localTime'));
+                    if ($time < $start || $time > $close) {
+                        return ['error' => 'You cannot make edits outside working hours'];
+                    }
+                    $retVal = $logbook->save();
+                } else {
+                    $retVal = $logbook->save();
+                }
                 if ($retVal) {
                     return ['message' => 'Success'];
                 } else {
