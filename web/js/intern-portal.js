@@ -31,7 +31,7 @@ function alertError(message) {
     $('.alert-box').removeClass('alert-success');
     $('.alert-box').addClass('alert-danger');
     $('.alert-box').show();
-    $("#alert-box").fadeTo(5000, 500).slideUp(500, function () {
+    $("#alert-box").fadeTo(10000, 500).slideUp(500, function () {
         $("#alert-box").hide();
     });
 }
