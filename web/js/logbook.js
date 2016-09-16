@@ -96,6 +96,7 @@ function saveLogbookEntry() {
         type: 'POST',
         url: url + '&entryDate=' + selectedDate,
         data: {
+            localTime: moment().format('H:mm:s'),
             entry: content,
             created: time,
             updated: time,
