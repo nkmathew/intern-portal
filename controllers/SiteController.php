@@ -1015,10 +1015,17 @@ class SiteController extends Controller
         }
         $entryByWeek = $this->actionEntriesByWeek(false, $intern);
 
-        return $this->renderAjax('supervisor/reviewIntern', [
-            'entries' => $entryByWeek,
-            'intern' => User::findByEmail($intern),
-        ]);
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('supervisor/reviewIntern', [
+                'entries' => $entryByWeek,
+                'intern' => User::findByEmail($intern),
+            ]);
+        } else {
+            return $this->renderPartial('supervisor/reviewIntern', [
+                'entries' => $entryByWeek,
+                'intern' => User::findByEmail($intern),
+            ]);
+        }
     }
 
     /**
