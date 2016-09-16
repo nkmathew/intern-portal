@@ -18,6 +18,21 @@ if (count($associations) == 0) {
     }
 </style>
 
+<script !src="">
+    function viewOverview(email) {
+        $('a[href=#tab-intern-overview]').click();
+        $('#tab-intern-overview').spin();
+        $.ajax({
+            url: '/site/review-intern?intern=' + email,
+            success: function (data) {
+                $('#tab-intern-overview').spin(false);
+                $('#tab-intern-overview').html(data);
+                bindSubmitButton();
+            },
+        });
+    }
+</script>
+
 <table class="table table-striped table-bordered" id="intern-list">
     <caption>Interns under your supervision:</caption>
     <tr>
@@ -33,14 +48,17 @@ if (count($associations) == 0) {
         $regNumber = $profile->reg_number;
         $email = $profile->email;
         $sex = [0 => 'Male', 1 => 'Female'][$profile->sex];
-        echo "
+        echo <<<TABLE
           <tr>
             <td>$name</td>
             <td>$regNumber</td>
             <td>$email</td>
             <td>$sex</td>
+            <td align='center'>
+              <button onclick="viewOverview('$email')" class='btn btn-sm btn-primary'>Overview</button>
+            </td>
           </tr>
-        ";
+TABLE;
     }
     ?>
 </table>

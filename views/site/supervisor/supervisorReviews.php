@@ -18,14 +18,18 @@ $this->title = 'Supervisor Reviews';
         <!-- Nav tabs -->
         <ul class="nav nav-tabs tabs-left">
             <li class="active"><a href="#tab-associateIntern" data-toggle="tab">Add Intern</a></li>
+            <li><a href="#tab-intern-overview" data-toggle="tab">Intern Overview</a></li>
         </ul>
     </div>
     <div class="col-xs-9">
         <div class="tab-content">
-            <div class="tab-pane active" id="tab-invite-student">
+            <div class="tab-pane active" id="tab-associateIntern">
                 <?= $this->render('internList'); ?>
                 <hr class="style4">
                 <?= $this->render('associateWithIntern'); ?>
+            </div>
+            <div class="tab-pane" id="tab-intern-overview">
+                <p>this is funny</p>
             </div>
         </div>
     </div>
