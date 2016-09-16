@@ -101,12 +101,12 @@ if (!$isGuest) {
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-login"]);
             Pjax::widget(['id' => "main-content-area", "linkSelector" => "#link-pwd-reset"]);
             ?>
-            <div class="container">
+            <div class="container" style="position:relative">
                 <?= Alert::widget() ?>
                 <div id="main-content-area">
-                    <div id="alert-box" class="alert-box alert">
-                        <a href="#" class="close" onclick="$('.alert').hide()">×</a>
-                        <span class="msg"></span>
+                    <div id="alert-box" class="alert-box alert alert-danger">
+                        <a href="#" class="close" onclick="$('#alert-box').hide()">×</a>
+                        <span class="msg">This is my message</span>
                     </div>
                     <?= $content ?>
                 </div>
