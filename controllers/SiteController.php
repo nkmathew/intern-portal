@@ -929,6 +929,7 @@ class SiteController extends Controller
             'model' => $review,
             'role' => $role,
             'internEmail' => $email,
+            'thisUser' => $this->getUser(),
             'dateRange' => Yii::$app->request->get('dateRange')
         ]);
     }
@@ -1007,6 +1008,10 @@ class SiteController extends Controller
     public function actionReviewIntern() {
         if (isset($_GET['intern'])) {
             $intern = $_GET['intern'];
+        } else if ($this->getUser()->role == 'intern') {
+            // Show the overview/reviews for the currently logged in user if the user
+            // is an intern
+            $intern = $this->getUser()->email;
         }
         $entryByWeek = $this->actionEntriesByWeek(false, $intern);
 

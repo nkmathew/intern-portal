@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model \app\models\SupervisorReviews */
+/* @var $thisUser \app\models\User */
 /* @var $form ActiveForm */
 
 if ($model->reviewer0) {
@@ -44,10 +45,12 @@ if ($model->reviewer0) {
         <input type="hidden" name="dateRange" value="<?= $dateRange ?>">
 
         <div class="form-group">
-            <?= Html::submitButton('Submit', [
-                'class' => 'btn btn-primary',
-                'id' => 'btn-save-review'
-            ]) ?>
+            <?php if ($thisUser->role != 'intern') { ?>
+                <?= Html::submitButton('Submit', [
+                    'class' => 'btn btn-primary',
+                    'id' => 'btn-save-review'
+                ]) ?>
+            <?php } ?>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
     </div>

@@ -92,7 +92,7 @@ $userRole = Yii::$app->user->identity->role;
                 ],
                 [
                     'label' => '<span class="glyphicon glyphicon-list"></span> Overview',
-                    'content' => $this->render('overview'),
+                    'content' => $this->context->actionReviewIntern(),
                     'headerOptions' => ['id' => 'overview-tab', 'class' => 'tab-main'],
                     'options' => ['id' => 'tab-overview'],
                 ]
