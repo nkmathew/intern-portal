@@ -557,9 +557,9 @@ class SiteController extends Controller
                 $logbook->author = Yii::$app->user->identity->email;
                 $retVal = $logbook->save();
                 if ($retVal) {
-                    return ['status' => 'Success'];
+                    return ['message' => 'Success'];
                 } else {
-                    return ['status' => 'Failed to save the record ' . $retVal];
+                    return ['error' => 'Failed to save the record ' . $retVal];
                 }
             } elseif ($action == 'delete') {
                 if ($logbook) {
@@ -567,19 +567,16 @@ class SiteController extends Controller
                         $entryDate = Carbon::parse($entryDate)->format('l jS F Y');
 
                         return [
-                            'status' => 'success',
                             'message' => "Entry for <strong>$entryDate</strong> deleted successfully"
                         ];
                     } else {
                         return [
-                            'status' => 'error',
-                            'message' => "Problem deleting entry for $entryDate"
+                            'error' => "Problem deleting entry for $entryDate"
                         ];
                     }
                 } else {
                     return [
-                        'status' => 'error',
-                        'message' => 'Entry does not exist'
+                        'error' => 'Entry does not exist'
                     ];
                 }
             } else {

@@ -105,6 +105,7 @@ function saveLogbookEntry() {
             // Remove spinner
             $("#logbook-entry-area").spin(false);
             showLogbook(selectedDate);
+            alertMessage(data);
         },
         error: function (xhr, status, error) {
             $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
