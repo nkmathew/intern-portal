@@ -24,7 +24,7 @@ class m160911_134441_add_foreign_key_to_logbook_reviews extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('FK_supervisor_review_reviews', 'reviews');
-        $this->dropForeignKey('FK_coordinator_review_reviews', 'reviews');
+        $this->dropForeignKey('FK_supervisor_review_reviews', 'logbook');
+        $this->dropForeignKey('FK_coordinator_review_reviews', 'logbook');
     }
 }
