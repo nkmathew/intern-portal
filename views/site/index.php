@@ -42,6 +42,7 @@ $userRole = Yii::$app->user->identity->role;
                     'options' => ['id' => 'tab-supervisor-reviews']
                 ],
             ];
+            $tabItems = array_merge_recursive($tabItems, $moreItems);
             if ($userRole == 'supervisor') {
                 $config = [
                     'label' => '<span class="glyphicon glyphicon-cog"></span> Configuration',
@@ -51,7 +52,6 @@ $userRole = Yii::$app->user->identity->role;
                 ];
                 $tabItems[] = $config;
             }
-            $tabItems = array_merge_recursive($tabItems, $moreItems);
         } else {
             Yii::$app->session->setFlash('error', 'Update your profile first to be able to access the other functions');
         }
