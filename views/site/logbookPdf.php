@@ -51,11 +51,22 @@ EOD;
         }
         ?>
     </table>
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
-    <!--<hr class="hr-style">-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <?php
+    $first = $entryList[0];
+    echo "<strong>Coordinator's Review:</strong>";
+    if ($first->coordinatorReview) {
+        $review = $first->coordinatorReview->review;
+        echo "<p>$review</p>";
+    }
+    echo "<br>";
+    echo "<strong>Supervisor's Review:</strong>";
+    if ($first->supervisorReview) {
+        $review = $first->supervisorReview->review;
+        echo "<p>$review</p>";
+    }
+    ?>
 </div>
