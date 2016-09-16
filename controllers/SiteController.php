@@ -6,6 +6,7 @@ use app\models\Associations;
 use app\models\CoordinatorReviews;
 use app\models\Logbook;
 use app\models\Profile;
+use app\models\Config;
 use app\models\SupervisorProfile;
 use app\models\SupervisorProfileForm;
 use app\models\SupervisorReviews;
@@ -987,4 +988,54 @@ class SiteController extends Controller
             'intern' => User::findByEmail($intern),
         ]);
     }
+
+    /**
+     * Saves configuration settings for a workplace/intern
+     *
+     * @return string|void
+     */
+    public function actionConfigForm()
+    {
+        $thisUser = $this->getUser();
+        if ($thisUser->role != 'supervisor') {
+            return $this->render('error', [
+                'name' => 'Error',
+                'message' => 'You are not a supervisor. Only supervisors can change configuration settings'
+            ]);
+        }
+
+        $model = Config::findOne(['supervisor' => $thisUser->email]);
+        if (!$model) {
+            $model = new Config();
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                if ($thisUser->email != $model->supervisor) {
+                    return $this->render('error', [
+                        'name' => 'Error',
+                        'message' => "Detected attempt to change another supervisor's configuration"
+                    ]);
+                } else {
+                    $ret = $model->save();
+                    if ($ret) {
+                        Yii::$app->session->setFlash('success',
+                            'Settings saved successfully');
+                    } else {
+                        Yii::$app->session->setFlash('success', 'Problem encountered when trying to save your configuration');
+                    }
+                }
+            } else {
+                Yii::$app->session->setFlash('success', 'Data validation failed');
+            }
+            return $this->goBack();
+        } else {
+
+            return $this->renderPartial('supervisor/configForm', [
+                'model' => $model,
+                'email' => $thisUser->email
+            ]);
+        }
+    }
+
 }
