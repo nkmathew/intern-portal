@@ -79,12 +79,12 @@ $internEmail = $intern->email;
             <td align="center">
                <button data-toggle="modal" data-target="#modal-reviewForm"
                        class="btn btn-sm $coordClass"
-                        onClick="displayReview($coordReview, 'coord', '$firstDate|$lastDate')"
+                        onClick="displayReview($coordReview, 'coord', '$firstDate|$lastDate', '$internEmail')"
                        type="button">$coordLabel</button>
             </td>
             <td align="center">
                <button data-toggle="modal" data-target="#modal-reviewForm"
-                        onClick="displayReview($superReview, 'superv', '$firstDate|$lastDate')"
+                        onClick="displayReview($superReview, 'superv', '$firstDate|$lastDate', '$internEmail')"
                        class="btn btn-sm $superClass" type="button">
                  $superLabel
                </button>

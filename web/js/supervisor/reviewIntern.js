@@ -2,10 +2,10 @@
  * Created by nkmathew on 18/09/2016.
  */
 
-function displayReview(id, type, dateRange) {
+function displayReview(id, type, dateRange, email) {
     $('#modal-reviewForm').spin();
     $('.modal-body').html('');
-    url = '/site/fetch-review?id=' + id + '&' + type + '&dateRange=' + dateRange;
+    url = '/site/fetch-review?id=' + id + '&' + type + '&dateRange=' + dateRange + '&email=' + email;
     // $('.modal-body').load('/site/fetch-review?id=' + id + '&' + type + '&dateRange=' + dateRange);
     $.ajax({
         type: 'GET',

@@ -39,6 +39,7 @@ if ($model->reviewer0) {
         ]) ?>
 
         <input type="hidden" name="type" value="<?= $role ?>">
+        <input type="hidden" name="internEmail" value="<?= $internEmail ?>">
         <input type="hidden" name="id" value="<?= $model->id ?>">
         <input type="hidden" name="dateRange" value="<?= $dateRange ?>">
 
