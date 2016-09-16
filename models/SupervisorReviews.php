@@ -5,27 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "reviews".
+ * This is the model class for table "supervisor_reviews".
  *
  * @property integer $id
  * @property string $reviewer
  * @property string $review
- * @property string $reviewed_intern
  * @property string $created
  *
  * @property Logbook[] $logbooks
- * @property Logbook[] $logbooks0
- * @property User $reviewedIntern
  * @property User $reviewer0
  */
-class Reviews extends \yii\db\ActiveRecord
+class SupervisorReviews extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'reviews';
+        return 'supervisor_reviews';
     }
 
     /**
@@ -36,8 +33,7 @@ class Reviews extends \yii\db\ActiveRecord
         return [
             [['review'], 'string'],
             [['created'], 'safe'],
-            [['reviewer', 'reviewed_intern'], 'string', 'max' => 255],
-            [['reviewed_intern'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['reviewed_intern' => 'email']],
+            [['reviewer'], 'string', 'max' => 255],
             [['reviewer'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['reviewer' => 'email']],
         ];
     }
@@ -51,7 +47,6 @@ class Reviews extends \yii\db\ActiveRecord
             'id' => 'ID',
             'reviewer' => 'Reviewer',
             'review' => 'Review',
-            'reviewed_intern' => 'Reviewed Intern',
             'created' => 'Created',
         ];
     }
@@ -61,23 +56,7 @@ class Reviews extends \yii\db\ActiveRecord
      */
     public function getLogbooks()
     {
-        return $this->hasMany(Logbook::className(), ['coordinator_review' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLogbooks0()
-    {
         return $this->hasMany(Logbook::className(), ['supervisor_review' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getReviewedIntern()
-    {
-        return $this->hasOne(User::className(), ['email' => 'reviewed_intern']);
     }
 
     /**

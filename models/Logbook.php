@@ -9,12 +9,16 @@ use Yii;
  *
  * @property integer $id
  * @property string $entry
- * @property integer $updated
- * @property integer $created
+ * @property string $updated
+ * @property string $created
  * @property string $author
  * @property string $entry_for
+ * @property integer $supervisor_review
+ * @property integer $coordinator_review
  *
+ * @property CoordinatorReviews $coordinatorReview
  * @property User $author0
+ * @property SupervisorReviews $supervisorReview
  */
 class Logbook extends \yii\db\ActiveRecord
 {
@@ -32,12 +36,14 @@ class Logbook extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['updated', 'created'], 'integer'],
-            [['entry_for'], 'required'],
+            [['entry'], 'string'],
+            [['updated', 'created', 'supervisor_review', 'coordinator_review'], 'integer'],
+            [['author', 'entry_for'], 'required'],
             [['entry_for'], 'safe'],
-            [['entry', 'author'], 'string', 'max' => 255],
-            [['entry_for'], 'unique'],
+            [['author'], 'string', 'max' => 255],
+            [['coordinator_review'], 'exist', 'skipOnError' => true, 'targetClass' => CoordinatorReviews::className(), 'targetAttribute' => ['coordinator_review' => 'id']],
             [['author'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author' => 'email']],
+            [['supervisor_review'], 'exist', 'skipOnError' => true, 'targetClass' => SupervisorReviews::className(), 'targetAttribute' => ['supervisor_review' => 'id']],
         ];
     }
 
@@ -53,7 +59,17 @@ class Logbook extends \yii\db\ActiveRecord
             'created' => 'Created',
             'author' => 'Author',
             'entry_for' => 'Entry For',
+            'supervisor_review' => 'Supervisor Review',
+            'coordinator_review' => 'Coordinator Review',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCoordinatorReview()
+    {
+        return $this->hasOne(CoordinatorReviews::className(), ['id' => 'coordinator_review']);
     }
 
     /**
@@ -65,12 +81,10 @@ class Logbook extends \yii\db\ActiveRecord
     }
 
     /**
-     * Returns a logbook entry for a certain date
-     *
-     * @param $date A string date
+     * @return \yii\db\ActiveQuery
      */
-    public function getEntryByDate($date)
+    public function getSupervisorReview()
     {
-        $this::findOne(['entry_for' => $date]);
+        return $this->hasOne(SupervisorReviews::className(), ['id' => 'supervisor_review']);
     }
 }
