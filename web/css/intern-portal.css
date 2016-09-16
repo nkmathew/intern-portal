@@ -165,7 +165,7 @@ a.desc:after {
 }
 
 .alert-box {
-    /*display: none;*/
+    display: none;
     position: absolute;
     z-index: 10000;
     top: 52px;

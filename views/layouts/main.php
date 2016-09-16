@@ -106,7 +106,7 @@ if (!$isGuest) {
                 <div id="main-content-area">
                     <div id="alert-box" class="alert-box alert alert-danger">
                         <a href="#" class="close" onclick="$('#alert-box').hide()">×</a>
-                        <span class="msg">This is my message</span>
+                        <span class="msg"></span>
                     </div>
                     <?= $content ?>
                 </div>
