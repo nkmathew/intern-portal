@@ -944,7 +944,7 @@ class SiteController extends Controller
         }
         $entryByWeek = $this->actionEntriesByWeek(false, $intern);
 
-        return $this->renderPartial('supervisor/reviewIntern', [
+        return $this->renderAjax('supervisor/reviewIntern', [
             'entries' => $entryByWeek,
             'intern' => User::findByEmail($intern)
         ]);
