@@ -38,6 +38,15 @@ $userRole = Yii::$app->user->identity->role;
                 'options' => ['id' => 'tab-supervisor-reviews']
             ],
         ];
+        if ($userRole == 'supervisor') {
+            $config = [
+                'label' => '<span class="glyphicon glyphicon-cog"></span> Configuration',
+                'content' => $this->context->actionConfigForm(),
+                'headerOptions' => ['id' => 'config-tab', 'class' => 'tab-main'],
+                'options' => ['id' => 'tab-config']
+            ];
+            $tabItems[] = $config;
+        }
     } else if ($userRole == 'superuser') {
         $tabItems = [
             [
