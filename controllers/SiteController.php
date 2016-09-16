@@ -870,6 +870,13 @@ class SiteController extends Controller
     public function actionFetchReview() {
         // Yii::$app->response->format = Response::FORMAT_JSON;
         $id = Yii::$app->request->get('id');
+        $email = Yii::$app->request->get('email');
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->renderAjax('error', [
+                'name' => 'Bad arguments',
+                'message' => "Invalid email '$email' supplied"
+            ]);
+        }
         if (isset($_GET['superv'])) {
             $review = SupervisorReviews::findOne(['id' => $id]);
             $review = $review ? $review : new SupervisorReviews();
@@ -883,6 +890,7 @@ class SiteController extends Controller
         return $this->renderPartial('supervisor/reviewsForm', [
             'model' => $review,
             'role' => $role,
+            'internEmail' => $email,
             'dateRange' => Yii::$app->request->get('dateRange')
         ]);
     }
@@ -892,23 +900,41 @@ class SiteController extends Controller
      */
     public function actionSaveReview() {
         Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $user = $this->getUser();
+        // return ($user->role != 'coordinator' && $user->role != 'supervisor');
+        if ($user->role != 'coordinator' && $user->role != 'supervisor') {
+            return ['error' => 'Only a verified supervisor or coordinator can do that'];
+        }
+
         $type = Yii::$app->request->post('type');
-        $review = Yii::$app->request->post('type');
+        $internEmail = Yii::$app->request->post('internEmail');
         $id = intval(Yii::$app->request->post('id'));
         $id = $id ? $id : -1;
 
-        $user = $this->getUser();
-        $reviewer = '';
-        if ($user->role != 'intern') {
-            $reviewer = $user->email;
+        if (isset($user->associations0[$internEmail])) {
+            return [
+                'error' => "Intern with email ($internEmail) is not under your supervision"
+            ];
         }
 
+        $reviewer = $user->email;
         if ($type == 'supervisor') {
             $model = SupervisorReviews::findOne(['id' => $id]);
             $model = $model ? $model : new SupervisorReviews();
+            if ($user->role != 'supervisor') {
+                return [
+                    'error' => "You can't make that review as a supervisor, your role is that of a coordinator"
+                ];
+            }
         } else {
             $model = CoordinatorReviews::findOne(['id' => $id]);
             $model = $model ? $model : new CoordinatorReviews();
+            if ($user->role != 'coordinator') {
+                return [
+                    'error' => "You can't make that review as a coordinator, your role is that of a supervisor"
+                ];
+            }
         }
 
         $className = explode('\\', get_class($model));
@@ -922,7 +948,9 @@ class SiteController extends Controller
                 $name = $type . '_review';
                 $dateRange = Yii::$app->request->post('dateRange');
                 $dateRange = explode('|', $dateRange);
-                $rows = Logbook::updateAll([$name => $model->id], "entry_for BETWEEN '$dateRange[0]' AND '$dateRange[1]'");
+                $rows = Logbook::updateAll(
+                    [$name => $model->id],
+                    "entry_for BETWEEN '$dateRange[0]' AND '$dateRange[1]' AND author = '$internEmail'");
                 return [
                     'data' => $rows,
                     'message' => 'Review saved successfully'
@@ -946,7 +974,7 @@ class SiteController extends Controller
 
         return $this->renderAjax('supervisor/reviewIntern', [
             'entries' => $entryByWeek,
-            'intern' => User::findByEmail($intern)
+            'intern' => User::findByEmail($intern),
         ]);
     }
 }
