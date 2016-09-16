@@ -65,11 +65,11 @@ $internEmail = $intern->email;
             $coordLabel = 'View';
             if (!$superReview) {
                 $superClass = 'btn-warning';
-                $superLabel = 'Create';
+                $superLabel = 'Add';
             }
             if (!$coordReview) {
                 $coordClass = 'btn-warning';
-                $coordLabel = 'Create';
+                $coordLabel = 'Add';
             }
             echo <<<TABLE
           <tr>
