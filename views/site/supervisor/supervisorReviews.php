@@ -29,7 +29,6 @@ $this->title = 'Supervisor Reviews';
                 <?= $this->render('associateWithIntern'); ?>
             </div>
             <div class="tab-pane" id="tab-intern-overview">
-                <p>this is funny</p>
             </div>
         </div>
     </div>
