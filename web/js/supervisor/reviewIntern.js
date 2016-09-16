@@ -33,6 +33,7 @@ function bindSubmitButton() {
                 $("#btn-submit-profile").spin(false);
                 $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
                 $('.alert-box').addClass('alert-danger');
+                $('.alert-box').css('text-align', 'left');
                 $('.alert-box').show();
             },
         });
