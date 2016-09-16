@@ -10,6 +10,7 @@ $this->title = 'Home';
 $email = Yii::$app->user->identity->email;
 $profile = Profile::findByEmail($email);
 
+$thisUser = Yii::$app->user->identity;
 $userRole = Yii::$app->user->identity->role;
 
 ?>
@@ -24,28 +25,35 @@ $userRole = Yii::$app->user->identity->role;
                 'label' => '<span class="glyphicon glyphicon-user"></span> Supervisor Profile',
                 'content' => $this->context->actionSupervisorProfile(),
                 'headerOptions' => ['id' => 'profile-tab', 'class' => 'tab-main'],
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator Console',
-                'content' => $this->render('coordinatorConsole'),
-                'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-coordinator-console']
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-list"></span> Reviews',
-                'content' => $this->context->actionReviews(),
-                'headerOptions' => ['id' => 'supervisor-reviews-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-supervisor-reviews']
-            ],
+            ]
         ];
-        if ($userRole == 'supervisor') {
-            $config = [
-                'label' => '<span class="glyphicon glyphicon-cog"></span> Configuration',
-                'content' => $this->context->actionConfigForm(),
-                'headerOptions' => ['id' => 'config-tab', 'class' => 'tab-main'],
-                'options' => ['id' => 'tab-config']
+        if ($thisUser->supervisorprofile->id_number) {
+            $moreItems = [
+                [
+                    'label' => '<span class="glyphicon glyphicon-console"></span> Coordinator Console',
+                    'content' => $this->render('coordinatorConsole'),
+                    'headerOptions' => ['id' => 'coordinator-console-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-coordinator-console']
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-list"></span> Reviews',
+                    'content' => $this->context->actionReviews(),
+                    'headerOptions' => ['id' => 'supervisor-reviews-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-supervisor-reviews']
+                ],
             ];
-            $tabItems[] = $config;
+            if ($userRole == 'supervisor') {
+                $config = [
+                    'label' => '<span class="glyphicon glyphicon-cog"></span> Configuration',
+                    'content' => $this->context->actionConfigForm(),
+                    'headerOptions' => ['id' => 'config-tab', 'class' => 'tab-main'],
+                    'options' => ['id' => 'tab-config']
+                ];
+                $tabItems[] = $config;
+            }
+            $tabItems = array_merge_recursive($tabItems, $moreItems);
+        } else {
+            Yii::$app->session->setFlash('error', 'Update your profile first to be able to access the other functions');
         }
     } else if ($userRole == 'superuser') {
         $tabItems = [
