@@ -203,13 +203,11 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Returns this user's logbook entries
-     *
      * @return \yii\db\ActiveQuery
      */
-    public function getLogbook()
+    public function getLogbooks()
     {
-        return Logbook::find(['author' => $this->email])->orderBy('entry_for');
+        return $this->hasMany(Logbook::className(), ['author' => 'email']);
     }
 
     /**
