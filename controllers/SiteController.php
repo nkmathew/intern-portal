@@ -3,10 +3,12 @@ namespace app\controllers;
 
 use app\models\AssociationLinks;
 use app\models\Associations;
+use app\models\CoordinatorReviews;
 use app\models\Logbook;
 use app\models\Profile;
 use app\models\SupervisorProfile;
 use app\models\SupervisorProfileForm;
+use app\models\SupervisorReviews;
 use app\models\User;
 use app\models\SignupLinks;
 use Yii;
@@ -723,7 +725,7 @@ class SiteController extends Controller
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $pdf->AddPage();
         $pdf->SetFont('helvetica', '', 8);
-        $tbl = $this->actionLogbookTable();
+        $tbl = $this->actionLogbookTable(false);
         $pdf->writeHTML($tbl, true, false, false, false, '');
         $pdf->Output('Internship_Logbook.pdf', 'I');
     }
@@ -732,10 +734,15 @@ class SiteController extends Controller
      * Returns all logbook entries week-wise
      *
      * @param bool|null $asJSON
+     * @param null $author
      * @return array|string
      */
-    public function actionEntriesByWeek($asJSON = true) {
-        $entries = $this->getUser()->getLogbook()->all();
+    public function actionEntriesByWeek($asJSON = true, $author = null) {
+        if (!$author) {
+            $entries = $this->getUser()->getLogbook()->all();
+        } else {
+            $entries = Logbook::findAll(['author' => $author]);
+        }
         $entryByWeek = [];
         $week = 0;
         foreach ($entries as $x => $value) {
@@ -858,11 +865,88 @@ class SiteController extends Controller
     }
 
     /**
+     * Fetches the review with the specified and renders it in a form
+     */
+    public function actionFetchReview() {
+        // Yii::$app->response->format = Response::FORMAT_JSON;
+        $id = Yii::$app->request->get('id');
+        if (isset($_GET['superv'])) {
+            $review = SupervisorReviews::findOne(['id' => $id]);
+            $review = $review ? $review : new SupervisorReviews();
+            $role = 'supervisor';
+        } else {
+            $review = CoordinatorReviews::findOne(['id' => $id]);
+            $review = $review ? $review : new CoordinatorReviews();
+            $role = 'coordinator';
+        }
+
+        return $this->renderPartial('supervisor/reviewsForm', [
+            'model' => $review,
+            'role' => $role,
+            'dateRange' => Yii::$app->request->get('dateRange')
+        ]);
+    }
+
+    /**
+     * Save/updated a review for a certain week
+     */
+    public function actionSaveReview() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $type = Yii::$app->request->post('type');
+        $review = Yii::$app->request->post('type');
+        $id = intval(Yii::$app->request->post('id'));
+        $id = $id ? $id : -1;
+
+        $user = $this->getUser();
+        $reviewer = '';
+        if ($user->role != 'intern') {
+            $reviewer = $user->email;
+        }
+
+        if ($type == 'supervisor') {
+            $model = SupervisorReviews::findOne(['id' => $id]);
+            $model = $model ? $model : new SupervisorReviews();
+        } else {
+            $model = CoordinatorReviews::findOne(['id' => $id]);
+            $model = $model ? $model : new CoordinatorReviews();
+        }
+
+        $className = explode('\\', get_class($model));
+        $model->created = date('Y-m-d H:i:s');
+        $model->reviewer = $reviewer;
+        $model->review = $_POST[end($className)]['review'];
+
+        if ($model->validate()) {
+            $ret = $model->save();
+            if ($ret) {
+                $name = $type . '_review';
+                $dateRange = Yii::$app->request->post('dateRange');
+                $dateRange = explode('|', $dateRange);
+                $rows = Logbook::updateAll([$name => $model->id], "entry_for BETWEEN '$dateRange[0]' AND '$dateRange[1]'");
+                return [
+                    'data' => $rows,
+                    'message' => 'Review saved successfully'
+                ];
+            } else {
+                return [
+                    'error' => 'Could not save review'
+                ];
+            }
+        }
+    }
+
+    /**
      * Render intern review page
      */
     public function actionReviewIntern() {
-        return $this->render('supervisor/reviewIntern', [
+        if (isset($_GET['intern'])) {
+            $intern = $_GET['intern'];
+        }
+        $entryByWeek = $this->actionEntriesByWeek(false, $intern);
 
+        return $this->renderPartial('supervisor/reviewIntern', [
+            'entries' => $entryByWeek,
+            'intern' => User::findByEmail($intern)
         ]);
     }
 }
