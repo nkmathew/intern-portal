@@ -110,6 +110,7 @@ function saveLogbookEntry() {
         error: function (xhr, status, error) {
             $('.alert-box .msg').html('<h4>' + error + '</h4><br/>' + xhr.responseText);
             $('.alert-box').addClass('alert-danger');
+            $('.alert-box').css('text-align', 'left');
             $('.alert-box').show();
             $("#logbook-entry-area").spin(false);
         },
