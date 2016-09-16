@@ -91,7 +91,7 @@ $internEmail = $intern->email;
                </td>
             <td align="center">
                <a class="btn btn-sm btn-primary" target="_blank"
-                  href="/site/export-logbook?week=$weekNumber">Generate PDF</a>
+                  href="/site/export-logbook?week=$weekNumber&email=$internEmail">Generate PDF</a>
             </td>
           </tr>
 TABLE;

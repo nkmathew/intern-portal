@@ -737,12 +737,16 @@ class SiteController extends Controller
      * @param null $author
      * @return array|string
      */
-    public function actionEntriesByWeek($asJSON = true, $author = null) {
-        if (!$author) {
-            $entries = $this->getUser()->getLogbook()->all();
-        } else {
-            $entries = Logbook::findAll(['author' => $author]);
+    public function actionEntriesByWeek($asJSON = true, $author) {
+        $user = User::findByEmail($author);
+        if (!$user) {
+            return [];
         }
+        if ($user->role != 'intern') {
+            return [];
+        }
+
+        $entries = $user->logbooks;
         $entryByWeek = [];
         $week = 0;
         foreach ($entries as $x => $value) {
@@ -768,8 +772,9 @@ class SiteController extends Controller
      * @return string
      */
     public function actionLogbookTable() {
-        $entryByWeek = $this->actionEntriesByWeek(false);
         $weekNum = Yii::$app->request->get('week');
+        $author = Yii::$app->request->get('email');
+        $entryByWeek = $this->actionEntriesByWeek(false, $author);
         $weekNum = intval($weekNum);
         if ($weekNum <= 0) {
             $weekNum = 1;
@@ -777,8 +782,13 @@ class SiteController extends Controller
             $weekNum = count($entryByWeek);
         }
 
+        if (count($entryByWeek) == 0) {
+            $entryList = [];
+        } else {
+            $entryList =  $entryByWeek[$weekNum-1];
+        }
         return $this->renderPartial('logbookPdf', [
-            'entryList' => $entryByWeek[$weekNum-1],
+            'entryList' => $entryList,
             'weekNumber' => $weekNum
         ]);
     }
