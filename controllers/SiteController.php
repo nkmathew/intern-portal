@@ -684,7 +684,39 @@ class SiteController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         $email = Yii::$app->request->post('email');
         $user = User::findByEmail($email);
-        SignupLinks::deleteAll(['email' => $user->email]);
+        AssociationLinks::deleteAll(['intern' => $email]);
+        Associations::deleteAll(['intern' => $email]);
+        Associations::updateAll(['supervisor' => null], "supervisor = '$email'");
+        AssociationLinks::deleteAll(['supervisor' => $email]);
+        SignupLinks::deleteAll(['inviter' => $email]);
+        SignupLinks::deleteAll(['email' => $email]);
+        Associations::updateAll(['coordinator' => null], "coordinator = '$email'");
+        SignupLinks::deleteAll(['email' => $email]);
+        Logbook::deleteAll(['author' => $email]);
+        Config::deleteAll(['supervisor' => $email]);
+
+        $SQL = "
+        UPDATE logbook AS logb
+        INNER JOIN coordinator_reviews AS coord ON coord.id = logb.coordinator_review SET coordinator_review = NULL
+        WHERE coord.id = logb.coordinator_review AND reviewer=':email'
+        ";
+        if ($user->role != 'intern') {
+            $command = Yii::$app->db->createCommand($SQL, ['email' => $email]);
+            $command->execute();
+        }
+
+        $SQL = "
+        UPDATE logbook AS logb
+        INNER JOIN supervisor_reviews AS super ON super.id = logb.supervisor_review SET supervisor_review = NULL
+        WHERE super.id = logb.supervisor_review AND reviewer=':email'
+        ";
+        if ($user->role != 'intern') {
+            $command = Yii::$app->db->createCommand($SQL, ['email' => $email]);
+            $command->execute();
+        }
+
+        CoordinatorReviews::deleteAll(['reviewer' => $email]);
+        SupervisorReviews::deleteAll(['reviewer' => $email]);
         if ($user->role == 'intern') {
             Profile::deleteAll(['email' => $email]);
         } else {
@@ -1076,5 +1108,4 @@ class SiteController extends Controller
             ]);
         }
     }
-
 }
