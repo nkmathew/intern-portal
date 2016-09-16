@@ -374,6 +374,12 @@ class SiteController extends Controller
                         $profile = new Profile();
                         $profile->last_updated = time();
                     }
+                    // Initialize supervisor config table
+                    if ($user->role = 'supervisor') {
+                        $config = new Config();
+                        $config->supervisor = $user->email;
+                        $config->save();
+                    }
                     $profile->email = $model->email;
                     $profile->surname = '';
                     $profile->firstname = '';
