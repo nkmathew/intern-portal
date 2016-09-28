@@ -14,7 +14,7 @@ class m160905_191356_drop_role_from_supervisorprofile extends Migration
             'supervisorprofile'
         );
 
-        $this->dropColumn('role', 'supervisorprofile');
+        $this->dropColumn('supervisorprofile', 'role');
     }
 
     /**
@@ -22,7 +22,7 @@ class m160905_191356_drop_role_from_supervisorprofile extends Migration
      */
     public function down()
     {
-        $this->addColumn('role', 'supervisorprofile', $this->integer());
+        $this->addColumn('supervisorprofile', 'role', $this->integer());
 
         $this->addForeignKey(
             'FK_supervisorprofile_user_roles',
