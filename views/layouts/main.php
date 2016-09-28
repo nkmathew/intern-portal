@@ -72,7 +72,7 @@ if (!$isGuest) {
             ];
             if ($isGuest) {
                 $menuItems[] =
-                '<li>' . Html::a('Signup', '/site/signup', ['id' => 'link-signup']) . '</li>' .
+                // '<li>' . Html::a('Signup', '/site/signup', ['id' => 'link-signup']) . '</li>' .
                 '<li>' . Html::a('Login', '/site/login', ['id' => 'link-login']) . '</li>';
             } else {
                 $email = Yii::$app->user->identity->email;
