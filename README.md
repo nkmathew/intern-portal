@@ -12,6 +12,35 @@ Was an exercise for my internship/industrial attachment. It's not very practical
 far from complete but was a fun thing to work on daily. Will probably never touch it
 again once my internship is up
 
+### Installation Steps
+
++ Ensure you have a web server with `php >=5.4.0` installed
++ Clone this repo
++ Install dependencies with composer: `composer install --prefer-dist`
++ Create the database:
+```sql
+CREATE DATABASE `intern_system` /*!40100 COLLATE 'utf8mb4_unicode_ci' */
+```
++ Create tables by running `yii migrate`
++ Head over to http://ckeditor.com/builder and use the `ckeditor/build-config.js` to
+  create a custom build of ckeditor after which you'll extract the contents to the
+  `ckeditor` folder
++ Populate the courses table by running `courses-data.sql` in the root folder
++ Default password for superuser/admin account is **test123**
++ Run a server with `yii serve` while still in the root folder or with
+  `php -S localhost:8080` if in the `web` folder
++ Refer to `tests/README.md` for information on running test suites
+
+### How it works : abridged version
+The system is supposed to be installed an institution. An admin/superuser account is
+installed by default who will be responsible for sending singup links to supervisors
+who will then be able to send invite links for interns to signup. The admin is also
+responsible for changing the role of a supervisor to that of a coordinator. The
+coordinator and supervisor will then associate themselves with an intern through an
+association link sent to the intern's email. The intern accepts it after which the
+supervisor and coordinator will be able to make reviews to the logbook entries made
+by the intern
+
 ### TODO/Features
 
 + Should support login for four types of users:
@@ -106,24 +135,6 @@ again once my internship is up
 + Stop running sql queries to fetch logbook entries and profiles for the logged in
   user. Use instead ActiveQuery methods available through the User model since they
   are connected through a foreign key
-
-### Installation Steps
-
-+ Ensure you have a web server with `php >=5.4.0` installed
-+ Clone this repo
-+ Install dependencies with composer: `composer install --prefer-dist`
-+ Create the database:
-```sql
-CREATE DATABASE `intern_system` /*!40100 COLLATE 'utf8mb4_unicode_ci' */
-```
-+ Create tables by running `yii migrate`
-+ Head over to http://ckeditor.com/builder and use the `ckeditor/build-config.js` to
-  create a custom build of ckeditor after which you'll extract the contents to the
-  `ckeditor` folder
-+ Run a server with `yii serve` while still in the root folder or with
-  `php -S localhost:8080` if in the `web` folder
-+ Refer to `tests/README.md` for information on running test suites
-
 
 ### Directory Structure
 
